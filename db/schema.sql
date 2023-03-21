@@ -1,0 +1,2 @@
+DROP DATABASE IF EXISTS cardex_db;
+CREATE DATABASE cardex_db;
