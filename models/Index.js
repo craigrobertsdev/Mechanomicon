@@ -23,8 +23,11 @@ Service.belongsTo(Car, {
 
 // The Fuck??
 Technician.hasOne(User, {
-    foreignKey: ''
+    foreignKey: 'technician_id'
 });
+User.belongsTo(Technician, {
+    foreignKey: 'technician_id'
+})
 
 
 Workshop.hasMany(Technician, {
@@ -32,6 +35,22 @@ Workshop.hasMany(Technician, {
 });
   
 Technician.belongsTo(Workshop, {
+    foreignKey: 'workshop_id',
+});
+
+Workshop.hasMany(Car, {
+    foreignKey: 'workshop_id',
+});
+  
+Car.belongsTo(Workshop, {
+    foreignKey: 'workshop_id',
+});
+
+Workshop.hasMany(User, {
+    foreignKey: 'workshop_id',
+});
+  
+User.belongsTo(Workshop, {
     foreignKey: 'workshop_id',
 });
 

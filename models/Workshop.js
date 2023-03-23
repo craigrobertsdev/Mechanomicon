@@ -33,7 +33,6 @@ Workshop.init(
                 key: 'id'
               }
         },
-
     },
     {
         sequelize,

@@ -39,7 +39,14 @@ Car.init(
                 model: 'User',
                 key: 'id'
               }
-        },        
+        },  
+        workshop_id: {
+            type: DataTypes.INTEGER,
+            references: {
+                model: 'Workshop',
+                key: 'id'
+              }
+        },      
     },
     {
         sequelize,

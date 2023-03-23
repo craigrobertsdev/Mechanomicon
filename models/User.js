@@ -52,13 +52,20 @@ User.init(
             type: DataTypes.STRING,
             allowNull: false,
             validate: {
-            len: [5],
+            len: [8],
           },
         },
-        isTechnician: {
-            type: DataTypes.BOOLEAN,
-            allowNull: false,
-        }
+        workshop_id: {
+            type: DataTypes.INTEGER,
+            references: {
+                model: 'Workshop',
+                key: 'id'
+              }
+        },
+        //isTechnician: {
+        //    type: DataTypes.BOOLEAN,
+        //    allowNull: false,
+        //}
     },
     {
         hooks: {
