@@ -15,21 +15,21 @@ Workshop.init(
         user_id: {
             type: DataTypes.INTEGER,
             references: {
-                model: 'User',
+                model: 'user',
                 key: 'id'
               }
         },
         technician_id: {
             type: DataTypes.INTEGER,
             references: {
-                model: 'Technician',
+                model: 'technician',
                 key: 'id'
               }
         },
         car_id: {
             type: DataTypes.INTEGER,
             references: {
-                model: 'Car',
+                model: 'car',
                 key: 'id'
               }
         },

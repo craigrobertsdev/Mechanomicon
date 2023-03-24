@@ -15,14 +15,14 @@ Technician.init(
         user_id: {
             type: DataTypes.INTEGER,
             references: {
-                model: 'User',
+                model: 'user',
                 key: 'id'
               }
         },
         workshop_id: {
             type: DataTypes.INTEGER,
             references: {
-                model: 'Workshop',
+                model: 'workshop',
                 key: 'id'
               }
         },

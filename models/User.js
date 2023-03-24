@@ -2,11 +2,7 @@ const { Model, DataTypes } = require('sequelize');
 const bcrypt = require('bcrypt');
 const sequelize = require('../config/connection');
 
-class User extends Model {
-  checkPassword(loginPw) {
-    return bcrypt.compareSync(loginPw, this.password);
-  }
-}
+class User extends Model {}
 
 User.init(
     {
@@ -16,7 +12,7 @@ User.init(
             primaryKey: true,
             autoIncrement: true,
         },
-        username: {
+        name: {
             type: DataTypes.STRING,
             allowNull: false,
         },
@@ -58,14 +54,24 @@ User.init(
         workshop_id: {
             type: DataTypes.INTEGER,
             references: {
-                model: 'Workshop',
+                model: 'workshop',
                 key: 'id'
               }
         },
-        //isTechnician: {
-        //    type: DataTypes.BOOLEAN,
-        //    allowNull: false,
-        //}
+        technician_id: {
+            type: DataTypes.INTEGER,
+            references: {
+                model: 'technician',
+                key: 'id'
+              }
+        },
+        car_id: {
+            type: DataTypes.INTEGER,
+            references: {
+                model: 'car',
+                key: 'id'
+              }
+        },
     },
     {
         hooks: {
