@@ -12,26 +12,9 @@ Workshop.init(
             primaryKey: true,
             autoIncrement: true,
         },
-        user_id: {
-            type: DataTypes.INTEGER,
-            references: {
-                model: 'user',
-                key: 'id'
-              }
-        },
-        technician_id: {
-            type: DataTypes.INTEGER,
-            references: {
-                model: 'technician',
-                key: 'id'
-              }
-        },
-        car_id: {
-            type: DataTypes.INTEGER,
-            references: {
-                model: 'car',
-                key: 'id'
-              }
+        name: {
+            type: DataTypes.STRING,
+            allowNull: false,
         },
     },
     {

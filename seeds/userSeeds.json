@@ -1,5 +1,6 @@
 [
   {
+    "id": 1,
     "name": "John Lennon",
     "email": "John@yellowsubmarine.com",
     "phone": "909 1 9999",
@@ -7,12 +8,11 @@
     "postcode": "5000",
     "city": "Adelaide",
     "state": "SA",
-    "password": "$2a$10$TwUK8o8hiorAyWUdp2XcRuEhS2T0VO32JmCPTG/ot52dyemRYQ8F.",
-    "workshop_id": 1,
-    "technician_id": 0,
-    "car_id": 1
+    "password": "beatles1963",
+    "workshop_id": 1
   },
   {
+    "id": 2,
     "name": "Paul McCartney",
     "email": "Paul@yellowsubmarine.com",
     "phone": "909 1 9999",
@@ -20,12 +20,11 @@
     "postcode": "5000",
     "city": "Adelaide",
     "state": "SA",
-    "password": "$2a$10$TwUK8o8hiorAyWUdp2XcRuEhS2T0VO32JmCPTG/ot52dyemRYQ8F.",
-    "workshop_id": 1,
-    "technician_id": 0,
-    "car_id": 2
+    "password": "beatles1963",
+    "workshop_id": 1 
   },
   {
+    "id": 3,
     "name": "George Harrison",
     "email": "George@yellowsubmarine.com",
     "phone": "909 1 9999",
@@ -33,12 +32,11 @@
     "postcode": "5000",
     "city": "Adelaide",
     "state": "SA",
-    "password": "$2a$10$TwUK8o8hiorAyWUdp2XcRuEhS2T0VO32JmCPTG/ot52dyemRYQ8F.",
-    "workshop_id": 1,
-    "technician_id": 0,
-    "car_id": 3
+    "password": "beatles1963",
+    "workshop_id": 1
   },
   {
+    "id": 4,
     "name": "Ringo Starr",
     "email": "Ringo@yellowsubmarine.com",
     "phone": "909 1 9999",
@@ -46,9 +44,7 @@
     "postcode": "5000",
     "city": "Adelaide",
     "state": "SA",
-    "password": "$2a$10$TwUK8o8hiorAyWUdp2XcRuEhS2T0VO32JmCPTG/ot52dyemRYQ8F.",
-    "workshop_id": 1,
-    "technician_id": 1,
-    "car_id": 0
-  },
-];
+    "password": "beatles1963",
+    "workshop_id": 1
+  }
+]

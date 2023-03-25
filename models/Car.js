@@ -26,14 +26,14 @@ Car.init(
             allowNull: false,
         },
         year: {
-            type: DataTypes.STRING,
+            type: DataTypes.INTEGER,
             allowNull: false,
         },
         colour: {
             type: DataTypes.STRING,
             allowNull: false,
         },
-        User_id: {
+        user_id: {
             type: DataTypes.INTEGER,
             references: {
                 model: 'user',

@@ -22,21 +22,21 @@ Service.belongsTo(Car, {
 
 
 // The Fuck??
-Technician.hasOne(User, {
-    foreignKey: 'technician_id'
-});
-User.belongsTo(Technician, {
-    foreignKey: 'technician_id'
-})
+//Technician.hasOne(User, {
+//    foreignKey: 'technician_id'
+//});
+//User.belongsTo(Technician, {
+//    foreignKey: 'technician_id'
+//})
 
 
-Workshop.hasMany(Technician, {
-    foreignKey: 'workshop_id',
-});
+//Workshop.hasMany(Technician, {
+//    foreignKey: 'workshop_id',
+//});
   
-Technician.belongsTo(Workshop, {
-    foreignKey: 'workshop_id',
-});
+//Technician.belongsTo(Workshop, {
+//    foreignKey: 'workshop_id',
+//});
 
 Workshop.hasMany(Car, {
     foreignKey: 'workshop_id',
