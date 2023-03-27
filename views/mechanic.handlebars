@@ -12,6 +12,7 @@
                 <th>Cost</th>
                 </tr>
             </thead>
+            {{#if services.length}}
             <tbody>
                 {{#each cars as |car|}}
                 <tr>
@@ -21,6 +22,7 @@
                 <td>{{car.service-cost}}</td>
                 {{/each}}
             </tbody>
+            {{/if}}
         </table>
     </div>
 </div>

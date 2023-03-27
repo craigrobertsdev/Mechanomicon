@@ -1,42 +1,58 @@
 <h1>Information for {{car-rego}}:</h1>
 
-<div class= "service-info">
-    <h2>Items used in last service:</h2>
-    <table class="table-auto">
-        <thead>
-            <tr>
-            <th>Date</th>
-            <th>Oil</th>
-            <th>Filter</th>
-            </tr>
-        </thead>
-        <tbody>
-            {{#each services as |service|}}
-            <tr>
-            <td>{{car.service.date}}</td>
-            <td>{{car.service.oil}}</td>
-            <td>{{car.service.filter}}</td>
-            </tr>
-            {{/each}}
-        </tbody>
-    </table>
-</div>
 <div class="current-job">
     <h2>Currently working on {{car.service-type}}</h2>
     <p>Job description:</p>
+    {{!-- Add Job descriptor --}}
     <p>{{job-decrip}}</p>
 </div>
 <form class="future-work">
-    <h3>Recommended future work:</h3>
-    {{#each service-types as |service-type|}}
-    <div class="checkbox-{{service-type}}">
-        <input id="{{service-type}}-checkbox" type="checkbox">
-        <label for="{{service-type}}-checkbox">{{service-type}}</label>
+    <h3>Work Completed:</h3>
+    <div class="oil-checkbox">
+        <input id="oil-checkbox" type="checkbox">
+        <label for="oil-checkbox">Oil Changed</label>
     </div>
-    {{/each}}
+
+    <div class="filter-checkbox">
+        <input id="filter-checkbox" type="checkbox">
+        <label for="filter-checkbox">Filter Changed</label>
+    </div>
+
+    <div class="brake-checkbox">
+        <input id="brake-checkbox" type="checkbox">
+        <label for="brake-checkbox">Brakes Checked</label>
+    </div>
+
+    <div class="coolant-checkbox">
+        <input id="coolant-checkbox" type="checkbox">
+        <label for="coolant-checkbox">Coolant Checked</label>
+    </div>
+    
+    <div class="battery-checkbox">
+        <input id="battery-checkbox" type="checkbox">
+        <label for="battery-checkbox">Battery Checked</label>
+    </div>
+
+    <div class="suspension-checkbox">
+        <input id="suspension-checkbox" type="checkbox">
+        <label for="suspension-checkbox">Suspension Checked</label>
+    </div>
+     
+    <div class="filters-checkbox">
+        <input id="filters-checkbox" type="checkbox">
+        <label for="filters-checkbox">All Filters Checked</label>
+    </div>
+
+    <div class="inspection-checkbox">
+        <input id="inspection-checkbox" type="checkbox">
+        <label for="inspection-checkbox">General Inspection Completed</label>
+    </div>
+
     <div>
-        <label for="message">Comments:</label>
+        <label for="message">Comments & Future Reccomendations:</label>
         <textarea id="message" rows="4" placeholder="Write your comments here..."></textarea>
     </div>
     <button>Submit</button>
 </form>
+
+<script src="./js/mechanic.js"></script>
