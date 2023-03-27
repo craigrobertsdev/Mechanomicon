@@ -72,14 +72,14 @@ perhaps this should also have a search option to return a list of customers matc
 >
   <div
     id="modal-content"
-    class="relative w-2/4 h-3/4 px-3 border border-black bg-slate-200"
+    class="relative w-2/4 h-3/4 px-3 border border-black bg-slate-200 grid grid-rows-[auto_1fr]"
   >
     <span
       id="close-button"
-      class="float-right aria-hidden text-bold text-4xl hover:cursor-pointer"
+      class="row-start-1 row-end-2 col-span-full absolute top-[0.5rem] right-[0.5rem] select-none aria-hidden text-bold text-4xl hover:cursor-pointer"
     >&times;</span>
     <div
-      class="grid auto-rows-auto grid-cols-2 mb-3 p-3 border-b-2 border-black gap-y-2"
+      class="grid auto-rows-auto grid-cols-2 row-start-1 row-end-2 col-span-full mb-3 p-3 gap-y-2"
     >
       <div class="select-none">First Name:</div>
       <div>Craig</div>
@@ -90,7 +90,10 @@ perhaps this should also have a search option to return a list of customers matc
       <div class="select-none">Phone number:</div>
       <div>0407 226 002</div>
     </div>
-    <div id="service-history">
+    <div
+      id="service-history"
+      class="overflow-hidden overflow-y-auto h-full row-start-2 row-end-3 col-span-full"
+    >
       <h4 class="text-center text-xl mb-3 select-none">Service History</h4>
       <table id="service-list" class="w-full text-center">
         <thead>

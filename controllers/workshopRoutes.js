@@ -101,4 +101,14 @@ router.get("/", async (req, res) => {
   res.render("workshopDashboard", { mechanics, jobs, num_mechanics });
 });
 
+// router.get("/workshop", async (req, res) => {
+//   try {
+//     const customerData = await User.findAll();
+
+//     render 
+//   } catch(err) {
+//     res.status(500).json(err);
+//   }
+// })
+
 module.exports = router;

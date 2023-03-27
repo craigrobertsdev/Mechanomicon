@@ -13,7 +13,9 @@ a bonus feature to search for jobs from the past and display those in a list. }}
     <a href="">Inventory</a>
   </aside>
   <section class="p-3 w-full">
+    {{#if customers}}
     {{> customers }}
+    {{/if}}
     {{!-- <div
       class="grid auto-rows-auto grid-cols-[10%] auto-cols-auto overflow-auto"
     >
