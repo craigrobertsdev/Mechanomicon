@@ -1,0 +1,42 @@
+[
+  {
+    "id": 1,
+    "licensePlate": "AAA111",
+    "make": "Audi",
+    "model": "Quattro",
+    "year": 1985,
+    "colour": "Red",
+    "user_id": 1,
+    "workshop_id": 1
+  },
+  {
+    "id": 2,
+    "licensePlate": "BBB222",
+    "make": "Porsche",
+    "model": "944",
+    "year": 1984,
+    "colour": "Blue",
+    "user_id": 2,
+    "workshop_id": 1
+  },
+  {
+    "id": 3,
+    "licensePlate": "CCC333",
+    "make": "Audi",
+    "model": "S6",
+    "year": 1994,
+    "colour": "Green",
+    "user_id": 3,
+    "workshop_id": 1
+  },
+  {
+    "id": 4,
+    "licensePlate": "DDD444",
+    "make": "Lotus",
+    "model": "Elise",
+    "year": 2005,
+    "colour": "Black",
+    "user_id": 4,
+    "workshop_id": 1
+  }
+]

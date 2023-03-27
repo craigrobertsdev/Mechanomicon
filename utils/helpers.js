@@ -4,4 +4,8 @@ module.exports = {
     const hour = new Date(jobTime).getHours();
     return hour - 8;
   },
+
+  technicianConverter: (is_technician) => {
+    return is_technician ? "Yes" : "";
+  },
 };

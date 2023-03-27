@@ -98,7 +98,7 @@ router.get("/", async (req, res) => {
   ];
 
   const num_mechanics = 2;
-  res.render("workshop-dashboard", { mechanics, jobs, num_mechanics });
+  res.render("workshopDashboard", { mechanics, jobs, num_mechanics });
 });
 
 module.exports = router;

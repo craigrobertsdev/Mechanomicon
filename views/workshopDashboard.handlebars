@@ -1,22 +1,20 @@
-on page load, will contain the calendar partial set to the current date. panel
+{{! on page load, will contain the calendar partial set to the current date. panel
 on left-hand side to swap between the different options of mechanics, customers
 and the calendar header section which allows selection of date main part of
 calendar is a bunch of timeslots showing the jobs that are booked for that day.
 perhaps 1 column per mechanic at the workshop a search bar will be available as
-a bonus feature to search for jobs from the past and display those in a list.
+a bonus feature to search for jobs from the past and display those in a list. }}
 
-<div class="flex">
-  <aside>
-    <h3>Robbo's Repairs</h3>
-    <a href="">Calendar</a>
+<div class="flex grow h-full">
+  <aside class="w-32 bg-slate-200 h-full">
+    <a href="">Job List</a>
     <a href="">Mechanics</a>
     <a href="">Customers</a>
+    <a href="">Inventory</a>
   </aside>
-  <section>
-    <div>
-      {{!-- {{> calendar}} --}}
-    </div>
-    <div
+  <section class="p-3 w-full">
+    {{> customers }}
+    {{!-- <div
       class="grid auto-rows-auto grid-cols-[10%] auto-cols-auto overflow-auto"
     >
       <div class="col-start-1 col-end-2 row-start-1 row-end-2">9am</div>
@@ -43,6 +41,6 @@ a bonus feature to search for jobs from the past and display those in a list.
         {{/each}}
       {{/each}}
 
-    </div>
+    </div> --}}
   </section>
 </div>

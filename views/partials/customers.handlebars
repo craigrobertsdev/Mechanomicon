@@ -1,8 +1,156 @@
-
-
-each customer will be a link to an individual customer. each row of the table
+{{! each customer will be a link to an individual customer. each row of the table
 will have alternating backgrounds for ease of reading. it will contain the
 customer's name, address and phone number as well as a button to show their job history.
 there will be a button on the right-hand side to open the customer partial
 
-perhaps this should also have a search option to return a list of customers matching the search criteria (first name and last name field maybe) 
+perhaps this should also have a search option to return a list of customers matching the search criteria (first name and last name field maybe)  }}
+
+<div id="search">
+  <input
+    type="text"
+    id="search-bar"
+    class="border border-black mb-2 p-1 w-full"
+    placeholder="Search for names..."
+  />
+</div>
+
+<table class="table-auto border border-collapse w-full text-center select-none">
+  <thead>
+    <tr class="border">
+      <th class="border p-1">First Name</th>
+      <th class="border p-1">Last Name</th>
+      <th class="border p-1">Address</th>
+      <th class="border p-1">Technician?</th>
+    </tr>
+    <tbody id="user-table">
+      {{!-- {{#each users as |user|}}
+        <tr id="user-{{user.id}}">
+          <td class="border">{{user.first_name}}</td>
+          <td class="border">{{user.last_name}}</td>
+          <td class="border">{{user.address}}</td>
+          <td class="border"><input type="checkbox" checked="{{technicianConverter user.is_technician}}" /></td>
+        </tr>
+      {{/each}} --}}
+      <tr id="user-2">
+        <td class="border p-1">Craig</td>
+        <td class="border p-1">Roberts</td>
+        <td class="border p-1">123 Fake Street, Adelaide 5000</td>
+        <td class="border p-1"><input type="checkbox" checked="false" /></td>
+      </tr>
+      <tr id="user-2">
+        <td class="border p-1">Craig</td>
+        <td class="border p-1">Roberts</td>
+        <td class="border p-1">123 Fake Street, Adelaide 5000</td>
+        <td class="border p-1"><input type="checkbox" checked="false" /></td>
+      </tr>
+      <tr id="user-2">
+        <td class="border p-1">Craig</td>
+        <td class="border p-1">Roberts</td>
+        <td class="border p-1">123 Fake Street, Adelaide 5000</td>
+        <td class="border p-1"><input type="checkbox" checked="false" /></td>
+      </tr>
+      <tr id="user-2">
+        <td class="border p-1">Craig</td>
+        <td class="border p-1">Roberts</td>
+        <td class="border p-1">123 Fake Street, Adelaide 5000</td>
+        <td class="border p-1"><input type="checkbox" checked="false" /></td>
+      </tr>
+      <tr id="user-2">
+        <td class="border p-1">Craig</td>
+        <td class="border p-1">Roberts</td>
+        <td class="border p-1">123 Fake Street, Adelaide 5000</td>
+        <td class="border p-1"><input type="checkbox" checked="false" /></td>
+      </tr>
+    </tbody>
+  </thead>
+</table>
+
+<div
+  id="modal"
+  class="hidden flex h-full w-full items-center justify-center fixed z-10 top-0 left-0"
+  style="background-color: #00000070"
+>
+  <div
+    id="modal-content"
+    class="relative w-2/4 h-3/4 px-3 border border-black bg-slate-200"
+  >
+    <span
+      id="close-button"
+      class="float-right aria-hidden text-bold text-4xl hover:cursor-pointer"
+    >&times;</span>
+    <div
+      class="grid auto-rows-auto grid-cols-2 mb-3 p-3 border-b-2 border-black gap-y-2"
+    >
+      <div class="select-none">First Name:</div>
+      <div>Craig</div>
+      <div class="select-none">Last Name:</div>
+      <div>Roberts</div>
+      <div class="select-none">Address:</div>
+      <div>123 Fake Street Adelaide 5000</div>
+      <div class="select-none">Phone number:</div>
+      <div>0407 226 002</div>
+    </div>
+    <div id="service-history">
+      <h4 class="text-center text-xl mb-3 select-none">Service History</h4>
+      <table id="service-list" class="w-full text-center">
+        <thead>
+          <tr>
+            <th>Date</th>
+            <th>Service Type</th>
+            <th>Vehicle Registration</th>
+            <th>Cost</th>
+          </tr>
+        </thead>
+        {{!-- {{#each services as |service|}}
+            <tr class="border-b-1 border-black">
+              <td>{{service.date}}</td>
+              <td>{{service.type}}</td>
+              <td>{{service.registration}}</td>
+              <td>{{service.cost}}</td>
+            </tr>
+          {{/each}} --}}
+        <tbody>
+          <tr class="border-b border-black">
+            <td class="mb-2 p-2">31/01/2023</td>
+            <td class="mb-2 p-2">Service and Inspection</td>
+            <td class="mb-2 p-2">S579CDU</td>
+            <td class="mb-2 p-2">$600</td>
+          </tr>
+          <tr class="border-b border-black">
+            <td class="mb-2 p-2">31/01/2023</td>
+            <td class="mb-2 p-2">Service and Inspection</td>
+            <td class="mb-2 p-2">S579CDU</td>
+            <td class="mb-2 p-2">$600</td>
+          </tr>
+          <tr class="border-b border-black">
+            <td class="mb-2 p-2">31/01/2023</td>
+            <td class="mb-2 p-2">Service and Inspection</td>
+            <td class="mb-2 p-2">S579CDU</td>
+            <td class="mb-2 p-2">$600</td>
+          </tr>
+          <tr class="border-b border-black">
+            <td class="mb-2 p-2">31/01/2023</td>
+            <td class="mb-2 p-2">Service and Inspection</td>
+            <td class="mb-2 p-2">S579CDU</td>
+            <td class="mb-2 p-2">$600</td>
+          </tr>
+          <tr class="border-b border-black">
+            <td class="mb-2 p-2">31/01/2023</td>
+            <td class="mb-2 p-2">Service and Inspection</td>
+            <td class="mb-2 p-2">S579CDU</td>
+            <td class="mb-2 p-2">$600</td>
+          </tr>
+          <tr class="border-b border-black">
+            <td class="mb-2 p-2">31/01/2023</td>
+            <td class="mb-2 p-2">Service and Inspection</td>
+            <td class="mb-2 p-2">S579CDU</td>
+            <td class="mb-2 p-2">$600</td>
+          </tr>
+
+        </tbody>
+
+      </table>
+    </div>
+  </div>
+</div>
+<script src="/js/customers.js"></script>
