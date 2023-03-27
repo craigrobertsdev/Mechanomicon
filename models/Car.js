@@ -39,13 +39,6 @@ Car.init(
                 model: 'user',
                 key: 'id'
               }
-        },  
-        workshop_id: {
-            type: DataTypes.INTEGER,
-            references: {
-                model: 'workshop',
-                key: 'id'
-              }
         },      
     },
     {

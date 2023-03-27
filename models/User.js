@@ -3,8 +3,8 @@ const bcrypt = require('bcrypt');
 const sequelize = require('../config/connection');
 
 class User extends Model {
-    validatePassword(loginPw) {
-      return bcrypt.compareSync(loginPw, this.password);
+    validatePassword(pasVal) {
+      return bcrypt.compareSync(pasVal, this.password);
     }
 }
 
@@ -55,26 +55,22 @@ User.init(
             len: [8],
           },
         },
+        is_Technician: {
+            type: DataTypes.BOOLEAN,
+            allowNull: false,
+        },
         workshop_id: {
             type: DataTypes.INTEGER,
             references: {
                 model: 'workshop',
                 key: 'id'
               }
-        },
-        //technician_id: {
-        //    type: DataTypes.INTEGER,
-        //    references: {
-        //        model: 'technician',
-        //        key: 'id'
-        //      }
-        //},
-  
+        }, 
     },
     {
         hooks: {
             async beforeCreate(newUser) {
-                newUserData.password = await bcrypt.hash(newUserData.password, 10);
+                newUser.password = await bcrypt.hash(newUser.password, 10);
             return newUser;
             },
         },
