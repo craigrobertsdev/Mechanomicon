@@ -1,0 +1,50 @@
+[
+  {
+    "id": 1,
+    "name": "John Lennon",
+    "email": "John@yellowsubmarine.com",
+    "phone": "909 1 9999",
+    "address": "251 Menlove Avenue",
+    "postcode": "5000",
+    "city": "Adelaide",
+    "state": "SA",
+    "password": "beatles1963",
+    "workshop_id": 1
+  },
+  {
+    "id": 2,
+    "name": "Paul McCartney",
+    "email": "Paul@yellowsubmarine.com",
+    "phone": "909 1 9999",
+    "address": "20 Forthlin Road",
+    "postcode": "5000",
+    "city": "Adelaide",
+    "state": "SA",
+    "password": "beatles1963",
+    "workshop_id": 1 
+  },
+  {
+    "id": 3,
+    "name": "George Harrison",
+    "email": "George@yellowsubmarine.com",
+    "phone": "909 1 9999",
+    "address": "12 Arnold Grove",
+    "postcode": "5000",
+    "city": "Adelaide",
+    "state": "SA",
+    "password": "beatles1963",
+    "workshop_id": 1
+  },
+  {
+    "id": 4,
+    "name": "Ringo Starr",
+    "email": "Ringo@yellowsubmarine.com",
+    "phone": "909 1 9999",
+    "address": "10 Admiral Grove",
+    "postcode": "5000",
+    "city": "Adelaide",
+    "state": "SA",
+    "password": "beatles1963",
+    "workshop_id": 1
+  }
+]
