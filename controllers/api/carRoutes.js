@@ -1,16 +1,15 @@
 const router = require('express').Router();
-const { Car, Service, Technician, User, Workshop } = require('../../models');
+const { Car } = require('../../models');
 
-//REMOVE!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-router.get('/:id', async (req, res) => {
+
+router.post('/', async (req, res) => {
     try {
-        const userData = await Car.findByPk(req.params.id);
-      
-        res.status(200).json(userData);
+      const carData = await Car.create(req.body);
+      res.status(200).json(carData);
     } catch (err) {
-        res.status(400).json(err);
+      res.status(400).json(err);
     }
-});
+  });
 
 router.get('/', async (req, res) => {
     try {

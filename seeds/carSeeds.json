@@ -29,9 +29,9 @@
     {
         "id": 4,
         "licensePlate": "DDD444",
-        "make": "Lotus",
-        "model": "Elise",
-        "year": 2005,
+        "make": "Nissan",
+        "model": "Cube",
+        "year": 2008,
         "colour": "Black",
         "user_id": 1
     }

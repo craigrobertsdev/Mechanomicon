@@ -1,5 +1,5 @@
 const router = require('express').Router();
-const { Car, Service, Technician, User, Workshop } = require('../../models');
+const { User } = require('../../models');
 
 router.post('/', async (req, res) => {
   try {
@@ -45,15 +45,5 @@ router.get('/:id', async (req, res) => {
     }
 });
 
-router.get('/:id/cars', async (req, res) => {
-  try {
-    const carData = await Car.findByPk(req.params.id);
-    
-    
-    res.status(200).json(userData);
-  } catch (err) {
-    res.status(400).json(err);
-  }
-});
 
   module.exports = router;
