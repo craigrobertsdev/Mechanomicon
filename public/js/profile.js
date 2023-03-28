@@ -9,7 +9,7 @@ async function updateProfile(event) {
   const city = document.querySelector("#city").value.trim();
   const state = document.querySelector("#state").value.trim();
 
-  const response = await fetch("/api/user/profile", {
+  const response = await fetch("/api/user/${userId}", {
     method: "PUT",
     body: JSON.stringify({
       first_name,
