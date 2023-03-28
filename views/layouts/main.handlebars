@@ -16,31 +16,54 @@
 
 <body>
   <!-- Header -->
-  <header class="bg-gray-800 text-white py-4">
+  <header class="bg-gray-800 text-white py-6">
     <div class="container mx-auto flex items-center justify-between">
       <div class="flex items-center">
         <!-- Project Logo -->
-        <img src="#" alt="CarDex Logo" class="h-8 w-auto mr-4" />
-        <h1 class="text-xl">CarDex</h1>
+        <img src="#" alt="CarDex Logo" class="h-12 w-auto mr-4" />
+        <h1 class="text-3xl font-bold">CarDex</h1>
       </div>
-      <nav class="text-base">
-        <ul class="flex">
-
-          <li class="mr-4"><a href="/" class="text-white">Home</a></li>
-          <li class="mr-4"><a href="/dashboard" class="text-white">Dashboard</a></li>
-
+      <nav class="text-lg">
+        <ul class="flex space-x-8">
+          <li>
+            <a href="/" class="text-white text-2xl font-semibold hover:text-yellow-400 transition-colors duration-200">
+              Home
+            </a>
+          </li>
+          <li>
+            <a href="/dashboard"
+              class="text-white text-2xl font-semibold hover:text-yellow-400 transition-colors duration-200">
+              Dashboard
+            </a>
+          </li>
           {{#if logged_in}}
           <!-- User is logged in -->
-          <li class="mr-4"><a href="/profile" id="profile" class="text-white">Profile</a></li>
-          <li><button id="logout" class="text-white">Logout</button></li>
+          <li>
+            <a href="/profile" id="profile"
+              class="text-white text-2xl font-semibold hover:text-yellow-400 transition-colors duration-200">
+              Profile
+            </a>
+          </li>
+          <li>
+            <button id="logout"
+              class="text-white text-2xl font-semibold hover:text-yellow-400 transition-colors duration-200">
+              Logout
+            </button>
+          </li>
           {{else}}
           <!-- User is not logged in -->
-          <li><a href="/login" class="text-white">Login</a></li>
+          <li>
+            <a href="/login"
+              class="text-white text-2xl font-semibold hover:text-yellow-400 transition-colors duration-200">
+              Log in
+            </a>
+          </li>
           {{/if}}
         </ul>
       </nav>
     </div>
   </header>
+
   <!-- Main content -->
   <main class="w-full">
     {{{body}}}
