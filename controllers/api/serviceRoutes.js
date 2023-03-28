@@ -25,7 +25,7 @@ router.delete('/:id', withAuth, async (req, res) => {
     });
 
     if (!serviceData) {
-      res.status(404).json({ message: 'No service to delete!' });
+      res.status(404).json({ message: 'No service comments to delete!' });
       return;
     }
 
