@@ -9,16 +9,26 @@ async function updateProfile(event) {
   const city = document.querySelector("#city").value.trim();
   const state = document.querySelector("#state").value.trim();
 
+  //formatting input
+  const formattedFirstName =
+    first_name.charAt(0).toUpperCase() + first_name.slice(1).toLowerCase();
+  const formattedLastName =
+    last_name.charAt(0).toUpperCase() + last_name.slice(1).toLowerCase();
+
+  const formattedCity =
+    city.charAt(0).toUpperCase() + city.slice(1).toLowerCase();
+  const formattedState = state.toUpperCase();
+
   const response = await fetch("/api/user/${userId}", {
     method: "PUT",
     body: JSON.stringify({
-      first_name,
-      last_name,
+      first_name: formattedFirstName,
+      last_name: formattedLastName,
       phone,
       address,
       postcode,
-      city,
-      state,
+      city: formattedCity,
+      state: formattedState,
     }),
     headers: { "Content-Type": "application/json" },
   });
