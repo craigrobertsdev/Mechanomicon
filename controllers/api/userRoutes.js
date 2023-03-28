@@ -8,7 +8,6 @@ router.post("/signup", async (req, res) => {
       name: req.body.name,
       email: req.body.email,
       password: req.body.password,
-      // phone: req.body.phone,
       role: req.body.role,
     });
 
@@ -37,7 +36,7 @@ router.post("/login", async (req, res) => {
       return;
     }
 
-    const validPassword = userData.checkPassword(req.body.password);
+    const validPassword = userData.validatePassword(req.body.password);
 
     if (!validPassword) {
       res
@@ -57,6 +56,7 @@ router.post("/login", async (req, res) => {
         .json({ user: userData, message: "You are now logged in!" });
     });
   } catch (err) {
+    console.error(err);
     res.status(500).json(err);
   }
 });
