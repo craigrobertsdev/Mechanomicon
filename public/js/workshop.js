@@ -1,21 +1,23 @@
 const links = {
   jobsLink: document.getElementById("job-link"),
   customerLink: document.getElementById("customer-link"),
-  mechanicLink: document.getElementById("mechanic-link"),
   inventoryLink: document.getElementById("inventory-link"),
 };
 const sections = {
   jobSection: document.getElementById("jobs-section"),
   customerSection: document.getElementById("customer-section"),
-  mechanicSection: document.getElementById("add-mechanic-section"),
   inventorySection: document.getElementById("inventory-section"),
 };
+const buttons = document.getElementsByClassName("assign-technician");
 
 // add event listeners
 links.jobsLink.addEventListener("click", openJobList);
 links.customerLink.addEventListener("click", openCustomerList);
-links.mechanicLink.addEventListener("click", openMechanicList);
 links.inventoryLink.addEventListener("click", openInventory);
+
+for (const button of buttons) {
+  button.addEventListener("click", assignTechnician);
+}
 
 function openJobList(event) {
   setListStyle(event.target);
@@ -26,11 +28,6 @@ function openCustomerList(event) {
   setListStyle(event.target);
   hideSections();
   showSection(sections.customerSection);
-}
-function openMechanicList(event) {
-  setListStyle(event.target);
-  hideSections();
-  showSection(sections.mechanicSection);
 }
 function openInventory(event) {
   setListStyle(event.target);
@@ -57,6 +54,20 @@ function hideSections() {
 function showSection(section) {
   section.classList.remove("hidden");
   section.classList.add("block");
+}
+
+async function assignTechnician(event) {
+  console.log(event.target.previousElementSibling);
+  const technician = event.target.previousElementSibling.value;
+  const response = await fetch("/api/workshop/technician", {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: {
+      technician,
+    },
+  });
 }
 
 function init() {
