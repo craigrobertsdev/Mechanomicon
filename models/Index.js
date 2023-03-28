@@ -2,6 +2,7 @@ const User = require('./User');
 const Car = require('./Car');
 const Service = require('./Service');
 const Workshop = require('./Workshop');
+const Job = require('./Job');
 
 User.hasMany(Car, {
     foreignKey: 'user_id',
@@ -28,5 +29,24 @@ Workshop.hasMany(User, {
 User.belongsTo(Workshop, {
     foreignKey: 'workshop_id',
 });
+
+Car.hasMany(Job, {
+    foreignKey: 'car_id',
+    onDelete: 'CASCADE',
+});
+
+Job.belongsTo(Car, {
+    foreignKey: 'car_id',
+});
+
+User.hasMany(Job, {
+    foreignKey: 'user_id',
+    onDelete: 'CASCADE',
+});
+
+Job.belongsTo(User, {
+    foreignKey: 'user_id',
+});
+
 
 module.exports = {User, Car, Service, Workshop}

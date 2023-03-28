@@ -1,52 +1,58 @@
 const { Model, DataTypes } = require('sequelize');
 const sequelize = require('../config/connection');
 
-class Car extends Model {}
+class Job extends Model {}
 
-Car.init(
-    {   
+Job.init(
+    {
         id: {
             type: DataTypes.INTEGER,
             allowNull: false,
             primaryKey: true,
             autoIncrement: true,
         },
-        licensePlate: {
-            type: DataTypes.STRING,
-            allowNull: false,
-            unique: true,
+        type: {
+           type: DataTypes.ENUM('service & inspection', 'repairs'),
+           defaultValue: 'service & inspection',
         },
-        make: {
-            type: DataTypes.STRING,
-            allowNull: false,
+        car_id: {
+           type: DataTypes.INTEGER,
+           references: {
+               model: 'car',
+               key: 'id'
+             }
         },
-        model: {
-            type: DataTypes.STRING,
-            allowNull: false,
-        },
-        year: {
-            type: DataTypes.INTEGER,
-            allowNull: false,
-        },
-        colour: {
+        drop_off: {
             type: DataTypes.STRING,
             allowNull: false,
         },
-        user_id: {
-            type: DataTypes.INTEGER,
-            references: {
-                model: 'user',
-                key: 'id'
-              }
-        },      
+        notes: {
+            type: DataTypes.STRING,
+            allowNull: false,
+        },
+        price: {
+            type: DataTypes.STRING,
+            allowNull: false,
+        },
+        total_time: {
+            type: DataTypes.STRING,
+            allowNull: false,
+        },
+        technician_id: {
+           type: DataTypes.INTEGER,
+           references: {
+               model: 'user',
+               key: 'id'
+             }
+        },
     },
     {
         sequelize,
         timestamps: false,
         freezeTableName: true,
         underscored: true,
-        modelName: 'car',
+        modelName: 'job',
     }
 );
 
-module.exports = Car;
+module.exports = Job;
