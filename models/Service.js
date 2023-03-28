@@ -51,17 +51,21 @@ Service.init(
         additionalNotes: {
             type: DataTypes.STRING,
         },
-        //technician_id: {
-        //    type: DataTypes.INTEGER,
-        //    references: {
-        //        model: 'technician',
-        //        key: 'id'
-        //      }
-        //},
+        date: {
+            type: DataTypes.STRING,
+            allowNull: false,
+        },
         car_id: {
             type: DataTypes.INTEGER,
             references: {
                 model: 'car',
+                key: 'id'
+              }
+        },
+        technician_id: {
+            type: DataTypes.INTEGER,
+            references: {
+                model: 'user',
                 key: 'id'
               }
         },
