@@ -16,7 +16,11 @@ User.init(
             primaryKey: true,
             autoIncrement: true,
         },
-        name: {
+        first_name: {
+            type: DataTypes.STRING,
+            allowNull: false,
+        },
+        last_name: {
             type: DataTypes.STRING,
             allowNull: false,
         },
@@ -30,23 +34,23 @@ User.init(
         },
         phone: {
             type: DataTypes.STRING,
-            allowNull: false,
+            
         },
         address: {
             type: DataTypes.STRING,
-            allowNull: false,
+           
         },
         postcode: {
             type: DataTypes.STRING,
-            allowNull: false,
+           
         },
         city: {
             type: DataTypes.STRING,
-            allowNull: false,
+           
         },
         state: {
             type: DataTypes.STRING,
-            allowNull: false,
+            
         },
         password: {
             type: DataTypes.STRING,
@@ -55,9 +59,10 @@ User.init(
             len: [8],
           },
         },
-        is_Technician: {
-            type: DataTypes.BOOLEAN,
+        role:{
+            type: DataTypes.ENUM('user', 'technician', 'manager'),
             allowNull: false,
+            defaultValue: 'user',
         },
         workshop_id: {
             type: DataTypes.INTEGER,
