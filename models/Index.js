@@ -5,6 +5,7 @@ const Workshop = require('./Workshop');
 
 User.hasMany(Car, {
     foreignKey: 'user_id',
+    onDelete: 'CASCADE',
 });
   
 Car.belongsTo(User, {
@@ -13,6 +14,7 @@ Car.belongsTo(User, {
 
 Car.hasMany(Service, {
     foreignKey: 'car_id',
+    onDelete: 'CASCADE',
 });
   
 Service.belongsTo(Car, {
