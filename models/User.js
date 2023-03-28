@@ -3,8 +3,8 @@ const bcrypt = require('bcrypt');
 const sequelize = require('../config/connection');
 
 class User extends Model {
-    validatePassword(loginPw) {
-      return bcrypt.compareSync(loginPw, this.password);
+    validatePassword(pasVal) {
+      return bcrypt.compareSync(pasVal, this.password);
     }
 }
 
@@ -16,7 +16,11 @@ User.init(
             primaryKey: true,
             autoIncrement: true,
         },
-        name: {
+        first_name: {
+            type: DataTypes.STRING,
+            allowNull: false,
+        },
+        last_name: {
             type: DataTypes.STRING,
             allowNull: false,
         },
@@ -30,23 +34,23 @@ User.init(
         },
         phone: {
             type: DataTypes.STRING,
-            allowNull: false,
+            
         },
         address: {
             type: DataTypes.STRING,
-            allowNull: false,
+           
         },
         postcode: {
             type: DataTypes.STRING,
-            allowNull: false,
+           
         },
         city: {
             type: DataTypes.STRING,
-            allowNull: false,
+           
         },
         state: {
             type: DataTypes.STRING,
-            allowNull: false,
+            
         },
         password: {
             type: DataTypes.STRING,
@@ -55,28 +59,30 @@ User.init(
             len: [8],
           },
         },
+        role:{
+            type: DataTypes.ENUM('user', 'technician', 'manager'),
+            allowNull: false,
+            defaultValue: 'user',
+        },
         workshop_id: {
             type: DataTypes.INTEGER,
             references: {
                 model: 'workshop',
                 key: 'id'
-              }
-        },
-        //technician_id: {
-        //    type: DataTypes.INTEGER,
-        //    references: {
-        //        model: 'technician',
-        //        key: 'id'
-        //      }
-        //},
-  
+              },
+            defaultValue: '1',
+        }, 
     },
     {
         hooks: {
             async beforeCreate(newUser) {
-                newUserData.password = await bcrypt.hash(newUserData.password, 10);
+                newUser.password = await bcrypt.hash(newUser.password, 10);
             return newUser;
             },
+            beforeUpdate: async (updatedUserData) => {
+                updatedUserData.password = await bcrypt.hash(updatedUserData.password, 10);
+                return updatedUserData;
+              },
         },
         sequelize,
         timestamps: false,

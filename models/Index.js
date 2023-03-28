@@ -1,11 +1,11 @@
 const User = require('./User');
 const Car = require('./Car');
 const Service = require('./Service');
-const Technician = require('./Technician');
 const Workshop = require('./Workshop');
 
 User.hasMany(Car, {
     foreignKey: 'user_id',
+    onDelete: 'CASCADE',
 });
   
 Car.belongsTo(User, {
@@ -14,36 +14,11 @@ Car.belongsTo(User, {
 
 Car.hasMany(Service, {
     foreignKey: 'car_id',
+    onDelete: 'CASCADE',
 });
   
 Service.belongsTo(Car, {
     foreignKey: 'car_id',
-});
-
-
-// The Fuck??
-//Technician.hasOne(User, {
-//    foreignKey: 'technician_id'
-//});
-//User.belongsTo(Technician, {
-//    foreignKey: 'technician_id'
-//})
-
-
-//Workshop.hasMany(Technician, {
-//    foreignKey: 'workshop_id',
-//});
-  
-//Technician.belongsTo(Workshop, {
-//    foreignKey: 'workshop_id',
-//});
-
-Workshop.hasMany(Car, {
-    foreignKey: 'workshop_id',
-});
-  
-Car.belongsTo(Workshop, {
-    foreignKey: 'workshop_id',
 });
 
 Workshop.hasMany(User, {
@@ -54,4 +29,4 @@ User.belongsTo(Workshop, {
     foreignKey: 'workshop_id',
 });
 
-module.exports = {User, Car, Service, Technician, Workshop}
+module.exports = {User, Car, Service, Workshop}
