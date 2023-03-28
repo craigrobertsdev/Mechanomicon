@@ -1,48 +1,27 @@
-{{! on page load, will contain the calendar partial set to the current date. panel
-on left-hand side to swap between the different options of mechanics, customers
-and the calendar header section which allows selection of date main part of
-calendar is a bunch of timeslots showing the jobs that are booked for that day.
-perhaps 1 column per mechanic at the workshop a search bar will be available as
-a bonus feature to search for jobs from the past and display those in a list. }}
-
 <div class="flex grow h-full">
-  <aside class="w-32 bg-slate-200 h-full">
-    <a href="">Job List</a>
-    <a href="">Mechanics</a>
-    <a href="">Customers</a>
-    <a href="">Inventory</a>
+  <aside class="w-64 bg-slate-200 h-full">
+    <ul class="flex flex-col flex-nowrap">
+      <li id="job-link" class="hover:cursor-pointer  text-center py-2 mx-auto px-2 w-full select-none">Job List</li>
+      <li id="customer-link" class="hover:cursor-pointer text-center py-2 mx-auto px-2 w-full select-none">Customers</li>
+      <li id="mechanic-link" class="hover:cursor-pointer text-center py-2 mx-auto px-2 w-full select-none">Add mechanic</li>
+      <li id="inventory-link" class="hover:cursor-pointer text-center py-2 mx-auto px-2 w-full select-none">Inventory</li>
+    </ul>
   </aside>
   <section class="p-3 w-full">
-    {{#if customers}}
+    <div id="jobs-section" class="block overflow-hidden overflow-y-auto h-full">
+    {{> jobs }}
+    </div>  
+    <div id="customer-section" class="hidden overflow-hidden overflow-y-auto h-full ">
     {{> customers }}
-    {{/if}}
-    {{!-- <div
-      class="grid auto-rows-auto grid-cols-[10%] auto-cols-auto overflow-auto"
-    >
-      <div class="col-start-1 col-end-2 row-start-1 row-end-2">9am</div>
-      <div class="col-start-1 col-end-2 row-start-2 row-end-3">10am</div>
-      <div class="col-start-1 col-end-2 row-start-3 row-end-4">11am</div>
-      <div class="col-start-1 col-end-2 row-start-4 row-end-5">12pm</div>
-      <div class="col-start-1 col-end-2 row-start-5 row-end-6">1pm</div>
-      <div class="col-start-1 col-end-2 row-start-6 row-end-7">2pm</div>
-      <div class="col-start-1 col-end-2 row-start-7 row-end-8">3pm</div>
-      <div class="col-start-1 col-end-2 row-start-8 row-end-9">4pm</div>
-      <div class="col-start-1 col-end-2 row-start-9 row-end-10">5pm</div>
+    </div>  
+    <div id="add-mechanic-section" class="hidden overflow-hidden overflow-y-auto h-full ">
+    {{> mechanics }}
+    </div>  
+    <div id="inventory-section" class="hidden overflow-hidden overflow-y-auto h-full">
+    {{> inventory }}
+    </div>  
 
-      {{#each mechanics as |mechanic|}}
-        {{! this needs to render html based on the jobs each mechanic has assigned to them and put those jobs in the correct timeslots
-            api will send workshop.mechanics with every job for the selected date (defaulting to today's date) }}
-        <div class="row-start-1 row-end-2">{{mechanic.name}}</div>
-        {{#each mechanic.jobs as |job|}}
-          <div class="row-start-{{rowHelper job.time}}">
-            <a>
-              <span>{{job.service_name}}</span>
-              <span>{{job.car.registration}}</span>
-            </a>
-          </div>
-        {{/each}}
-      {{/each}}
-
-    </div> --}}
   </section>
+
+  <script src="/js/workshop.js"></script>
 </div>

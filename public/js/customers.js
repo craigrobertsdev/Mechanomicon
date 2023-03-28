@@ -14,8 +14,6 @@ function filterUsers() {
 
     // iterate over each value and check whether the current text value is in the list
     for (const value of textValues) {
-      console.log(textValues);
-      console.log(value.toUpperCase().indexOf(filterText));
       if (value.toUpperCase().indexOf(filterText) > -1) {
         userRows[i].style.display = "";
         break;
