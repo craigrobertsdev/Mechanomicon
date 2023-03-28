@@ -1,5 +1,6 @@
 const router = require("express").Router();
 const { User } = require("../../models");
+const withAuth = require("../../utils/auth");
 
 // Register a new user
 router.post("/signup", async (req, res) => {
@@ -70,6 +71,32 @@ router.post("/logout", (req, res) => {
     });
   } else {
     res.status(404).end();
+  }
+});
+
+// update user profile
+router.put("/profile", withAuth, async (req, res) => {
+  try {
+    await User.update(
+      {
+        first_name: req.body.first_name,
+        last_name: req.body.last_name,
+        phone: req.body.phone,
+        address: req.body.address,
+        postcode: req.body.postcode,
+        city: req.body.city,
+        state: req.body.state,
+      },
+      {
+        where: {
+          id: req.session.user_id,
+        },
+      }
+    );
+
+    res.status(200).json({ message: "Profile updated successfully" });
+  } catch (error) {
+    res.status(500).json({ message: "Failed to update profile", error: error });
   }
 });
 
