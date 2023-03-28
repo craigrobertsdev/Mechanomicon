@@ -69,7 +69,8 @@ User.init(
             references: {
                 model: 'workshop',
                 key: 'id'
-              }
+              },
+            defaultValue: '1',
         }, 
     },
     {
@@ -78,6 +79,10 @@ User.init(
                 newUser.password = await bcrypt.hash(newUser.password, 10);
             return newUser;
             },
+            beforeUpdate: async (updatedUserData) => {
+                updatedUserData.password = await bcrypt.hash(updatedUserData.password, 10);
+                return updatedUserData;
+              },
         },
         sequelize,
         timestamps: false,
