@@ -1,0 +1,72 @@
+[
+  {
+    "id": 1,
+    "first_name": "Craig",
+    "last_name": "Banana",
+    "email": "Craig@Mechronomicon.com",
+    "phone": "0 400 100 200",
+    "address": "251 Walrus Avenue",
+    "postcode": "5000",
+    "city": "Adelaide",
+    "state": "SA",
+    "password": "Banana100",
+    "role": "manager",
+    "workshop_id": 1
+  },
+  {
+    "id": 2,
+    "first_name": "Shae",
+    "last_name": "Banana",
+    "email": "Shae@Mechronomicon.com",
+    "phone": "0 400 100 200",
+    "address": "20 Mermaid Avenue",
+    "postcode": "5000",
+    "city": "Gold Coast",
+    "state": "QLD",
+    "password": "Banana200",
+    "role": "user",
+    "workshop_id": 1 
+  },
+  {
+    "id": 3,
+    "first_name": "Gary",
+    "last_name": "Banana",
+    "email": "Gary@Mechronomicon.com",
+    "phone": "0 400 100 200",
+    "address": "12 Rocket Street",
+    "postcode": "5000",
+    "city": "Adelaide",
+    "state": "SA",
+    "password": "Banana300",
+    "role": "user",
+    "workshop_id": 1
+  },
+  {
+    "id": 4,
+    "first_name": "Pipat",
+    "last_name": "Banana",
+    "email": "Pipat@Mechronomicon.com",
+    "phone": "0 400 100 200",
+    "address": "10 Penguin Place",
+    "postcode": "5000",
+    "city": "Adelaide",
+    "state": "SA",
+    "password": "Banana400",
+    "role": "user",
+    "workshop_id": 1
+  },
+  {
+    "id": 5,
+    "first_name": "Lucien",
+    "last_name": "Banana",
+    "email": "Lucien@Mechronomicon.com",
+    "phone": "0 400 100 200",
+    "address": "36 Quattro Avenue",
+    "postcode": "5000",
+    "city": "Adelaide",
+    "state": "SA",
+    "password": "Banana500",
+    "role": "technician",
+    "workshop_id": 1
+  }
+]
