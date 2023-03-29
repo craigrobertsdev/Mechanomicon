@@ -1,5 +1,6 @@
 const router = require("express").Router();
 const { User, Car, Service } = require("../models");
+const withAuth = require("../utils/auth");
 
 // Home page route
 router.get("/", async (req, res) => {
@@ -20,19 +21,42 @@ router.get("/dashboard", async (req, res) => {
 });
 
 // Render the login/signup page
-router.get("/login", (req, res) => {
-  // If the user is already logged in, redirect the request to another route
-  if (req.session.logged_in) {
-    res.redirect("dashboard"); // <--- This is the route that needs to be changed to the dashboard
-    return;
+router.get("/login", async (req, res) => {
+  try {
+    if (req.session.logged_in) {
+      res.redirect("home");
+      return;
+    }
+    res.render("login");
+  } catch (error) {
+    res.status(500).json(error);
   }
+});
 
-  res.render("login");
+//profile page
+router.get("/profile", withAuth, async (req, res) => {
+  try {
+    const userData = await User.findByPk(req.session.user_id, {
+      attributes: { exclude: ["password"] },
+    });
+    const user = userData.get({ plain: true });
+
+    res.render("profile", {
+      user,
+      logged_in: true,
+    });
+  } catch (error) {
+    res.status(500).json(error);
+  }
 });
 
 //reset password
-router.get("/resetPassword", (req, res) => {
-  res.render("resetPassword");
+router.get("/resetPassword", async (req, res) => {
+  try {
+    res.render("resetPassword");
+  } catch (error) {
+    res.status(500).json(error);
+  }
 });
 
 module.exports = router;
