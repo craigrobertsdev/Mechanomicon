@@ -49,4 +49,4 @@ Job.belongsTo(User, {
 });
 
 
-module.exports = {User, Car, Service, Workshop}
+module.exports = {User, Car, Job, Service, Workshop}
