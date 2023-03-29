@@ -44,10 +44,10 @@ Service.init(
             type: DataTypes.BOOLEAN,
             allowNull: false,
         },
-        generalInspection: {
-            type: DataTypes.BOOLEAN,
-            allowNull: false,
-        },
+        service_type: {
+            type: DataTypes.ENUM('service & inspection', 'repairs'),
+            defaultValue: 'service & inspection',
+         },
         additionalNotes: {
             type: DataTypes.STRING,
         },
