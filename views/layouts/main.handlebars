@@ -1,41 +1,87 @@
 <html lang="en">
 
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>The Tech Blog</title>
-    <link rel="stylesheet" href="/css/jass.css" />
-    <link rel="stylesheet" href="/css/style.css" />
-  </head>
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>CarDex</title>
 
-  <body>
-    <div class="flex-column justify-space-around">
-      <header class="display-flex justify-space-between align-center p-2">
-        <nav>
-          <a href="/">Home</a>
-          <a href="/dashboard">Dashboard</a>
-          <!-- Conditionally render login or logout links -->
+  <!-- Import Tailwind CSS -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <!-- Import Font Awesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css"
+    integrity="sha512-SzlrxWUlpfuzQ+pcUCosxcglQRNAq/DZjVsC0lE40xsADsfeQoEypE+enwcOiGjk/bSuGGKHEyjSoQ1zVisanQ=="
+    crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+</head>
+
+<body>
+  <!-- Header -->
+  <header class="bg-gray-800 text-white py-6">
+    <div class="container mx-auto flex items-center justify-between">
+      <div class="flex items-center">
+        <!-- Project Logo -->
+        <img src="#" alt="CarDex Logo" class="h-12 w-auto mr-4" />
+        <h1 class="text-3xl font-bold">CarDex</h1>
+      </div>
+      <nav class="text-lg">
+        <ul class="flex space-x-8">
+          <li>
+            <a href="/" class="text-white text-2xl font-semibold hover:text-yellow-400 transition-colors duration-200">
+              Home
+            </a>
+          </li>
+          <li>
+            <a href="/dashboard"
+              class="text-white text-2xl font-semibold hover:text-yellow-400 transition-colors duration-200">
+              Dashboard
+            </a>
+          </li>
           {{#if logged_in}}
-            <button class="no-button" id="logout">logout</button>
+          <!-- User is logged in -->
+          <li>
+            <a href="/profile" id="profile"
+              class="text-white text-2xl font-semibold hover:text-yellow-400 transition-colors duration-200">
+              Profile
+            </a>
+          </li>
+          <li>
+            <button id="logout"
+              class="text-white text-2xl font-semibold hover:text-yellow-400 transition-colors duration-200">
+              Logout
+            </button>
+          </li>
           {{else}}
-            <a href="/login">login</a>
+          <!-- User is not logged in -->
+          <li>
+            <a href="/login"
+              class="text-white text-2xl font-semibold hover:text-yellow-400 transition-colors duration-200">
+              Log in
+            </a>
+          </li>
           {{/if}}
-        </nav>
-        <h1>The Tech Blog</h1>
-      </header>
-      <main class="container container-fluid mt-5">
-        <!-- Render the sub layout -->
-        {{{body}}}
-      </main>
-      <footer>
-
-      </footer>
+        </ul>
+      </nav>
     </div>
+  </header>
 
-    <!-- Render script for logged in users only -->
-    {{#if logged_in}}
-      <script src="/js/logout.js"></script>
-    {{/if}}
-  </body>
+  <!-- Main content -->
+  <main class="w-full">
+    {{{body}}}
+  </main>
+
+  <!-- Footer -->
+  <footer class="bg-gray-800 text-white py-4">
+    <div class="container mx-auto text-center">
+      <p>&copy; 2023 CarDex. All rights reserved.</p>
+      <!-- Add your footer content here, e.g., social media links -->
+    </div>
+  </footer>
+
+  <!-- Render script for logged in users only -->
+  {{#if logged_in}}
+  <script src="/js/logout.js"></script>
+  {{/if}}
+
+</body>
 
 </html>
