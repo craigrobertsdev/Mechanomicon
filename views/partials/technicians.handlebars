@@ -1,15 +1,5 @@
-{{! search bar }}
-<div id="search">
-  <input
-    type="text"
-    id="search-bar"
-    class="border border-black mb-2 p-1 w-full"
-    placeholder="Search for names..."
-  />
-</div>
-
-{{! customers table }}
-<h2 class="text-2xl mb-2">Customers</h2>
+{{! Technicians table }}
+<h2 class="text-2xl mb-2">Technicians</h2>
 <table class="table-auto border border-collapse w-full text-center select-none">
   <thead>
     <tr class="border">
@@ -17,34 +7,15 @@
       <th class="border p-1">Last Name</th>
       <th class="border p-1">Address</th>
     </tr>
-    <tbody id="user-table">
+    <tbody id="technician-table">
       {{!-- {{#each users as |user|}}
         <tr id="user-{{user.id}}">
           <td class="border">{{user.first_name}}</td>
           <td class="border">{{user.last_name}}</td>
           <td class="border">{{user.address}}</td>
+          <td class="border"><input type="checkbox" checked="{{technicianConverter user.is_technician}}" /></td>
         </tr>
       {{/each}} --}}
-      <tr id="user-2">
-        <td class="border p-1">Craig</td>
-        <td class="border p-1">Roberts</td>
-        <td class="border p-1">123 Fake Street, Adelaide 5000</td>
-      </tr>
-      <tr id="user-2">
-        <td class="border p-1">Craig</td>
-        <td class="border p-1">Roberts</td>
-        <td class="border p-1">123 Fake Street, Adelaide 5000</td>
-      </tr>
-      <tr id="user-2">
-        <td class="border p-1">Craig</td>
-        <td class="border p-1">Roberts</td>
-        <td class="border p-1">123 Fake Street, Adelaide 5000</td>
-      </tr>
-      <tr id="user-2">
-        <td class="border p-1">Craig</td>
-        <td class="border p-1">Roberts</td>
-        <td class="border p-1">123 Fake Street, Adelaide 5000</td>
-      </tr>
       <tr id="user-2">
         <td class="border p-1">Craig</td>
         <td class="border p-1">Roberts</td>
@@ -54,8 +25,9 @@
   </thead>
 </table>
 
+{{! modal }}
 <div
-  id="user-modal"
+  id="technician-modal"
   class="hidden flex h-full w-full items-center justify-center fixed z-10 top-0 left-0"
   style="background-color: #00000070"
 >
@@ -64,7 +36,7 @@
     class="relative w-2/4 h-3/4 px-3 border border-black bg-slate-200 grid grid-rows-[auto_1fr]"
   >
     <span
-      id="user-modal-close"
+      id="technician-modal-close"
       class="row-start-1 row-end-2 col-span-full absolute top-[0.5rem] right-[0.5rem] select-none aria-hidden text-bold text-4xl hover:cursor-pointer"
     >&times;</span>
     <div
@@ -80,63 +52,57 @@
       <div>0407 226 002</div>
     </div>
     <div
-      id="service-history"
+      id="job-history"
       class="overflow-hidden overflow-y-auto h-full row-start-2 row-end-3 col-span-full"
     >
-      <h4 class="text-center text-xl mb-3 select-none">Service History</h4>
-      <table id="service-list" class="w-full text-center">
+      <h4 class="text-center text-xl mb-3 select-none">Job History</h4>
+      <table id="job-list" class="w-full text-center">
         <thead>
           <tr>
+            <th>Invoice Number</th>
             <th>Date</th>
             <th>Service Type</th>
             <th>Vehicle Registration</th>
-            <th>Cost</th>
           </tr>
         </thead>
-        {{!-- {{#each services as |service|}}
+        {{!-- {{#each jobs as |job|}}
             <tr class="border-b-1 border-black">
-              <td>{{service.date}}</td>
-              <td>{{service.type}}</td>
-              <td>{{service.registration}}</td>
-              <td>{{service.cost}}</td>
+            <td class="mb-2 p-2">{{service.id}}</td>
+            <td class="mb-2 p-2">{{service.date}}</td>
+            <td class="mb-2 p-2">{{service.type}}</td>
+            <td class="mb-2 p-2">{{service.vehicle.registration}}</td>
             </tr>
           {{/each}} --}}
         <tbody>
           <tr class="border-b border-black">
+            <td class="mb-2 p-2">1</td>
             <td class="mb-2 p-2">31/01/2023</td>
             <td class="mb-2 p-2">Service and Inspection</td>
             <td class="mb-2 p-2">S579CDU</td>
-            <td class="mb-2 p-2">$600</td>
           </tr>
           <tr class="border-b border-black">
+            <td class="mb-2 p-2">2</td>
             <td class="mb-2 p-2">31/01/2023</td>
             <td class="mb-2 p-2">Service and Inspection</td>
             <td class="mb-2 p-2">S579CDU</td>
-            <td class="mb-2 p-2">$600</td>
           </tr>
           <tr class="border-b border-black">
+            <td class="mb-2 p-2">3</td>
             <td class="mb-2 p-2">31/01/2023</td>
             <td class="mb-2 p-2">Service and Inspection</td>
             <td class="mb-2 p-2">S579CDU</td>
-            <td class="mb-2 p-2">$600</td>
           </tr>
           <tr class="border-b border-black">
+            <td class="mb-2 p-2">4</td>
             <td class="mb-2 p-2">31/01/2023</td>
             <td class="mb-2 p-2">Service and Inspection</td>
             <td class="mb-2 p-2">S579CDU</td>
-            <td class="mb-2 p-2">$600</td>
           </tr>
           <tr class="border-b border-black">
+            <td class="mb-2 p-2">5</td>
             <td class="mb-2 p-2">31/01/2023</td>
             <td class="mb-2 p-2">Service and Inspection</td>
             <td class="mb-2 p-2">S579CDU</td>
-            <td class="mb-2 p-2">$600</td>
-          </tr>
-          <tr class="border-b border-black">
-            <td class="mb-2 p-2">31/01/2023</td>
-            <td class="mb-2 p-2">Service and Inspection</td>
-            <td class="mb-2 p-2">S579CDU</td>
-            <td class="mb-2 p-2">$600</td>
           </tr>
 
         </tbody>

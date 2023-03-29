@@ -62,7 +62,8 @@ router.get("/", async (req, res) => {
     },
   ];
 
-  let jobs = [
+  // [ { id, time, service_name, vehicle: {registration}, }]
+  const jobs = [
     {
       id: 1,
       time: new Date("2023, 23, 3, 10, 0, 0"),
@@ -97,15 +98,17 @@ router.get("/", async (req, res) => {
     },
   ];
 
-  const num_mechanics = 2;
-  res.render("workshopDashboard", { mechanics, jobs, num_mechanics });
+  res.render("workshopDashboard", {
+    mechanics: JSON.stringify(mechanics),
+    jobs: JSON.stringify(jobs),
+  });
 });
 
 // router.get("/workshop", async (req, res) => {
 //   try {
 //     const customerData = await User.findAll();
 
-//     render 
+//     render
 //   } catch(err) {
 //     res.status(500).json(err);
 //   }
