@@ -140,35 +140,44 @@ function openUserModal(event) {
   document.body.style.overflow = "hidden";
   document.body.style.paddingRight = "15px";
   const id = +event.currentTarget.id.split("-")[1];
-  console.log("🚀 ~ file: workshop.js:143 ~ openUserModal ~ id:", id);
   const customer = customersJSON.find((customer) => customer.id === id);
-  console.log("🚀 ~ file: workshop.js:144 ~ openUserModal ~ user:", user);
 
-  document.getElementById("first-name-div").innerText = user.first_name;
-  document.getElementById("last-name-div").innerText = user.last_name;
+  document.getElementById("first-name-div").innerText = customer.first_name;
+  document.getElementById("last-name-div").innerText = customer.last_name;
   document.getElementById(
     "address-div"
-  ).innerText = `${user.address} ${user.postcode} ${user.state}`;
-  document.getElementById("phone-div").innerText = user.phone;
+  ).innerText = `${customer.address} ${customer.postcode} ${customer.state}`;
+  document.getElementById("phone-div").innerText = customer.phone;
 
   const serviceList = document.getElementById("service-list");
 
   for (const car of customer.cars) {
     for (const service of car.services) {
       const row = document.createElement("tr");
+      row.classList.add("border-b");
+      row.classList.add("border-black");
       const dateCell = document.createElement("td");
+      dateCell.classList.add("mb-2");
+      dateCell.classList.add("p-2");
       const serviceCell = document.createElement("td");
+      serviceCell.classList.add("mb-2");
+      serviceCell.classList.add("p-2");
       const registrationCell = document.createElement("td");
+      registrationCell.classList.add("mb-2");
+      registrationCell.classList.add("p-2");
       const costCell = document.createElement("td");
-      dateRow.innerText = service.date;
-      serviceRow.innerText = toPascalCase(service.type);
-      registrationRow.innerText = car.license_plate;
-      costRow.innerText = service.price;
+      costCell.classList.add("mb-2");
+      costCell.classList.add("p-2");
+      dateCell.innerText = service.job.date;
+      serviceCell.innerText = toPascalCase(service.job.type);
+      registrationCell.innerText = car.license_plate;
+      costCell.innerText = service.price;
 
-      row.children.appendChild(dateCell);
-      row.children.appendChild(serviceCell);
-      row.children.appendChild(registrationCell);
-      row.children.appendChild(costCell);
+      row.appendChild(dateCell);
+      row.appendChild(serviceCell);
+      row.appendChild(registrationCell);
+      row.appendChild(costCell);
+      serviceList.appendChild(row);
     }
   }
 }
@@ -210,12 +219,13 @@ function selectTechnicianRow(event) {
 }
 
 function toPascalCase(phrase) {
+  console.log("🚀 ~ file: workshop.js:212 ~ toPascalCase ~ phrase:", phrase);
   const words = phrase.split(" ");
   const capitalisedWords = words.map((word) =>
     word.replace(word[0], word[0].toUpperCase())
   );
 
-  return capitalisedWords;
+  return capitalisedWords.join(" ");
 }
 //#endregion
 

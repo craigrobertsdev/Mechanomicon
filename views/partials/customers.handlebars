@@ -60,7 +60,7 @@
       class="overflow-hidden overflow-y-auto h-full row-start-2 row-end-3 col-span-full"
     >
       <h4 class="text-center text-xl mb-3 select-none">Service History</h4>
-      <table id="service-list" class="w-full text-center">
+      <table class="w-full text-center">
         <thead>
           <tr>
             <th>Date</th>
@@ -69,53 +69,8 @@
             <th>Cost</th>
           </tr>
         </thead>
-        {{!-- {{#each services as |service|}}
-            <tr class="border-b-1 border-black">
-              <td>{{service.date}}</td>
-              <td>{{service.type}}</td>
-              <td>{{service.registration}}</td>
-              <td>{{service.cost}}</td>
-            </tr>
-          {{/each}} --}}
-        <tbody>
-          <tr class="border-b border-black">
-            <td class="mb-2 p-2">31/01/2023</td>
-            <td class="mb-2 p-2">Service and Inspection</td>
-            <td class="mb-2 p-2">S579CDU</td>
-            <td class="mb-2 p-2">$600</td>
-          </tr>
-          <tr class="border-b border-black">
-            <td class="mb-2 p-2">31/01/2023</td>
-            <td class="mb-2 p-2">Service and Inspection</td>
-            <td class="mb-2 p-2">S579CDU</td>
-            <td class="mb-2 p-2">$600</td>
-          </tr>
-          <tr class="border-b border-black">
-            <td class="mb-2 p-2">31/01/2023</td>
-            <td class="mb-2 p-2">Service and Inspection</td>
-            <td class="mb-2 p-2">S579CDU</td>
-            <td class="mb-2 p-2">$600</td>
-          </tr>
-          <tr class="border-b border-black">
-            <td class="mb-2 p-2">31/01/2023</td>
-            <td class="mb-2 p-2">Service and Inspection</td>
-            <td class="mb-2 p-2">S579CDU</td>
-            <td class="mb-2 p-2">$600</td>
-          </tr>
-          <tr class="border-b border-black">
-            <td class="mb-2 p-2">31/01/2023</td>
-            <td class="mb-2 p-2">Service and Inspection</td>
-            <td class="mb-2 p-2">S579CDU</td>
-            <td class="mb-2 p-2">$600</td>
-          </tr>
-          <tr class="border-b border-black">
-            <td class="mb-2 p-2">31/01/2023</td>
-            <td class="mb-2 p-2">Service and Inspection</td>
-            <td class="mb-2 p-2">S579CDU</td>
-            <td class="mb-2 p-2">$600</td>
-          </tr>
+        <tbody id="service-list">
         </tbody>
-
       </table>
     </div>
   </div>
