@@ -8,4 +8,8 @@ module.exports = {
   technicianConverter: (is_technician) => {
     return is_technician ? "Yes" : "";
   },
+
+  jobLength: (jobType) => {
+    return jobType === "service & inspection" ? "1 hour" : "3 hours";
+  },
 };

@@ -55,7 +55,11 @@ Service.init(
       type: DataTypes.STRING,
       allowNull: false,
     },
-
+    completed: {
+      type: DataTypes.BOOLEAN,
+      allowNull: false,
+      defaultValue: false,
+    },
     car_id: {
       type: DataTypes.INTEGER,
       references: {

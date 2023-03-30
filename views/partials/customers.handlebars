@@ -18,38 +18,14 @@
       <th class="border p-1">Address</th>
     </tr>
     <tbody id="user-table">
-      {{!-- {{#each users as |user|}}
-        <tr id="user-{{user.id}}">
-          <td class="border">{{user.first_name}}</td>
-          <td class="border">{{user.last_name}}</td>
-          <td class="border">{{user.address}}</td>
+      {{#each customers as |customer|}}
+        <tr id="user-{{customer.id}}">
+          <td class="border p-1">{{customer.first_name}}</td>
+          <td class="border p-1">{{customer.last_name}}</td>
+          <td class="border p-1">{{customer.address}}</td>
         </tr>
-      {{/each}} --}}
-      <tr id="user-2">
-        <td class="border p-1">Craig</td>
-        <td class="border p-1">Roberts</td>
-        <td class="border p-1">123 Fake Street, Adelaide 5000</td>
-      </tr>
-      <tr id="user-2">
-        <td class="border p-1">Craig</td>
-        <td class="border p-1">Roberts</td>
-        <td class="border p-1">123 Fake Street, Adelaide 5000</td>
-      </tr>
-      <tr id="user-2">
-        <td class="border p-1">Craig</td>
-        <td class="border p-1">Roberts</td>
-        <td class="border p-1">123 Fake Street, Adelaide 5000</td>
-      </tr>
-      <tr id="user-2">
-        <td class="border p-1">Craig</td>
-        <td class="border p-1">Roberts</td>
-        <td class="border p-1">123 Fake Street, Adelaide 5000</td>
-      </tr>
-      <tr id="user-2">
-        <td class="border p-1">Craig</td>
-        <td class="border p-1">Roberts</td>
-        <td class="border p-1">123 Fake Street, Adelaide 5000</td>
-      </tr>
+      {{/each}}
+
     </tbody>
   </thead>
 </table>
@@ -68,16 +44,16 @@
       class="row-start-1 row-end-2 col-span-full absolute top-[0.5rem] right-[0.5rem] select-none aria-hidden text-bold text-4xl hover:cursor-pointer"
     >&times;</span>
     <div
-      class="grid auto-rows-auto grid-cols-2 row-start-1 row-end-2 col-span-full mb-3 p-3 gap-y-2"
+      class="grid auto-rows-auto grid-cols-[auto_1fr] gap-10 row-start-1 row-end-2 col-span-full mb-3 p-3 gap-y-2"
     >
       <div class="select-none">First Name:</div>
-      <div>Craig</div>
+      <div id="first-name-div"></div>
       <div class="select-none">Last Name:</div>
-      <div>Roberts</div>
+      <div id="last-name-div"></div>
       <div class="select-none">Address:</div>
-      <div>123 Fake Street Adelaide 5000</div>
+      <div id="address-div"></div>
       <div class="select-none">Phone number:</div>
-      <div>0407 226 002</div>
+      <div id="phone-div"></div>
     </div>
     <div
       id="service-history"
@@ -138,7 +114,6 @@
             <td class="mb-2 p-2">S579CDU</td>
             <td class="mb-2 p-2">$600</td>
           </tr>
-
         </tbody>
 
       </table>
