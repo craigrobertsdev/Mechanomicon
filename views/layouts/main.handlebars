@@ -18,7 +18,7 @@
     <link rel="stylesheet" href="/css/output.css" />
   </head>
 
-  <body class="min-h-screen relative">
+  <body class="min-h-screen relative flex flex-col">
     <!-- Header -->
     <header class="bg-gray-800 text-white py-6">
       <div class="container mx-auto flex items-center justify-between">
@@ -81,12 +81,12 @@
     </header>
 
     <!-- Main content -->
-    <main class="w-full">
+    <main class="w-full flex grow">
       {{{body}}}
     </main>
 
     <!-- Footer -->
-    <footer class="bg-gray-800 text-white py-4 absolute bottom-0 w-full">
+    <footer class="bg-gray-800 text-white py-4 fixed bottom-0 w-full">
       <div class="container mx-auto text-center">
         <p>&copy; 2023 CarDex. All rights reserved.</p>
         <!-- Add your footer content here, e.g., social media links -->

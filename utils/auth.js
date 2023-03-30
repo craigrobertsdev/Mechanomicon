@@ -7,4 +7,14 @@ const withAuth = (req, res, next) => {
   }
 };
 
-module.exports = withAuth;
+const withAdminAuth = (res, req, next) => {
+  if (!req.session.role === "manager") {
+    res
+      .status(401)
+      .json({ message: "You are not authorised to perform this action" });
+  } else {
+    next();
+  }
+};
+
+module.exports = { withAuth, withAdminAuth };

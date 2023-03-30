@@ -12,4 +12,8 @@ module.exports = {
   jobLength: (jobType) => {
     return jobType === "service & inspection" ? "1 hour" : "3 hours";
   },
+
+  jobCount: (jobs) => {
+    return jobs.length;
+  },
 };

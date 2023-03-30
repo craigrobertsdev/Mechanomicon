@@ -1,12 +1,13 @@
-<div class="flex flex-row">
-  <aside class="w-64 bg-slate-200 h-full">
+<div class="flex flex-row grow">
+  <aside class="w-64 bg-slate-200 ">
     <ul class="flex flex-col flex-nowrap">
       <li id="job-link" class="hover:cursor-pointer  text-center py-2 mx-auto px-2 w-full select-none">Job List</li>
       <li id="customer-link" class="hover:cursor-pointer text-center py-2 mx-auto px-2 w-full select-none">Customers</li>
       <li id="technician-link" class="hover:cursor-pointer text-center py-2 mx-auto px-2 w-full select-none">Technicians</li>
+      <li id="add-technician-link" class="hover:cursor-pointer text-center py-2 mx-auto px-2 w-full select-none">Add Technician</li>
     </ul>
   </aside>
-  <section class="p-3 w-full">
+  <section class="p-3 w-full ">
     <div id="jobs-section" class="block overflow-hidden overflow-y-auto h-full">
     {{> jobs }}
     </div>  
@@ -15,6 +16,9 @@
     </div>  
     <div id="technician-section" class="hidden overflow-hidden overflow-y-auto h-full ">
     {{> technicians }}
+    </div>  
+    <div id="add-technician-section" class="hidden overflow-hidden overflow-y-auto h-full ">
+    {{> addTechnician }}
     </div>  
 
   </section>

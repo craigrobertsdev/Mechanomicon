@@ -19,7 +19,7 @@
     <div class="select-none">Job type:</div>
     <div>{{job.type}}</div>
     <div class="select-none">Drop-off time:</div>
-    <div>9.00am</div>
+    <div>{{job.drop_off}}</div>
     <div class="select-none">Job length:</div>
     <div>{{jobLength job.type}}</div>
     <div class="select-none">Assigned Technician:</div>
@@ -27,8 +27,8 @@
       <select class="mechanic-list">
         {{#each ../technicians}}
           <option
-            value={{first_name}}
-          >{{first_name}}</option>
+            value={{id}}
+          >{{first_name}} {{last_name}}</option>
         {{/each}}
       </select>
       <button class="assign-technician border">Assign Technician</button>
