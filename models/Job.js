@@ -1,58 +1,54 @@
-const { Model, DataTypes } = require('sequelize');
-const sequelize = require('../config/connection');
+const { Model, DataTypes } = require("sequelize");
+const sequelize = require("../config/connection");
 
 class Job extends Model {}
 
 Job.init(
-    {
-        id: {
-            type: DataTypes.INTEGER,
-            allowNull: false,
-            primaryKey: true,
-            autoIncrement: true,
-        },
-        type: {
-           type: DataTypes.ENUM('service & inspection', 'repairs'),
-           defaultValue: 'service & inspection',
-        },
-        car_id: {
-           type: DataTypes.INTEGER,
-           references: {
-               model: 'car',
-               key: 'id'
-             }
-        },
-        drop_off: {
-            type: DataTypes.STRING,
-            allowNull: false,
-        },
-        notes: {
-            type: DataTypes.STRING,
-            allowNull: false,
-        },
-        price: {
-            type: DataTypes.STRING,
-            allowNull: false,
-        },
-        total_time: {
-            type: DataTypes.STRING,
-            allowNull: false,
-        },
-        technician_id: {
-           type: DataTypes.INTEGER,
-           references: {
-               model: 'user',
-               key: 'id'
-             }
-        },
+  {
+    id: {
+      type: DataTypes.INTEGER,
+      allowNull: false,
+      primaryKey: true,
+      autoIncrement: true,
     },
-    {
-        sequelize,
-        timestamps: false,
-        freezeTableName: true,
-        underscored: true,
-        modelName: 'job',
-    }
+    type: {
+      type: DataTypes.ENUM("service & inspection", "repairs"),
+      defaultValue: "service & inspection",
+    },
+    date: {
+      type: DataTypes.STRING,
+      allowNull: false,
+    },
+    drop_off: {
+      type: DataTypes.STRING,
+      allowNull: false,
+    },
+    notes: {
+      type: DataTypes.STRING,
+      allowNull: false,
+    },
+    car_id: {
+      type: DataTypes.INTEGER,
+      references: {
+        model: "car",
+        key: "id",
+      },
+    },
+    service_id: {
+      type: DataTypes.INTEGER,
+      references: {
+        model: "service",
+        key: "id",
+      },
+    },
+  },
+  {
+    sequelize,
+    timestamps: false,
+    freezeTableName: true,
+    underscored: true,
+    modelName: "job",
+  }
 );
 
 module.exports = Job;

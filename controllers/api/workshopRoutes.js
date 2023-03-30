@@ -1,27 +1,12 @@
-const router = require('express').Router();
-const {User, Workshop } = require('../../models');
+const router = require("express").Router();
+const withAuth = require("../utils/auth");
+const { User, Car, Service, Job } = require("../models");
 
+// will get the technician name and work out id
+// create a new service entity in the service table
+// associate that service entity to the job and to the technician
+// router.post("/technician", withAuth, (req, res) => {});
+router.post("/technician", (req, res) => {});
 
-router.get('/', async (req, res) => {
-    try {
+module.exports = router;
 
-        const workshopData = await Workshop.findByPk(1);
-      
-        res.status(200).json(workshopData);
-    } catch (err) {
-        res.status(400).json(err);
-    }
-});
-
-router.get('/technicians', async (req, res) => {
-    try {
-
-        const techData = await User.findAll({ where: { is_Technician: true } });
-      
-        res.status(200).json(techData);
-    } catch (err) {
-        res.status(400).json(err);
-    }
-});
-
-  module.exports = router;
