@@ -1,54 +1,73 @@
-<h1>Information for {{car-rego}}:</h1>
+<div id="sidenav" class="fixed h-full w-1/6 rounded-r-md bg-[#C7BDAA] p-2">
+  <p><a href="">View All Jobs</a></p>
+</div>
 
-<div>
+<div class="grid grid-cols-6 gap-4">
+  <div class="col-span-4 col-start-2" id="header">
+    <h1 class="rounded-md p-2">Information for <span class="text-[#004225]">{{car-rego}}</span></h1>
+
+    <div class="current-job rounded-md bg-[#C7BDAA] p-2">
+      <h2 class="rounded-md bg-[#E0DCD1] p-2">Currently working on <span class="text-[#004225]">{{car.service-type}}</span></h2>
+    </div>
+
+    <div class="rounded-md p-2">
+      <p>Workshop Comments:</p>
+      <p>{{car.comments}}</p>
+    </div>
+  </div>
+
+  <div class="col-span-4 col-start-2 rounded-md border border-[#004225] p-2" id="form">
     <form class="future-work">
-        <h3>Work Completed:</h3>
+      <h3 class="text-[#004225]">Work Completed:</h3>
+      <div class="col-span-1 col-start-2">
         <div class="oil-checkbox">
-            <input id="oil-checkbox" type="checkbox">
-            <label for="oil-checkbox">Oil Changed</label>
+          <input id="oil-checkbox" type="checkbox" class="accent-[#004225]" />
+          <label for="oil-checkbox">Oil Changed</label>
         </div>
 
         <div class="filter-checkbox">
-            <input id="filter-checkbox" type="checkbox">
-            <label for="filter-checkbox">Filter Changed</label>
+          <input id="filter-checkbox" type="checkbox" class="accent-[#004225]" />
+          <label for="filter-checkbox">Filter Changed</label>
         </div>
 
         <div class="brake-checkbox">
-            <input id="brake-checkbox" type="checkbox">
-            <label for="brake-checkbox">Brakes Checked</label>
+          <input id="brake-checkbox" type="checkbox" class="accent-[#004225]" />
+          <label for="brake-checkbox">Brakes Checked</label>
         </div>
 
         <div class="coolant-checkbox">
-            <input id="coolant-checkbox" type="checkbox">
-            <label for="coolant-checkbox">Coolant Checked</label>
+          <input id="coolant-checkbox" type="checkbox" class="accent-[#004225]" />
+          <label for="coolant-checkbox">Coolant Checked</label>
         </div>
-        
+
         <div class="battery-checkbox">
-            <input id="battery-checkbox" type="checkbox">
-            <label for="battery-checkbox">Battery Checked</label>
+          <input id="battery-checkbox" type="checkbox" class="accent-[#004225]" />
+          <label for="battery-checkbox">Battery Checked</label>
         </div>
 
         <div class="suspension-checkbox">
-            <input id="suspension-checkbox" type="checkbox">
-            <label for="suspension-checkbox">Suspension Checked</label>
+          <input id="suspension-checkbox" type="checkbox" class="accent-[#004225]" />
+          <label for="suspension-checkbox">Suspension Checked</label>
         </div>
-        
+
         <div class="filters-checkbox">
-            <input id="filters-checkbox" type="checkbox">
-            <label for="filters-checkbox">All Filters Checked</label>
+          <input id="filters-checkbox" type="checkbox" class="accent-[#004225]" />
+          <label for="filters-checkbox">All Filters Checked</label>
         </div>
 
         <div class="inspection-checkbox">
-            <input id="inspection-checkbox" type="checkbox">
-            <label for="inspection-checkbox">General Inspection Completed</label>
+          <input id="inspection-checkbox" type="checkbox" class="accent-[#004225]" />
+          <label for="inspection-checkbox">General Inspection Completed</label>
         </div>
-
-        <div>
-            <label for="message">Comments & Future Reccomendations:</label>
-            <textarea id="message" rows="4" placeholder="Write your comments here..."></textarea>
-        </div>
-        <button>Submit</button>
+      </div>
+      <div class="col-span-2 col-start-3 mt-2">
+        <label class="block" for="message">Comments & Future Reccomendations:</label>
+        <textarea id="message" rows="4" placeholder="Write your comments here..." class="w-full resize-none rounded-md px-0.5 py-1 caret-[#004225]"></textarea>
+      </div>
+      <div class="flex flex-col items-center justify-center">
+        <button class="justify-center rounded-full border border-[#004225] p-2">Submit</button>
+      </div>
     </form>
+  </div>
 </div>
-
-<script src="./js/service.js"></script>
+<script src="./js/mechanic.js"></script>

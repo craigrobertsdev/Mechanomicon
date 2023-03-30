@@ -9,8 +9,6 @@ router.use('/car', carRoutes);
 router.use('/service', serviceRoutes);
 router.use('/workshop', workshopRoutes);
 
-const userRoutes = require("./userRoutes");
-
 
 router.use("/users", userRoutes);
 
