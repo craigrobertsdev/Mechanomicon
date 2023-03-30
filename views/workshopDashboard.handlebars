@@ -1,10 +1,9 @@
-<div class="flex grow h-full">
+<div class="flex flex-row">
   <aside class="w-64 bg-slate-200 h-full">
     <ul class="flex flex-col flex-nowrap">
       <li id="job-link" class="hover:cursor-pointer  text-center py-2 mx-auto px-2 w-full select-none">Job List</li>
       <li id="customer-link" class="hover:cursor-pointer text-center py-2 mx-auto px-2 w-full select-none">Customers</li>
       <li id="technician-link" class="hover:cursor-pointer text-center py-2 mx-auto px-2 w-full select-none">Technicians</li>
-      <li id="inventory-link" class="hover:cursor-pointer text-center py-2 mx-auto px-2 w-full select-none">Inventory</li>
     </ul>
   </aside>
   <section class="p-3 w-full">
@@ -17,21 +16,18 @@
     <div id="technician-section" class="hidden overflow-hidden overflow-y-auto h-full ">
     {{> technicians }}
     </div>  
-    <div id="inventory-section" class="hidden overflow-hidden overflow-y-auto h-full">
-    {{> inventory }}
-    </div>  
 
   </section>
 {{!-- Capture data passed from API for manipulation by workshop.js --}}
 <script>
-  const customers = {{{customers}}};
-  console.log("🚀 ~ file: workshopDashboard.handlebars:28 ~ customers:", customers)
-  const technicians = {{{technicians}}};
-  console.log("🚀 ~ file: workshopDashboard.handlebars:29 ~ technicians:", technicians)
-  const jobs = {{{jobs}}};
-  console.log("🚀 ~ file: workshopDashboard.handlebars:31 ~ jobs:", jobs)
-  const services = {{{services}}};
-  console.log("🚀 ~ file: workshopDashboard.handlebars:33 ~ services:", services)
+  const customersJSON = {{{customersJSON}}};
+  console.log("🚀 ~ file: workshopDashboard.handlebars:28 ~ customers:", customersJSON)
+  const techniciansJSON = {{{techniciansJSON}}};
+  console.log("🚀 ~ file: workshopDashboard.handlebars:29 ~ technicians:", techniciansJSON)
+  const jobsJSON = {{{jobsJSON}}};
+  console.log("🚀 ~ file: workshopDashboard.handlebars:31 ~ jobs:", jobsJSON)
+  const servicesJSON = {{{servicesJSON}}};
+  console.log("🚀 ~ file: workshopDashboard.handlebars:33 ~ services:", servicesJSON)
   </script>
   <script src="/js/workshop.js"></script>
 </div>
