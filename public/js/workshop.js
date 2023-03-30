@@ -141,7 +141,7 @@ function openUserModal(event) {
   document.body.style.paddingRight = "15px";
   const id = +event.currentTarget.id.split("-")[1];
   console.log("🚀 ~ file: workshop.js:143 ~ openUserModal ~ id:", id);
-  const user = customersJSON.find((customer) => customer.id === id);
+  const customer = customersJSON.find((customer) => customer.id === id);
   console.log("🚀 ~ file: workshop.js:144 ~ openUserModal ~ user:", user);
 
   document.getElementById("first-name-div").innerText = user.first_name;
@@ -153,16 +153,22 @@ function openUserModal(event) {
 
   const serviceList = document.getElementById("service-list");
 
-  for (const car of customerJSON.cars) {
-    const row = document.createElement("tr");
+  for (const car of customer.cars) {
     for (const service of car.services) {
-      const dateRow = document.createElement("td");
-      const serviceRow = document.createElement("td");
-      const registrationRow = document.createElement("td");
-      const costRow = document.createElement("td");
+      const row = document.createElement("tr");
+      const dateCell = document.createElement("td");
+      const serviceCell = document.createElement("td");
+      const registrationCell = document.createElement("td");
+      const costCell = document.createElement("td");
       dateRow.innerText = service.date;
       serviceRow.innerText = toPascalCase(service.type);
-      registrationRow.innerText = service.car.license_plate
+      registrationRow.innerText = car.license_plate;
+      costRow.innerText = service.price;
+
+      row.children.appendChild(dateCell);
+      row.children.appendChild(serviceCell);
+      row.children.appendChild(registrationCell);
+      row.children.appendChild(costCell);
     }
   }
 }
