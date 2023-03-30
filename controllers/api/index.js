@@ -12,10 +12,5 @@ router.use('/service', serviceRoutes);
 router.use('/workshop', workshopRoutes);
 router.use('/job', jobRoutes);
 
-<<<<<<< HEAD
-
-router.use("/users", userRoutes);
-=======
->>>>>>> af50e0e0b8c5d90d010ad4c3963b3cdee8540bc3
 
 module.exports = router;

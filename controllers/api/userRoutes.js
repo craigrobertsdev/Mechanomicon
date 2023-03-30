@@ -63,10 +63,6 @@ router.post("/login", async (req, res) => {
   }
 });
 
-<<<<<<< HEAD
-module.exports = router;
-// Logout thgexports = router;
-=======
 // Logout the user
 router.post("/logout", (req, res) => {
   if (req.session.logged_in) {
@@ -107,4 +103,3 @@ router.put("/:id", withAuth, async (req, res) => {
 });
 
 module.exports = router;
->>>>>>> af50e0e0b8c5d90d010ad4c3963b3cdee8540bc3
