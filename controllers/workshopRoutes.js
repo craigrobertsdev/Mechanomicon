@@ -30,7 +30,7 @@ router.get("/", async (req, res) => {
         include: [
           {
             model: Service,
-            attributes: ["price"],
+            attributes: ["id", "price", "completed"],
             include: {
               model: Job,
               attributes: ["date", "type"],
@@ -59,7 +59,7 @@ router.get("/", async (req, res) => {
     include: [
       {
         model: Service,
-        attributes: ["id"],
+        attributes: ["id", "completed"],
         include: [
           {
             model: Car,
@@ -87,6 +87,10 @@ router.get("/", async (req, res) => {
           attributes: ["id", "first_name", "last_name", "phone"],
         },
       },
+      {
+        model: Service,
+        attributes: ["completed"],
+      },
     ],
   });
 
@@ -96,10 +100,16 @@ router.get("/", async (req, res) => {
       {
         model: Job,
         attributes: ["date", "type"],
-        include: {
-          model: Car,
-          attributes: ["license_plate"],
-        },
+        include: [
+          {
+            model: Car,
+            attributes: ["license_plate"],
+          },
+          {
+            model: Service,
+            attributes: ["completed"],
+          },
+        ],
       },
     ],
   });
@@ -118,16 +128,22 @@ router.get("/", async (req, res) => {
   const serialisedTechnicianData = technicians.map((technician) =>
     technician.get({ plain: true })
   );
+  console.log("🚀 ~ file: workshopRoutes.js:131 ~ router.get ~ serialisedTechnicianData:", serialisedTechnicianData)
+
   const serialisedJobData = jobs.map((job) => job.get({ plain: true }));
   const serialisedServiceData = services.map((service) =>
     service.get({ plain: true })
   );
 
   res.render("workshopDashboard", {
-    customers: JSON.stringify(customers),
-    technicians: JSON.stringify(technicians),
-    jobs: JSON.stringify(jobs),
-    services: JSON.stringify(services),
+    customers: serialisedCustomerData,
+    technicians: serialisedTechnicianData,
+    jobs: serialisedJobData,
+    services: serialisedServiceData,
+    customersJSON: JSON.stringify(customers),
+    techniciansJSON: JSON.stringify(technicians),
+    jobsJSON: JSON.stringify(jobs),
+    servicesJSON: JSON.stringify(services),
   });
 });
 

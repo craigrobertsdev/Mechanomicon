@@ -40,11 +40,11 @@ Job.belongsTo(Car, {
 });
 
 Job.hasOne(Service, {
-  foreignKey: "job_id",
+  foreignKey: "service_id",
 });
 
 Service.belongsTo(Job, {
-  foreignKey: "service_id",
+  foreignKey: "job_id",
 });
 
 User.hasMany(Job, {
