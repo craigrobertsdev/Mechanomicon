@@ -4,7 +4,7 @@
     class="z-40 w-full h-20 md:h-screen md:w-64 md:relative md:transition-transform md:-translate-x-full md:translate-x-0"
     aria-label="Sidebar">
     <div class="h-full md:overflow-y-auto md:px-3 md:py-4 bg-gray-50 dark:bg-gray-500">
-      <ul class="flex md:flex-col md:space-y-2 md:font-medium">
+      <ul class="flex md:flex-col md:space-y-8 md:font-medium sm:pt-3">
         <li>
           <a href="/job"
             class="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700">
@@ -65,55 +65,116 @@
   </aside>
 
   <!-- right side section Show data from model -->
-  <div class="relative w-full md:mt-0 md:h-full overflow-auto">
-    <table class="w-full h-auto text-sm text-left text-gray-500 dark:text-gray-400 table-auto">
-      <thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
-        <tr>
-          <th scope="col" class="px-2 py-3 text-center md:px-10">
-            Make
-          </th>
-          <th scope="col" class="px-2 py-3 text-center md:px-6">
-            Model
-          </th>
-          <th scope="col" class="px-2 py-3 text-center md:px-6">
-            Registration
-          </th>
-          <th scope="col" class="px-2 py-3 text-center md:px-6">
-            Color
-          </th>
-          <th scope="col" class="px-2 py-3 text-center md:px-6">
-            Service History
-          </th>
-          <th scope="col" class="px-2 py-3 text-center md:px-6">
-            Book Service
-          </th>
-        </tr>
-      </thead>
-      <!-- Table body -->
-      <tbody>
-        <!-- Table row for displaying data -->
-        <tr class="text-center">
-          <td class="py-3 my-3 px-2 md:px-0">{{Car.make}}1</td>
-          <td class="py-3 my-3 px-2 md:px-0">{{Car.model}}2</td>
-          <td class="py-3 my-3 px-2 md:px-0">{{Car.licensePlate}}</td>
-          <td class="py-3 my-3 px-2 md:px-0">{{Car.colour}}</td>
-          <!-- Button to view service history -->
-          <td class="py-3 px-2 md:px-0">
-            <button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-full">
-              View
-            </button>
-          </td>
-          <!-- Button to book a service -->
-          <td class="py-3 my-3 px-2 md:px-0">
-            <button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-full">
-              Click
-            </button>
-          </td>
-        </tr>
-        <!-- Add more table rows for other data -->
-      </tbody>
-    </table>
+  <div class="relative w-full md:mt-0 md:h-full overflow-auto bg-gradient-to-r from-gray-400 via-gray-600 to-blue-800 ">
+    <div class="container mx-auto px-4 py-6">
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+
+        {{!-- {{#each cars}} --}}
+        <div class="bg-indigo-100 shadow-md rounded-lg p-6 ">
+          <i class="fas fa-car mb-2 text-4xl"></i>
+          <h2 class="text-xl font-bold mb-2">{{make}}Audi {{model}}Q5</h2>
+          <div class="mb-3">
+            <strong class="inline-block w-40">License Plate:</strong>
+            <span>{{licensePlate}}SEC99S</span>
+          </div>
+          <div class="mb-3">
+            <strong class="inline-block w-40">Year:</strong>
+            <span>{{year}}2018</span>
+          </div>
+          <div class="mb-4">
+            <strong class="inline-block w-40">Colour:</strong>
+            <span>{{colour}}BLACK</span>
+          </div>
+
+          <div class="flex items-center justify-between">
+            <button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
+              onclick="window.location.href='/service-history/{{id}}'">View Service History</button>
+            <button class="bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded"
+              onclick="window.location.href='/book-service/{{id}}'">Book Service</button>
+          </div>
+        </div>
+        {{!-- {{/each}} --}}
+
+        <div class="bg-indigo-100 shadow-md rounded-lg p-6 ">
+          <i class="fas fa-car mb-2 text-4xl"></i>
+          <h2 class="text-xl font-bold mb-2">{{make}}Audi {{model}}Q5</h2>
+          <div class="mb-3">
+            <strong class="inline-block w-40">License Plate:</strong>
+            <span>{{licensePlate}}SEC99S</span>
+          </div>
+          <div class="mb-3">
+            <strong class="inline-block w-40">Year:</strong>
+            <span>{{year}}2018</span>
+          </div>
+          <div class="mb-4">
+            <strong class="inline-block w-40">Colour:</strong>
+            <span>{{colour}}BLACK</span>
+          </div>
+
+          <div class="flex items-center justify-between">
+            <button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
+              onclick="window.location.href='/service-history/{{id}}'">View Service History</button>
+            <button class="bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded"
+              onclick="window.location.href='/book-service/{{id}}'">Book Service</button>
+          </div>
+        </div>
+
+
+
+      </div>
+      <div class="mt-6">
+        <button class="bg-indigo-500 hover:bg-indigo-700 text-white font-bold py-2 px-4 rounded"
+          onclick="window.location.href='/add-car'">Add New Car</button>
+      </div>
+    </div>
   </div>
-
-
 </div>
+
+
+
+{{!-- <table class="w-full h-auto text-sm text-left text-gray-500 dark:text-gray-400 table-auto">
+  <thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
+    <tr>
+      <th scope="col" class="px-2 py-3 text-center text-base md:px-10">
+        Make
+      </th>
+      <th scope="col" class="px-2 py-3 text-center text-base md:px-6">
+        Model
+      </th>
+      <th scope="col" class="px-2 py-3 text-center text-base md:px-6">
+        Registration
+      </th>
+      <th scope="col" class="px-2 py-3 text-center text-base md:px-6">
+        Color
+      </th>
+      <th scope="col" class="px-2 py-3 text-center text-base md:px-6">
+        Service History
+      </th>
+      <th scope="col" class="px-2 py-3 text-center text-base md:px-6">
+        Book Service
+      </th>
+    </tr>
+  </thead>
+  <!-- Table body -->
+  <tbody>
+    <!-- Table row for displaying data -->
+    <tr class="text-center">
+      <td class="py-3 my-3 px-2 md:px-0">{{Car.make}}1</td>
+      <td class="py-3 my-3 px-2 md:px-0">{{Car.model}}2</td>
+      <td class="py-3 my-3 px-2 md:px-0">{{Car.licensePlate}}</td>
+      <td class="py-3 my-3 px-2 md:px-0">{{Car.colour}}</td>
+      <!-- Button to view service history -->
+      <td class="py-3 px-2 md:px-0">
+        <button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-full">
+          View
+        </button>
+      </td>
+      <!-- Button to book a service -->
+      <td class="py-3 my-3 px-2 md:px-0">
+        <button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-full">
+          Click
+        </button>
+      </td>
+    </tr>
+  </tbody>
+</table> --}}
