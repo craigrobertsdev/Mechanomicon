@@ -1,12 +1,12 @@
 {{#each jobs as |job|}}
-  <div
+  <div id={{job.id}}
     class="grid auto-rows-auto grid-cols-[max-content_1fr_max-content_1fr] mb-3 p-3 gap-3 border-b-2"
   >
     <div class="select-none">Customer Name:</div>
     <div>{{job.car.user.first_name}} {{job.car.user.last_name}}</div>
     <div class="select-none">Phone number:</div>
     <div>{{job.car.user.phone}}</div>
-    <div class="select-none">Registration:</div>
+    <div id={{job.car.id}} class="select-none">Registration:</div>
     <div>{{job.car.license_plate}}</div>
     <div class="select-none">Make:</div>
     <div>{{job.car.make}}</div>

@@ -15,34 +15,42 @@ Service.init(
     oilChanged: {
       type: DataTypes.BOOLEAN,
       allowNull: false,
+      defaultValue: false
     },
     filterChanged: {
       type: DataTypes.BOOLEAN,
       allowNull: false,
+      defaultValue: false
     },
     brakesChecked: {
       type: DataTypes.BOOLEAN,
       allowNull: false,
+      defaultValue: false
     },
     coolantChecked: {
       type: DataTypes.BOOLEAN,
       allowNull: false,
+      defaultValue: false
     },
     batteryChecked: {
       type: DataTypes.BOOLEAN,
       allowNull: false,
+      defaultValue: false
     },
     suspensionChecked: {
       type: DataTypes.BOOLEAN,
       allowNull: false,
+      defaultValue: false
     },
     filtersChecked: {
       type: DataTypes.BOOLEAN,
       allowNull: false,
+      defaultValue: false
     },
     tyresRotated: {
       type: DataTypes.BOOLEAN,
       allowNull: false,
+      defaultValue: false
     },
     additionalNotes: {
       type: DataTypes.STRING,
@@ -50,10 +58,12 @@ Service.init(
     price: {
       type: DataTypes.DECIMAL,
       allowNull: false,
+      defaultValue: 0
     },
     total_time: {
       type: DataTypes.STRING,
       allowNull: false,
+      defaultValue: "0"
     },
     completed: {
       type: DataTypes.BOOLEAN,

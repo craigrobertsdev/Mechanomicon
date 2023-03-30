@@ -128,8 +128,6 @@ router.get("/", async (req, res) => {
   const serialisedTechnicianData = technicians.map((technician) =>
     technician.get({ plain: true })
   );
-  console.log("🚀 ~ file: workshopRoutes.js:131 ~ router.get ~ serialisedTechnicianData:", serialisedTechnicianData)
-
   const serialisedJobData = jobs.map((job) => job.get({ plain: true }));
   const serialisedServiceData = services.map((service) =>
     service.get({ plain: true })

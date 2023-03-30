@@ -103,16 +103,17 @@ function showSection(section) {
 }
 
 async function assignTechnician(event) {
-  console.log(event.target.previousElementSibling);
+  const job = event.target.parentNode.parentNode.id;
+  console.log("🚀 ~ file: workshop.js:107 ~ assignTechnician ~ job:", job);
   const technician = event.target.previousElementSibling.value;
+  const car = event.target.parentNode.parentNode.children[4].id;
+
   const response = await fetch("/api/workshop/technician", {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
     },
-    body: {
-      technician,
-    },
+    body: JSON.stringify({ job: job, technician: technician, car: car }),
   });
 }
 
@@ -125,9 +126,7 @@ async function addTechnician(event) {
     headers: {
       "Content-Type": "application/json",
     },
-    body: 
-      JSON.stringify({"newTechnicianId": newTechnician}),
-    
+    body: JSON.stringify({ newTechnician: newTechnician }),
   });
 
   console.log(response);
