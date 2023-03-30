@@ -1,42 +1,58 @@
 [
-    {
-        "id": 1,
-        "type": "service & inspection",
-        "car_id": 1,
-        "drop_off": "8:00AM",
-        "notes": "Customer requests that oil supplied in boot is used",
-        "price": "$200",
-        "total_time": "1.5",
-        "technician_id": 5
-    },
-    {
-        "id": 2,
-        "type": "service & inspection",
-        "car_id": 2,
-        "drop_off": "9:30AM",
-        "notes": "Battery isolator switch under steering column must be switched to start vehicle",
-        "price": "$200",
-        "total_time": "1.5",
-        "technician_id": 5
-    },
-    {
-        "id": 3,
-        "type": "service & inspection",
-        "car_id": 3,
-        "drop_off": "11:30PM",
-        "notes": "In for repairs at same time",
-        "price": "$200",
-        "total_time": "1.5",
-        "technician_id": 5
-    },
-    {
-        "id": 4,
-        "type": "repairs",
-        "car_id": 3,
-        "drop_off": "1:30PM",
-        "notes": "Fixing Oil leaks (replace parts as necessary)",
-        "price": "$600",
-        "total_time": "3",
-        "technician_id": 5
-    }
+  {
+    "id": 1,
+    "type": "service & inspection",
+    "car_id": 1,
+    "drop_off": "8:00AM",
+    "notes": "Customer requests that oil supplied in boot is used",
+    "date": "27/03/2022"
+  },
+  {
+    "id": 2,
+    "type": "service & inspection",
+    "car_id": 2,
+    "drop_off": "9:30AM",
+    "notes": "Battery isolator switch under steering column must be switched to start vehicle",
+    "date": "27/03/2022"
+  },
+  {
+    "id": 3,
+    "type": "service & inspection",
+    "car_id": 3,
+    "drop_off": "11:30PM",
+    "notes": "In for repairs at same time",
+    "date": "27/03/2022"
+  },
+  {
+    "id": 4,
+    "type": "repairs",
+    "car_id": 3,
+    "drop_off": "1:30PM",
+    "notes": "Fixing Oil leaks (replace parts as necessary)",
+    "date": "27/03/2022"
+  },
+  {
+    "id": 5,
+    "type": "repairs",
+    "car_id": 1,
+    "drop_off": "1:30PM",
+    "notes": "Fixing Oil leaks (replace parts as necessary)",
+    "date": "27/03/2022"
+  },
+  {
+    "id": 6,
+    "type": "repairs",
+    "car_id": 4,
+    "drop_off": "1:30PM",
+    "notes": "Fixing Oil leaks (replace parts as necessary)",
+    "date": "27/03/2022"
+  },
+  {
+    "id": 7,
+    "type": "repairs",
+    "car_id": 4,
+    "drop_off": "1:30PM",
+    "notes": "Fixing Oil leaks (replace parts as necessary)",
+    "date": "27/03/2022"
+  }
 ]
