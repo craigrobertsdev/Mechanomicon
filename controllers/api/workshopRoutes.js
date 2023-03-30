@@ -9,3 +9,4 @@ const { User, Car, Service, Job } = require("../models");
 router.post("/technician", (req, res) => {});
 
 module.exports = router;
+
