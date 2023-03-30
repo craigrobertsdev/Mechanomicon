@@ -15,8 +15,8 @@ module.exports = {
       'darkCream': '#C7BDAA',
       'cream': '#E0DCD1',
       'brown': '#645046',
-      'silver': '#ecebff',
-      'gold': '#c5ad09'
+      'silver': '#e5e5e5ff',
+      'gold': '#ccb309'
     },
     spacing: {
       px: '1px',
