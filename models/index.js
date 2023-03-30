@@ -18,24 +18,8 @@ Car.hasMany(Service, {
   onDelete: "CASCADE",
 });
 
-Car.hasMany(Job, {
-  foreignKey: "car_id",
-});
-
-Job.belongsTo(Car, {
-  foreignKey: "car_id",
-});
-
 Service.belongsTo(Car, {
   foreignKey: "car_id",
-});
-
-Job.hasOne(Service, {
-  foreignKey: "job_id",
-});
-
-Service.belongsTo(Job, {
-  foreignKey: "service_id",
 });
 
 Workshop.hasMany(User, {
@@ -46,13 +30,22 @@ User.belongsTo(Workshop, {
   foreignKey: "workshop_id",
 });
 
-User.hasMany(Service, {
+Car.hasMany(Job, {
+  foreignKey: "car_id",
+  onDelete: "CASCADE",
+});
+
+Job.belongsTo(Car, {
+  foreignKey: "car_id",
+});
+
+User.hasMany(Job, {
   foreignKey: "user_id",
   onDelete: "CASCADE",
 });
 
-Service.belongsTo(User, {
+Job.belongsTo(User, {
   foreignKey: "user_id",
 });
 
-module.exports = { User, Car, Service, Workshop, Job };
+module.exports = { User, Car, Job, Service, Workshop };
