@@ -1,6 +1,6 @@
 const router = require("express").Router();
-const withAuth = require("../utils/auth");
-const { User, Car, Service, Job } = require("../models");
+// const withAuth = require("../../utils/auth");
+const { User, Car, Service, Job } = require("../../models");
 
 // when logging in as a manager, gets all data required for the admin dashboard
 router.get("/", async (req, res) => {

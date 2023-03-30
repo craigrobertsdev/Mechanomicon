@@ -59,4 +59,28 @@ router.get("/resetPassword", async (req, res) => {
   }
 });
 
+router.get("/mechanic", async (req, res) => {
+  try {
+    res.render("mechanic");
+  } catch (error) {
+    res.status(500).json(error);
+  }
+});
+
+router.get("/service", async (req, res) => {
+  try {
+    res.render("service");
+  } catch (error) {
+    res.status(500).json(error);
+  }
+});
+
+router.get("/mechanicDashboard", async (req, res) => {
+  try {
+    res.render("mechanicDashboard");
+  } catch (error) {
+    res.status(500).json(error);
+  }
+});
+
 module.exports = router;

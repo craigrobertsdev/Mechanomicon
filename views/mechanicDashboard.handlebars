@@ -1,0 +1,14 @@
+<div class="flex grow h-full">
+  <aside class="w-64 bg-slate-200 h-full">
+    <ul class="flex flex-col flex-nowrap">
+      <li id="job-link" class="hover:cursor-pointer  text-center py-2 mx-auto px-2 w-full select-none">Job List</li>
+      <li id="car-link" class="hover:cursor-pointer text-center py-2 mx-auto px-2 w-full select-none">Car Info</li>
+      {{!-- <li id="technician-link" class="hover:cursor-pointer text-center py-2 mx-auto px-2 w-full select-none">Technicians</li>
+      <li id="inventory-link" class="hover:cursor-pointer text-center py-2 mx-auto px-2 w-full select-none">Inventory</li> --}}
+    </ul>
+  </aside>
+  <section class="p-3 w-full">
+    <div id="jobs-section" class="block overflow-hidden overflow-y-auto h-full">
+    {{> mechanic }}
+    </div>
+  </section>

@@ -1,7 +1,7 @@
 <div class="grid grid-cols-12 gap-4">
   <div class="col-span-10 col-start-2" id="header">
-    <div class="current-job rounded-md bg-[#C7BDAA] p-2">
-      <h2 class="rounded-md bg-[#E0DCD1] p-2">Hello <span class="text-[#004225]">{{tech-name}}</span>! Your jobs for today are:</h2>
+    <div class="current-job rounded-md p-2">
+      <h2 class="rounded-md p-2">Hello <span class="text-[#004225]">Shae{{tech-name}}</span>! Your jobs for today are:</h2>
     </div>
   </div>
 
@@ -20,7 +20,7 @@
           </tr>
         </thead>
         {{#if services.length}}
-        <tbody>
+        <tbody id="car-table">
           {{#each cars as |car|}}
           <tr>
             <td class="border-b border-l border-[#004225] text-center"><a href="">{{car.licensePlate}}</a></td>
@@ -30,6 +30,14 @@
             <td class="border-b border-l border-[#004225] text-center">{{car.drop-off-time}}</td>
             <td class="border-b border-l border-[#004225] text-center">{{car.job-length}}</td>
             {{/each}}
+          </tr>
+          <tr>
+            <td class="border-b border-l border-[#004225] text-center">asgh</td>
+            <td class="border-b border-l border-[#004225] text-center">hi</td>
+            <td class="border-b border-l border-[#004225] text-center">sdfgh</td>
+            <td class="border-b border-l border-[#004225] text-center">dsfghj</td>
+            <td class="border-b border-l border-[#004225] text-center">sdfdghg</td>
+            <td class="border-b border-l border-[#004225] text-center">dfghj</td>
           </tr>
         </tbody>
         {{/if}}
