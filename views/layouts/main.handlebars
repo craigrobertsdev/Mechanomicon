@@ -1,67 +1,87 @@
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>CarDex</title>
 
-    <!-- Import Tailwind CSS -->
-    <script src="https://cdn.tailwindcss.com"></script>
-    <!-- Import Font Awesome -->
-    <link
-      rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css"
-      integrity="sha512-SzlrxWUlpfuzQ+pcUCosxcglQRNAq/DZjVsC0lE40xsADsfeQoEypE+enwcOiGjk/bSuGGKHEyjSoQ1zVisanQ=="
-      crossorigin="anonymous"
-      referrerpolicy="no-referrer"
-    />
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>CarDex</title>
 
-  </head>
-  <body>
-    <!-- Header -->
-    <header class="bg-gray-800 text-white py-4">
-      <div class="container mx-auto flex items-center justify-between">
-        <div class="flex items-center">
-          <!-- Project Logo -->
-          <img src="#" alt="CarDex Logo" class="h-8 w-auto mr-4" />
-          <h1 class="text-xl">CarDex</h1>
-        </div>
-        <nav class="text-base">
-          <ul class="flex">
+  <!-- Import Tailwind CSS -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <!-- Import Font Awesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css"
+    integrity="sha512-SzlrxWUlpfuzQ+pcUCosxcglQRNAq/DZjVsC0lE40xsADsfeQoEypE+enwcOiGjk/bSuGGKHEyjSoQ1zVisanQ=="
+    crossorigin="anonymous" referrerpolicy="no-referrer" />
 
-            <li class="mr-4"><a href="/" class="text-white">Home</a></li>
-            <li class="mr-4"><a
-                href="/dashboard"
-                class="text-white"
-              >Dashboard</a></li>
+</head>
 
-            {{#if logged_in}}
-              <!-- User is logged in -->
-              <li><button id="logout" class="text-white">Logout</button></li>
-            {{else}}
-              <!-- User is not logged in -->
-              <li><a href="/login" class="text-white">Login</a></li>
-            {{/if}}
-          </ul>
-        </nav>
+<body>
+  <!-- Header -->
+  <header class="bg-gray-800 text-white py-6">
+    <div class="container mx-auto flex items-center justify-between">
+      <div class="flex items-center">
+        <!-- Project Logo -->
+        <img src="#" alt="CarDex Logo" class="h-12 w-auto mr-4" />
+        <h1 class="text-3xl font-bold">CarDex</h1>
       </div>
-    </header>
-    <!-- Main content -->
-    <main class="w-full">
-      {{{body}}}
-    </main>
+      <nav class="text-lg">
+        <ul class="flex space-x-8">
+          <li>
+            <a href="/" class="text-white text-2xl font-semibold hover:text-yellow-400 transition-colors duration-200">
+              Home
+            </a>
+          </li>
+          <li>
+            <a href="/dashboard"
+              class="text-white text-2xl font-semibold hover:text-yellow-400 transition-colors duration-200">
+              Dashboard
+            </a>
+          </li>
+          {{#if logged_in}}
+          <!-- User is logged in -->
+          <li>
+            <a href="/profile" id="profile"
+              class="text-white text-2xl font-semibold hover:text-yellow-400 transition-colors duration-200">
+              Profile
+            </a>
+          </li>
+          <li>
+            <button id="logout"
+              class="text-white text-2xl font-semibold hover:text-yellow-400 transition-colors duration-200">
+              Logout
+            </button>
+          </li>
+          {{else}}
+          <!-- User is not logged in -->
+          <li>
+            <a href="/login"
+              class="text-white text-2xl font-semibold hover:text-yellow-400 transition-colors duration-200">
+              Log in
+            </a>
+          </li>
+          {{/if}}
+        </ul>
+      </nav>
+    </div>
+  </header>
 
-    <!-- Footer -->
-    <footer class="bg-gray-800 text-white py-4">
-      <div class="container mx-auto text-center">
-        <p>&copy; 2023 CarDex. All rights reserved.</p>
-        <!-- Add your footer content here, e.g., social media links -->
-      </div>
-    </footer>
+  <!-- Main content -->
+  <main class="w-full">
+    {{{body}}}
+  </main>
 
-    <!-- Render script for logged in users only -->
-    {{#if logged_in}}
-      <script src="/js/logout.js"></script>
-    {{/if}}
+  <!-- Footer -->
+  <footer class="bg-gray-800 text-white py-4">
+    <div class="container mx-auto text-center">
+      <p>&copy; 2023 CarDex. All rights reserved.</p>
+      <!-- Add your footer content here, e.g., social media links -->
+    </div>
+  </footer>
 
-  </body>
+  <!-- Render script for logged in users only -->
+  {{#if logged_in}}
+  <script src="/js/logout.js"></script>
+  {{/if}}
+
+</body>
+
 </html>
