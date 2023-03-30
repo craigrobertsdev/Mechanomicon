@@ -158,7 +158,7 @@ function selectUserRow(event) {
 // calls API to get data about the individual technician's details and job history
 async function openTechnicianModal(event) {
   const rowId = event.currentTarget.id.split("-")[1];
-  const response = await fetch(`/api/workshop/technician/:${rowId}`);
+  const response = await fetch(`/api/workshop/technician/${rowId}`);
 
   technicianModal.style.display = "flex";
   document.body.style.overflow = "hidden";
@@ -186,4 +186,4 @@ function init() {
 
 init();
 
-console.log(mechanics);
+// console.log(mechanics);

@@ -24,8 +24,14 @@
   </section>
 {{!-- Capture data passed from API for manipulation by workshop.js --}}
 <script>
-  let mechanics = {{{mechanics}}};
-  let jobs = {{{jobs}}};
+  const customers = {{{customers}}};
+  console.log("🚀 ~ file: workshopDashboard.handlebars:28 ~ customers:", customers)
+  const technicians = {{{technicians}}};
+  console.log("🚀 ~ file: workshopDashboard.handlebars:29 ~ technicians:", technicians)
+  const jobs = {{{jobs}}};
+  console.log("🚀 ~ file: workshopDashboard.handlebars:31 ~ jobs:", jobs)
+  const services = {{{services}}};
+  console.log("🚀 ~ file: workshopDashboard.handlebars:33 ~ services:", services)
   </script>
   <script src="/js/workshop.js"></script>
 </div>

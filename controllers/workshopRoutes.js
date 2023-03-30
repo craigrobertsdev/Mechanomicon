@@ -1,117 +1,134 @@
 const router = require("express").Router();
 const withAuth = require("../utils/auth");
-const { Technician, Job } = require("../models");
+const { User, Car, Service, Job } = require("../models");
 
-// called when logging in as a technician, get all technicians and all jobs that are
-// pending.
+// when logging in as a manager, gets all data required for the admin dashboard
 router.get("/", async (req, res) => {
-  // if (!req.session.role === "technician") {
+  // if (!req.session.role === "manager") {
   //     res.status(401).json("You are not authorised to access this page.");
   // }
 
-  // don't forget to return these as plain!!!
-  //   let [mechanics, jobs] = await Promise.all(
-  //     Technician.findAll(),
-  //     Job.findAll()
-  //   );
+  // gets all customers and their vehicle service history
+  const customerData = User.findAll({
+    attributes: [
+      "id",
+      "first_name",
+      "last_name",
+      "phone",
+      "address",
+      "postcode",
+      "city",
+      "state",
+    ],
+    where: {
+      role: "user",
+    },
+    include: [
+      {
+        model: Car,
+        attributes: ["license_plate"],
+        include: [
+          {
+            model: Service,
+            attributes: ["price"],
+            include: {
+              model: Job,
+              attributes: ["date", "type"],
+            },
+          },
+        ],
+      },
+    ],
+  });
 
-  let mechanics = [
-    {
-      id: 1,
-      name: "Craig",
-      jobs: [
-        {
-          id: 1,
-          time: new Date(2023, 23, 3, 10, 0, 0),
-          service_name: "service & inspection",
-          car: {
-            registration: "ABC123",
-          },
-        },
-        {
-          id: 2,
-          time: new Date(2023, 23, 3, 11, 0, 0),
-          service_name: "service & inspection",
-          car: {
-            registration: "ABC124",
-          },
-        },
-      ],
+  // gets all technicians and information about the jobs they've done
+  const technicianData = User.findAll({
+    attributes: [
+      "id",
+      "first_name",
+      "last_name",
+      "phone",
+      "address",
+      "postcode",
+      "city",
+      "state",
+    ],
+    where: {
+      role: "technician",
     },
-    {
-      id: 2,
-      name: "Paul",
-      jobs: [
-        {
-          id: 3,
-          time: new Date(2023, 23, 3, 10, 0, 0),
-          service_name: "service & inspection",
-          car: {
-            registration: "ABC123",
+    include: [
+      {
+        model: Service,
+        attributes: ["id"],
+        include: [
+          {
+            model: Car,
+            attributes: ["license_plate"],
           },
-        },
-        {
-          id: 4,
-          time: new Date(2023, 23, 3, 11, 0, 0),
-          service_name: "service & inspection",
-          car: {
-            registration: "ABC124",
+          {
+            model: Job,
+            attributes: ["type", "date"],
           },
-        },
-      ],
-    },
-  ];
+        ],
+      },
+    ],
+  });
 
-  // [ { id, time, service_name, vehicle: {registration}, }]
-  const jobs = [
-    {
-      id: 1,
-      time: new Date("2023, 23, 3, 10, 0, 0"),
-      service_name: "service & inspection",
-      car: {
-        registration: "ABC123",
+  // id (for loading the job page later on), service_type, drop_off, length, notes, price, technician (id),
+  // car_id (rego, make, model, user_id (name, phone number))
+  const jobData = Job.findAll({
+    attributes: ["id", "type", "date", "notes", "drop_off"],
+    include: [
+      {
+        model: Car,
+        attributes: ["id", "license_plate", "make", "model", "colour", "year"],
+        include: {
+          model: User,
+          attributes: ["id", "first_name", "last_name", "phone"],
+        },
       },
-    },
-    {
-      id: 2,
-      time: new Date("2023, 23, 3, 11, 0, 0"),
-      service_name: "service & inspection",
-      car: {
-        registration: "ABC124",
+    ],
+  });
+
+  const serviceData = await Service.findAll({
+    attributes: ["id"],
+    include: [
+      {
+        model: Job,
+        attributes: ["date", "type"],
+        include: {
+          model: Car,
+          attributes: ["license_plate"],
+        },
       },
-    },
-    {
-      id: 3,
-      time: new Date("2023, 23, 3, 10, 0, 0"),
-      service_name: "service & inspection",
-      car: {
-        registration: "ABC123",
-      },
-    },
-    {
-      id: 4,
-      time: new Date("2023, 23, 3, 11, 0, 0"),
-      service_name: "service & inspection",
-      car: {
-        registration: "ABC124",
-      },
-    },
-  ];
+    ],
+  });
+
+  const [customers, technicians, jobs, services] = await Promise.all([
+    customerData,
+    technicianData,
+    jobData,
+    serviceData,
+  ]);
+
+  // serialise model data to be readable by view
+  const serialisedCustomerData = customers.map((customer) =>
+    customer.get({ plain: true })
+  );
+  const serialisedTechnicianData = technicians.map((technician) =>
+    technician.get({ plain: true })
+  );
+  const serialisedJobData = jobs.map((job) => job.get({ plain: true }));
+  const serialisedServiceData = services.map((service) =>
+    service.get({ plain: true })
+  );
 
   res.render("workshopDashboard", {
-    mechanics: JSON.stringify(mechanics),
+    customers: JSON.stringify(customers),
+    technicians: JSON.stringify(technicians),
     jobs: JSON.stringify(jobs),
+    services: JSON.stringify(services),
   });
 });
-
-// router.get("/workshop", async (req, res) => {
-//   try {
-//     const customerData = await User.findAll();
-
-//     render
-//   } catch(err) {
-//     res.status(500).json(err);
-//   }
-// })
 
 module.exports = router;

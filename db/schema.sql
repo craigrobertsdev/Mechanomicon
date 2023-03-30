@@ -1,2 +1,2 @@
-DROP DATABASE IF EXISTS cardex_db;
-CREATE DATABASE cardex_db;
+DROP DATABASE IF EXISTS mechanomicon_db;
+CREATE DATABASE mechanomicon_db;
