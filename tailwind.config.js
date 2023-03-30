@@ -15,7 +15,8 @@ module.exports = {
       'darkCream': '#C7BDAA',
       'cream': '#E0DCD1',
       'brown': '#645046',
-      'silver': '#ecebff',
+      'silver': '#e5e5e5ff',
+      'gold': '#ccb309'
     },
     spacing: {
       px: '1px',
@@ -65,6 +66,17 @@ module.exports = {
         '144': '36rem',
       },
     },
+    borderWidth: {
+      DEFAULT: '3px',
+      '3': '3px',
+      '4': '4px',
+      '6': '6px'
+    },
+    fontSize: {
+      sm: '0.8rem',
+      base: '1rem',
+      xl: '1.25rem',
+    }
   },
   plugins: [],
 };
