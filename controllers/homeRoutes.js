@@ -14,7 +14,7 @@ router.get("/", async (req, res) => {
 //testing dashboard route
 router.get("/dashboard", async (req, res) => {
   try {
-    res.render("dashboard");
+    res.render("customerDashboard");
   } catch (error) {
     res.status(500).json(error);
   }
