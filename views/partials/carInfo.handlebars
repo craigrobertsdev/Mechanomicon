@@ -1,0 +1,81 @@
+<div class="bg-indigo-100 shadow-md rounded-lg p-6 relative">
+
+    <button class="absolute top-2 right-2 bg-blue-500 hover:bg-blue-700 text-white font-bold py-1 px-2 rounded text-xs"
+        onclick="openModal()">
+        Edit
+    </button>
+    <i class="fas fa-car mb-2 text-4xl"></i>
+    <h2 class="text-xl font-bold mb-2">{{make}}Audi {{model}}Q5</h2>
+    <div class="mb-3">
+        <strong class="inline-block w-40">License Plate:</strong>
+        <span>{{licensePlate}}SEC99S</span>
+    </div>
+    <div class="mb-3">
+        <strong class="inline-block w-40">Year:</strong>
+        <span>{{year}}2018</span>
+    </div>
+    <div class="mb-4">
+        <strong class="inline-block w-40">Colour:</strong>
+        <span>{{colour}}BLACK</span>
+    </div>
+
+    <div class="flex items-center justify-between">
+        <button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
+            onclick="window.location.href='/service-history/{{id}}'">View Service History</button>
+        <button class="bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded"
+            onclick="window.location.href='/book-service/{{id}}'">Book Service</button>
+    </div>
+</div>
+
+
+<!-- edit car info modal -->
+<div class="fixed inset-0 w-full h-full z-20 bg-opacity-50 bg-black flex items-center justify-center hidden"
+    id="editModal">
+    <div class="bg-white w-11/12 md:max-w-md mx-auto rounded-lg shadow-lg z-30 overflow-y-auto">
+        <div class="py-4 px-6">
+            <div class="text-center">
+                <h3 class="text-2xl mb-4">Edit Car Details</h3>
+            </div>
+            <form>
+                <div class="mb-4">
+                    <label class="block text-gray-700 text-sm font-bold mb-2" for="make">Make:</label>
+                    <input
+                        class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                        id="make" type="text" placeholder="Audi{{car.make}}">
+                </div>
+                <div class="mb-4">
+                    <label class="block text-gray-700 text-sm font-bold mb-2" for="model">Model:</label>
+                    <input
+                        class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                        id="model" type="text" placeholder="Q5{{car.make}}">
+                </div>
+                <div class="mb-4">
+                    <label class="block text-gray-700 text-sm font-bold mb-2" for="licensePlate">License Plate:</label>
+                    <input
+                        class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                        id="licensePlate" type="text" placeholder="SEC99S{{car.make}}">
+                </div>
+                <div class="mb-4">
+                    <label class="block text-gray-700 text-sm font-bold mb-2" for="year">Year:</label>
+                    <input
+                        class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                        id="year" type="text" placeholder="2018{{car.make}}">
+                </div>
+                <div class="mb-4">
+                    <label class="block text-gray-700 text-sm font-bold mb-2" for="colour">Colour:</label>
+                    <input
+                        class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                        id="colour" type="text" placeholder="BLACK{{car.make}}">
+                </div>
+                <div class="flex items-center justify-between">
+                    <button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
+                        type="submit">Save Changes</button>
+                    <button class="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded"
+                        onclick="closeModal()">Close</button>
+                    <button class="bg-yellow-500 hover:bg-yellow-700 text-white font-bold py-2 px-4 rounded"
+                        type="button">Delete Car</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
