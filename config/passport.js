@@ -39,7 +39,8 @@ passport.use(
         } else {
           const newUser = await User.create({
             google_id: profile.id,
-            name: profile.displayName,
+            first_name: profile.name.givenName,
+            last_name: profile.name.familyName,
             email: profile.emails[0].value,
           });
 

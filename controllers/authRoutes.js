@@ -25,7 +25,7 @@ router.get(
         res.redirect("/login");
       } else {
         // Redirect to your desired route
-        res.redirect("/");
+        res.redirect("/profile");
       }
     });
   }
