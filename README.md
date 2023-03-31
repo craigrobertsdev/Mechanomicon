@@ -39,6 +39,19 @@ THEN I can view all previous service reports attached to that car
 ```
 
 ## Work Description
+For this Project we utilised Node.js, Express.js, Handlebars and mySQL to create a functional and adaptable website that utilises back end functionality and database to retain user security and information. We used Tailwind for page layout and styling.
+For the project we split the jobs into 5 parts and all worked on one each for the final website.
+
+- Models for all website data
+- User profile homepage
+- Workshop homepage
+- Technician homepage
+- Initial homepage for login / signup
+
+A major challenge we faced during this project included a deciding a final structure for our project, this influenced our models and how our pages would be set up. We initially over complicated our idea but by discussing ideas and goals as a group we simplified our end product and came up with a workable view of how the project should take shape. At different points we all had our own minor issues but as a group or with guidance we were able to eliminate any potential lager issues.
+
+Our major success with this project has been working as a team and all doing our part and helping each other when one of us had a problem. Our communication was good and if something required attention everyone was quick to address the problem in a orderly manner and inform everyone else of the change and the problem it addresses.
+
 
 
 ## Screenshot
