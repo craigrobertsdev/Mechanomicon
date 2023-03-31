@@ -16,6 +16,10 @@ User.init(
       primaryKey: true,
       autoIncrement: true,
     },
+    google_id: {
+      type: DataTypes.STRING,
+      allowNull: true, // Set allowNull to true, as not all users may have a googleId
+    },
     first_name: {
       type: DataTypes.STRING,
       allowNull: false,
@@ -67,13 +71,6 @@ User.init(
         len: [2, 50], // Allows between 2 and 50 characters
       },
     },
-    password: {
-      type: DataTypes.STRING,
-      allowNull: false,
-      validate: {
-        len: [8],
-      },
-    },
     role: {
       type: DataTypes.ENUM("user", "technician", "manager"),
       allowNull: false,
@@ -87,18 +84,40 @@ User.init(
       },
       defaultValue: "1",
     },
+    password: {
+      type: DataTypes.STRING,
+      allowNull: true, // Set this to true to allow password to be nullable
+      validate: {
+        notEmptyIfNotGoogle: function (value) {
+          if (!this.google_id) {
+            if (!value) {
+              throw new Error("Password cannot be empty");
+            }
+            if (value.length < 8) {
+              throw new Error("Password must be at least 8 characters long");
+            }
+          }
+        },
+      },
+    },
   },
   {
     hooks: {
+      // Set up beforeCreate user hook
       async beforeCreate(newUser) {
-        newUser.password = await bcrypt.hash(newUser.password, 10);
+        if (newUser.password) {
+          newUser.password = await bcrypt.hash(newUser.password, 10);
+        }
         return newUser;
       },
+      // Set up beforeUpdate user hook
       beforeUpdate: async (updatedUserData) => {
-        updatedUserData.password = await bcrypt.hash(
-          updatedUserData.password,
-          10
-        );
+        if (updatedUserData.password) {
+          updatedUserData.password = await bcrypt.hash(
+            updatedUserData.password,
+            10
+          );
+        }
         return updatedUserData;
       },
     },
