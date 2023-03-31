@@ -1,6 +1,6 @@
 const router = require("express").Router();
 const { User, Car, Service } = require("../models");
-const withAuth = require("../utils/auth");
+const { withAuth } = require("../utils/auth");
 
 // Home page route
 router.get("/", async (req, res) => {
@@ -51,7 +51,7 @@ router.get("/profile", withAuth, async (req, res) => {
 });
 
 //reset password
-router.get("/resetPassword", async (req, res) => {
+router.get("/resetPassword", (req, res) => {
   try {
     res.render("resetPassword");
   } catch (error) {
