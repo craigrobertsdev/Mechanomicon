@@ -3,10 +3,16 @@ const express = require("express");
 const session = require("express-session");
 const exphbs = require("express-handlebars");
 const routes = require("./controllers");
-const helpers = require("./utils/helpers");
-
 const sequelize = require("./config/connection");
 const SequelizeStore = require("connect-session-sequelize")(session.Store);
+require("dotenv").config();
+
+// google auth
+const passport = require("passport");
+require("./config/passport");
+
+const helpers = require("./utils/helpers");
+const { attachAuthInfo } = require("./utils/auth");
 
 const app = express();
 const PORT = process.env.PORT || 3001;
@@ -31,6 +37,9 @@ const sess = {
 
 app.use(session(sess));
 
+app.use(passport.initialize());
+app.use(passport.session());
+
 // Inform Express.js on which template engine to use
 app.engine("handlebars", hbs.engine);
 app.set("view engine", "handlebars");
@@ -38,6 +47,9 @@ app.set("view engine", "handlebars");
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(express.static(path.join(__dirname, "public")));
+
+// Add the attachAuthInfo middleware
+app.use(attachAuthInfo);
 
 app.use(routes);
 

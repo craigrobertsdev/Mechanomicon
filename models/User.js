@@ -71,19 +71,8 @@ User.init(
         len: [2, 50], // Allows between 2 and 50 characters
       },
     },
-    role: {
-      type: DataTypes.ENUM("user", "technician", "manager"),
-      allowNull: false,
-      defaultValue: "user",
-    },
-    workshop_id: {
-      type: DataTypes.INTEGER,
-      references: {
-        model: "workshop",
-        key: "id",
-      },
-      defaultValue: "1",
-    },
+
+    // Set up password validation for google login account
     password: {
       type: DataTypes.STRING,
       allowNull: true, // Set this to true to allow password to be nullable
@@ -99,6 +88,20 @@ User.init(
           }
         },
       },
+    },
+
+    role: {
+      type: DataTypes.ENUM("user", "technician", "manager"),
+      allowNull: false,
+      defaultValue: "user",
+    },
+    workshop_id: {
+      type: DataTypes.INTEGER,
+      references: {
+        model: "workshop",
+        key: "id",
+      },
+      defaultValue: "1",
     },
   },
   {
