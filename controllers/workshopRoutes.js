@@ -1,9 +1,9 @@
 const router = require("express").Router();
-const withAuth = require("../utils/auth");
+const { withAdminAuth } = require("../utils/auth");
 const { User, Car, Service, Job } = require("../models");
 
 // when logging in as a manager, gets all data required for the admin dashboard
-router.get("/", async (req, res) => {
+router.get("/", withAdminAuth, async (req, res) => {
   // if (!req.session.role === "manager") {
   //     res.status(401).json("You are not authorised to access this page.");
   // }

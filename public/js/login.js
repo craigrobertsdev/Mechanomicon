@@ -15,8 +15,21 @@ async function loginFormHandler(event) {
       headers: { "Content-Type": "application/json" },
     });
 
+    const body = await response.json();
+    console.log(body.user.role);
+    debugger;
     if (response.ok) {
-      document.location.replace("/");
+      switch (body.user.role) {
+        case "manager":
+          document.location.replace("/workshop");
+          break;
+        case "technician":
+          // do something here
+          break;
+        case "user":
+          document.location.replace("/dashboard");
+          break;
+      }
     } else {
       alert(response.statusText);
     }
