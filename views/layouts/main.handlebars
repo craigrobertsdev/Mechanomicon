@@ -5,34 +5,40 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>CarDex</title>
 
-    <!-- Import Tailwind CSS -->
-    <script src="https://cdn.tailwindcss.com"></script>
-    <!-- Import Font Awesome -->
+    {{! <!-- Import Font Awesome -->
     <link
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css"
       integrity="sha512-SzlrxWUlpfuzQ+pcUCosxcglQRNAq/DZjVsC0lE40xsADsfeQoEypE+enwcOiGjk/bSuGGKHEyjSoQ1zVisanQ=="
       crossorigin="anonymous"
       referrerpolicy="no-referrer"
-    />
-    <link rel="stylesheet" href="/css/output.css" />
+    /> }}
+
+  <!-- Open Sans font-->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="/css/output.css" />
   </head>
 
-  <body class="min-h-screen relative flex flex-col">
+  <body class="min-h-screen relative font-body text-black flex flex-col">
     <!-- Header -->
-    <header class="bg-gray-800 text-white py-6">
+    <header class="text-m-green bg-m-darkCream py-6">
       <div class="container mx-auto flex items-center justify-between">
         <div class="flex items-center">
           <!-- Project Logo -->
-          <img src="#" alt="CarDex Logo" class="h-12 w-auto mr-4" />
-          <h1 class="text-3xl font-bold">CarDex</h1>
+          <img src="#" alt="Mechanomicon Logo" class="h-12 w-auto mr-4" />
+          <h1
+            class="text-4xl font-bold text-m-green font-heading"
+          >Mechanomicon</h1>
         </div>
         <nav class="text-lg">
           <ul class="flex space-x-8">
             <li>
               <a
                 href="/"
-                class="text-white text-2xl font-semibold hover:text-yellow-400 transition-colors duration-200"
+                class="text-2xl font-semibold hover:text-m-gold transition-colors duration-200"
               >
                 Home
               </a>
@@ -40,7 +46,7 @@
             <li>
               <a
                 href="/dashboard"
-                class="text-white text-2xl font-semibold hover:text-yellow-400 transition-colors duration-200"
+                class="text-2xl font-semibold hover:text-m-gold transition-colors duration-200"
               >
                 Dashboard
               </a>
@@ -51,7 +57,7 @@
                 <a
                   href="/profile"
                   id="profile"
-                  class="text-white text-2xl font-semibold hover:text-yellow-400 transition-colors duration-200"
+                  class="text-2xl font-semibold hover:text-m-gold transition-colors duration-200"
                 >
                   Profile
                 </a>
@@ -59,7 +65,7 @@
               <li>
                 <button
                   id="logout"
-                  class="text-white text-2xl font-semibold hover:text-yellow-400 transition-colors duration-200"
+                  class="text-2xl font-semibold hover:text-m-gold transition-colors duration-200"
                 >
                   Logout
                 </button>
@@ -69,7 +75,7 @@
               <li>
                 <a
                   href="/login"
-                  class="text-white text-2xl font-semibold hover:text-yellow-400 transition-colors duration-200"
+                  class="text-2xl font-semibold hover:text-m-gold transition-colors duration-200"
                 >
                   Log in
                 </a>
@@ -81,14 +87,14 @@
     </header>
 
     <!-- Main content -->
-    <main class="w-full flex grow">
+    <main class="w-full flex grow bg-m-cream">
       {{{body}}}
     </main>
 
     <!-- Footer -->
-    <footer class="bg-gray-800 text-white py-4 fixed bottom-0 w-full">
+    <footer class="bg-m-darkCream text-m-green py-4 w-full">
       <div class="container mx-auto text-center">
-        <p>&copy; 2023 CarDex. All rights reserved.</p>
+        <p>&copy; 2023 Mechanomicon. All rights reserved.</p>
         <!-- Add your footer content here, e.g., social media links -->
       </div>
     </footer>

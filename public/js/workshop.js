@@ -61,22 +61,22 @@ for (let i = 0; i < technicianRows.length; i++) {
 
 // functions to swap between tabs
 function openJobList(event) {
-  setListStyle(event.target);
+  setListStyle(event.currentTarget);
   hideSections();
   showSection(sections.jobSection);
 }
 function openCustomerList(event) {
-  setListStyle(event.target);
+  setListStyle(event.currentTarget);
   hideSections();
   showSection(sections.customerSection);
 }
 function openTechnicianList(event) {
-  setListStyle(event.target);
+  setListStyle(event.currentTarget);
   hideSections();
   showSection(sections.technicianSection);
 }
 function openAddTechnician(event) {
-  setListStyle(event.target);
+  setListStyle(event.currentTarget);
   hideSections();
   showSection(sections.addTechnicianSection);
 }
@@ -87,7 +87,7 @@ function setListStyle(element) {
     value.style.backgroundColor = "";
   }
 
-  element.style.backgroundColor = "blue";
+  element.style.backgroundColor = "#e5e5e5ff";
 }
 
 function hideSections() {

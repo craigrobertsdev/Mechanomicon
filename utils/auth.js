@@ -23,4 +23,4 @@ const withAdminAuth = (req, res, next) => {
   }
 };
 
-module.exports = { withAuth, withAdminAuth };
+module.exports = { withAuth, withTechnicianAuth, withAdminAuth };

@@ -3,26 +3,26 @@
   <input
     type="text"
     id="customer-search-bar"
-    class="border border-black mb-2 p-1 w-full"
+    class="border border-m-darkCream bg-m-silver mb-2 p-1 w-full"
     placeholder="Search for names..."
   />
 </div>
 
 {{! customers table }}
 <h2 class="text-2xl mb-2">Customers</h2>
-<table class="table-auto border border-collapse w-full text-center select-none">
+<table class="table-auto border border-m-darkCream border-collapse w-full text-center select-none">
   <thead>
     <tr class="border">
-      <th class="border p-1">First Name</th>
-      <th class="border p-1">Last Name</th>
-      <th class="border p-1">Address</th>
+      <th class="border border-m-darkCream p-1">First Name</th>
+      <th class="border border-m-darkCream p-1">Last Name</th>
+      <th class="border border-m-darkCream p-1">Address</th>
     </tr>
     <tbody id="user-table">
       {{#each customers as |customer|}}
         <tr id="user-{{customer.id}}">
-          <td class="border p-1">{{customer.first_name}}</td>
-          <td class="border p-1">{{customer.last_name}}</td>
-          <td class="border p-1">{{customer.address}}</td>
+          <td class="border border-m-darkCream p-1">{{customer.first_name}}</td>
+          <td class="border border-m-darkCream p-1">{{customer.last_name}}</td>
+          <td class="border border-m-darkCream p-1">{{customer.address}}</td>
         </tr>
       {{/each}}
 
@@ -44,16 +44,16 @@
       class="row-start-1 row-end-2 col-span-full absolute top-[0.5rem] right-[0.5rem] select-none aria-hidden text-bold text-4xl hover:cursor-pointer"
     >&times;</span>
     <div
-      class="grid auto-rows-auto grid-cols-[auto_1fr] gap-10 row-start-1 row-end-2 col-span-full mb-3 p-3 gap-y-2"
+      class="grid auto-rows-auto grid-cols-[auto_1fr_auto_1fr] gap-10 row-start-1 row-end-2 col-span-full mb-3 p-3 gap-y-2"
     >
       <div class="select-none">First Name:</div>
-      <div id="first-name-div"></div>
+      <div id="first-name-div" class="font-medium"></div>
       <div class="select-none">Last Name:</div>
-      <div id="last-name-div"></div>
+      <div id="last-name-div" class="font-medium"></div>
       <div class="select-none">Address:</div>
-      <div id="address-div"></div>
+      <div id="address-div" class="font-medium"></div>
       <div class="select-none">Phone number:</div>
-      <div id="phone-div"></div>
+      <div id="phone-div" class="font-medium"></div>
     </div>
     <div
       id="service-history"
