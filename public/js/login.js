@@ -16,15 +16,15 @@ async function loginFormHandler(event) {
     });
 
     const body = await response.json();
-    console.log(body.user.role);
-    debugger;
+
     if (response.ok) {
+      // redirect user to appropriate dashboard based on role
       switch (body.user.role) {
         case "manager":
           document.location.replace("/workshop");
           break;
         case "technician":
-          // do something here
+          document.location.replace("/mechanicDashboard");
           break;
         case "user":
           document.location.replace("/dashboard");

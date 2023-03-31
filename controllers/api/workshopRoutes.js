@@ -2,8 +2,7 @@ const router = require("express").Router();
 const { withAdminAuth } = require("../../utils/auth");
 const { User, Car, Service, Job } = require("../../models");
 
-// router.post("/", withAdminAuth, async (req, res) => {
-router.post("/", async (req, res) => {
+router.post("/", withAdminAuth, async (req, res) => {
   try {
     const newTechnician = await User.update(
       { role: "technician" },
@@ -30,8 +29,7 @@ router.post("/", async (req, res) => {
 
 // create a new service entity in the service table
 // associate that service entity to the job and to the technician
-// router.post("/technician", withAuth, (req, res) => {});
-router.post("/technician", async (req, res) => {
+router.post("/technician", withAdminAuth, async (req, res) => {
   try {
     const job = await Job.findOne({
       where: {

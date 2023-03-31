@@ -34,7 +34,7 @@ router.get("/dashboard", withAuth, async (req, res) => {
 router.get("/login", async (req, res) => {
   try {
     if (req.session.logged_in) {
-      res.redirect("home");
+      res.redirect("/");
       return;
     }
     res.render("login");

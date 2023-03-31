@@ -7,11 +7,17 @@ const withAuth = (req, res, next) => {
   }
 };
 
-const withAdminAuth = (res, req, next) => {
-  if (!req.session.role === "manager") {
-    res
-      .status(401)
-      .json({ message: "You are not authorised to perform this action" });
+const withTechnicianAuth = (req, res, next) => {
+  if (req.session.role !== "technician" || req.session.role !== "manager") {
+    res.redirect("/");
+  } else {
+    next();
+  }
+};
+
+const withAdminAuth = (req, res, next) => {
+  if (req.session.role !== "manager") {
+    res.redirect("/");
   } else {
     next();
   }
