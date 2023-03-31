@@ -17,16 +17,6 @@ Mechanomicon is a cutting-edge vehicle management platform designed to revolutio
 * [Contributors](#contributors)
 * [Questions](#questions)
 
-## Description
-
-To create Mechanomicon, we used the latest technologies and frameworks. The platform's back-end runs on Node.js, a popular JavaScript runtime that provides efficient and scalable server-side applications. We utilized the Express.js framework for routing and handling HTTP requests, while Sequelize ORM connected to the MySQL database for smooth and reliable data storage. On the front-end, we utilized Handlebars.js for dynamic HTML generation and Tailwind CSS for a responsive and visually appealing user interface. We also integrated Passport.js, a flexible authentication middleware, for secure user authentication with Google accounts.
-
-The development process presented several challenges, including creating a user-friendly interface for vehicle information input and updates, making the platform responsive and visually appealing across different devices, and integrating third-party authentication securely. However, we overcame these challenges by researching best practices and refining our UI, optimizing the code, and carefully planning the integration of Passport.js and Google Sign-In.
-
-The Mechanomicon project provided valuable insights and expanded our skill sets in various areas. We learned how to effectively manage and manipulate data with Sequelize ORM and MySQL, create dynamic web applications with Handlebars.js and Tailwind CSS, and implement secure user authentication systems.
-
-In conclusion, Mechanomicon is a state-of-the-art vehicle management platform that leverages modern technologies to provide a comprehensive and user-friendly solution for vehicle management. By overcoming challenges in UI design, responsiveness, and third-party authentication, we have developed a platform that addresses the pain points of vehicle owners and fleet managers while providing a secure and seamless experience. Our journey with Mechanomicon has been a valuable learning experience, and we look forward to continuing to refine and expand the platform, incorporating new features and ensuring its continued success as a revolutionary vehicle management solution.
-
 ## Acceptance Criteria
 
 ```
@@ -46,6 +36,19 @@ THEN I can see my Car(s)
 WHEN I select a Car
 THEN I can view all previous service reports attached to that car 
 ```
+
+## Work Description
+
+For this Project we utilised Node.js, Express.js, Handlebars and mySQL to create a functional and adaptable website that utilises back end functionality and database to retain user security and information. We used Tailwind for page layout and styling. For the project we split the jobs into 5 parts and all worked on one each for the final website.
+
+Models for all website data
+User profile homepage
+Workshop homepage
+Technician homepage
+Initial homepage for login / signup
+A major challenge we faced during this project included a deciding a final structure for our project, this influenced our models and how our pages would be set up. We initially over complicated our idea but by discussing ideas and goals as a group we simplified our end product and came up with a workable view of how the project should take shape. At different points we all had our own minor issues but as a group or with guidance we were able to eliminate any potential lager issues.
+
+Our major success with this project has been working as a team and all doing our part and helping each other when one of us had a problem. Our communication was good and if something required attention everyone was quick to address the problem in a orderly manner and inform everyone else of the change and the problem it addresses.
 
 ## Made With
 
