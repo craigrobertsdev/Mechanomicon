@@ -35,9 +35,7 @@ async function updateProfile(event) {
 
   if (response.ok) {
     alert("Profile updated successfully!");
-    location.reload();
-
-    // document.location.replace("/dashboard");
+    document.location.replace("/dashboard");
   } else {
     alert("Failed to update profile.");
   }

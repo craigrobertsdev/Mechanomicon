@@ -61,7 +61,7 @@ router.get("/profile", withAuth, async (req, res) => {
 });
 
 //reset password
-router.get("/resetPassword", async (req, res) => {
+router.get("/resetPassword", (req, res) => {
   try {
     res.render("resetPassword");
   } catch (error) {

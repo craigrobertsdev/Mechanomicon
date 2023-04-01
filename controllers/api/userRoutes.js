@@ -80,7 +80,7 @@ router.post("/logout", (req, res) => {
 // update user profile
 router.put("/:id", withAuth, async (req, res) => {
   try {
-    const userData = await User.update(
+    const [userData] = await User.update(
       {
         first_name: req.body.first_name,
         last_name: req.body.last_name,
@@ -99,7 +99,7 @@ router.put("/:id", withAuth, async (req, res) => {
 
     res
       .status(200)
-      .json({ message: "Profile updated successfully!", userData });
+      .json({ message: "Profile updated successfully!", data: userData });
   } catch (error) {
     res.status(500).json({ message: "Failed to update profile", error: error });
   }
