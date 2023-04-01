@@ -12,7 +12,7 @@ module.exports = {
   extend: {
     colors: {
       'white': '#ffffff',
-      'm-green': '#004225',
+      'm-green': '#082616',
       'm-darkCream': '#C7BDAA',
       'm-cream': '#E0DCD1',
       'm-brown': '#645046',

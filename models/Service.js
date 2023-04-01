@@ -65,11 +65,6 @@ Service.init(
       allowNull: false,
       defaultValue: "0"
     },
-    completed: {
-      type: DataTypes.BOOLEAN,
-      allowNull: false,
-      defaultValue: false,
-    },
     car_id: {
       type: DataTypes.INTEGER,
       references: {
@@ -86,6 +81,7 @@ Service.init(
     },
     job_id: {
       type: DataTypes.INTEGER,
+      allowNull: false,
       references: {
         model: "service",
         key: "id",

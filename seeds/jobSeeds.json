@@ -5,7 +5,8 @@
     "car_id": 1,
     "drop_off": "8:00AM",
     "notes": "Customer requests that oil supplied in boot is used",
-    "date": "27/03/2022"
+    "date": "27/03/2022",
+    "completed": true
   },
   {
     "id": 2,
@@ -13,7 +14,8 @@
     "car_id": 2,
     "drop_off": "9:30AM",
     "notes": "Battery isolator switch under steering column must be switched to start vehicle",
-    "date": "27/03/2022"
+    "date": "27/03/2022",
+    "completed": true
   },
   {
     "id": 3,
@@ -21,7 +23,8 @@
     "car_id": 3,
     "drop_off": "11:30PM",
     "notes": "In for repairs at same time",
-    "date": "27/03/2022"
+    "date": "27/03/2022",
+    "completed": true
   },
   {
     "id": 4,

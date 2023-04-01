@@ -1,6 +1,7 @@
 {{#each jobs as |job|}}
+{{#unless job.completed}}
   <div id={{job.id}}
-    class="grid auto-rows-auto grid-cols-[max-content_1fr_max-content_1fr] mb-3 p-3 gap-3 border-m-brown border-b"
+    class="job-card grid auto-rows-auto grid-cols-[max-content_1fr_max-content_1fr] mb-3 p-3 gap-3 border-m-brown border-b"
   >
     <div class="select-none">Customer Name:</div>
     <div class="font-medium">{{job.car.user.first_name}} {{job.car.user.last_name}}</div>
@@ -26,7 +27,8 @@
     <div class="py-2 font-medium">{{job.notes}}</div>
     <div class="select-none py-2">Assigned Technician:</div>
     <div>
-      <select class="mechanic-list bg-m-silver py-2font-medium">
+      <select class="mechanic-list bg-m-silver py-2 font-medium">
+        <option class="font-medium" value="none">No technician assigned</option>
         {{#each ../technicians}}
           <option  class="font-medium"
             value={{id}}
@@ -36,4 +38,5 @@
       <button class="assign-technician bg-m-green text-m-silver hover:bg-green-800 font-bold py-2 px-3 rounded active:scale-[0.99] active:bg-m-green">Assign Technician</button>
     </div>
   </div>
+  {{/unless}}
 {{/each}}

@@ -87,7 +87,8 @@ function setListStyle(element) {
     value.style.backgroundColor = "";
   }
 
-  element.style.backgroundColor = "#e5e5e5ff";
+  element.style.backgroundColor = "#E0DCD1";
+  element.style.textColor = "#000";
 }
 
 function hideSections() {
@@ -102,12 +103,24 @@ function showSection(section) {
   section.classList.add("block");
 }
 
+function setSelectedTechnicians() {
+  const jobCards = document.getElementsByClassName("job-card")
+  for (const job of jobCards) {
+    const selectElement = job.getElementsByClassName('mechanic-list')[0];
+    // const 
+  }
+}
+
+// called when technician is assigned to a job. will create a blank service object in the database and link it to the job
 async function assignTechnician(event) {
   const job = event.target.parentNode.parentNode.id;
-  console.log("🚀 ~ file: workshop.js:107 ~ assignTechnician ~ job:", job);
+  console.log("🚀 ~ file: workshop.js:116 ~ assignTechnician ~ job:", job)
   const technician = event.target.previousElementSibling.value;
+  console.log("🚀 ~ file: workshop.js:117 ~ assignTechnician ~ technician:", technician)
   const car = event.target.parentNode.parentNode.children[4].id;
+  console.log("🚀 ~ file: workshop.js:119 ~ assignTechnician ~ car:", car)
 
+  
   const response = await fetch("/api/workshop/technician", {
     method: "POST",
     headers: {
@@ -115,6 +128,10 @@ async function assignTechnician(event) {
     },
     body: JSON.stringify({ job: job, technician: technician, car: car }),
   });
+
+  if (response.ok) {
+    location.reload();
+  }
 }
 
 async function addTechnician(event) {
@@ -186,6 +203,7 @@ function filterTechnicians() {
   }
 }
 
+// this will dynamically render the content of the modal based on the user selected.
 function openUserModal(event) {
   userModal.style.display = "flex";
   document.body.style.overflow = "hidden";
@@ -244,9 +262,9 @@ function closeUserModal() {
 function selectUserRow(event) {
   event.preventDefault();
   for (const row of userRows) {
-    row.style.backgroundColor = "white";
+    row.style.backgroundColor = "#E0DCD1";
   }
-  event.currentTarget.style.backgroundColor = "grey";
+  event.currentTarget.style.backgroundColor = "#e5e5e5ff";
 }
 
 // technician view
@@ -322,10 +340,10 @@ function toPascalCase(phrase) {
 
   return capitalisedWords.join(" ");
 }
-//#endregion
 
 function init() {
   setListStyle(links.jobsLink);
+  setSelectedTechnicians();
 }
 
 init();

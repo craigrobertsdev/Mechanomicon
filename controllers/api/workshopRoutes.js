@@ -31,16 +31,24 @@ router.post("/", withAdminAuth, async (req, res) => {
 // associate that service entity to the job and to the technician
 router.post("/technician", withAdminAuth, async (req, res) => {
   try {
-    const job = await Job.findOne({
+    // find the job and include the associated service if it has one
+    const jobData = await Job.findOne({
       where: {
         id: req.body.job,
       },
+      include: [{
+        model: Service,
+        attributes: ["job_id"]
+      }]
     });
 
-    let service;
+    const job = jobData.get({plain: true})
+    console.log(job);
+
+    let service, serviceToUpdate;
 
     // if there isn't already a service created for the job, create one
-    if (!job.service_id) {
+    if (!job.service.job_id) {
       service = await Service.create({
         car_id: req.body.car,
         technician_id: req.body.technician,

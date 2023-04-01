@@ -28,10 +28,10 @@ router.get("/", withAdminAuth, async (req, res) => {
         include: [
           {
             model: Service,
-            attributes: ["id", "price", "completed"],
+            attributes: ["id", "price"],
             include: {
               model: Job,
-              attributes: ["date", "type"],
+              attributes: ["date", "type", "completed"],
             },
           },
         ],
@@ -57,7 +57,7 @@ router.get("/", withAdminAuth, async (req, res) => {
     include: [
       {
         model: Service,
-        attributes: ["id", "completed"],
+        attributes: ["id"],
         include: [
           {
             model: Car,
@@ -65,7 +65,7 @@ router.get("/", withAdminAuth, async (req, res) => {
           },
           {
             model: Job,
-            attributes: ["type", "date"],
+            attributes: ["type", "date", "completed"],
           },
         ],
       },
@@ -75,7 +75,7 @@ router.get("/", withAdminAuth, async (req, res) => {
   // id (for loading the job page later on), service_type, drop_off, length, notes, price, technician (id),
   // car_id (rego, make, model, user_id (name, phone number))
   const jobData = Job.findAll({
-    attributes: ["id", "type", "date", "notes", "drop_off"],
+    attributes: ["id", "type", "date", "notes", "drop_off", "completed"],
     include: [
       {
         model: Car,
@@ -85,10 +85,7 @@ router.get("/", withAdminAuth, async (req, res) => {
           attributes: ["id", "first_name", "last_name", "phone"],
         },
       },
-      {
-        model: Service,
-        attributes: ["completed"],
-      },
+
     ],
   });
 
@@ -97,16 +94,13 @@ router.get("/", withAdminAuth, async (req, res) => {
     include: [
       {
         model: Job,
-        attributes: ["date", "type"],
+        attributes: ["date", "type", "completed"],
         include: [
           {
             model: Car,
             attributes: ["license_plate"],
           },
-          {
-            model: Service,
-            attributes: ["completed"],
-          },
+
         ],
       },
     ],
@@ -140,6 +134,7 @@ router.get("/", withAdminAuth, async (req, res) => {
     techniciansJSON: JSON.stringify(technicians),
     jobsJSON: JSON.stringify(jobs),
     servicesJSON: JSON.stringify(services),
+    logged_in: req.session.logged_in
   });
 });
 
