@@ -1,0 +1,13 @@
+<form id="add-technician-form">
+  <h2 class="text-2xl mb-2">Add New Technician</h2>
+
+  <label for="customer-list" class=" py-2">Technician to add:</label>
+  <select id="customer-list" class="mb-2 py-2 bg-m-silver">
+    {{#each customers as |customer|}}
+      <option value="{{customer.id}}">{{customer.first_name}}
+        {{customer.last_name}}</option>
+    {{/each}}
+  </select>
+  <br />
+  <button type="submit" id="add-technician-button" class="bg-m-green text-m-silver hover:bg-emerald-800 font-bold py-2 px-3 rounded active:scale-[0.99] active:bg-m-green">Add Technician</button>
+</form>

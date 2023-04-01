@@ -15,8 +15,21 @@ async function loginFormHandler(event) {
       headers: { "Content-Type": "application/json" },
     });
 
+    const body = await response.json();
+
     if (response.ok) {
-      document.location.replace("/");
+      // redirect user to appropriate dashboard based on role
+      switch (body.user.role) {
+        case "manager":
+          document.location.replace("/workshop");
+          break;
+        case "technician":
+          document.location.replace("/mechanicDashboard");
+          break;
+        case "user":
+          document.location.replace("/dashboard");
+          break;
+      }
     } else {
       alert(response.statusText);
     }

@@ -1,39 +1,42 @@
 {{#each jobs as |job|}}
-  <div
-    class="grid auto-rows-auto grid-cols-[max-content_1fr_max-content_1fr] mb-3 p-3 gap-3 border-b-2"
+{{#unless job.completed}}
+  <div id={{job.id}}
+    class="job-card grid auto-rows-auto grid-cols-[max-content_1fr_max-content_1fr] mb-3 p-3 gap-3 border-m-brown border-b"
   >
     <div class="select-none">Customer Name:</div>
-    <div>{{job.car.user.first_name}} {{job.car.user.last_name}}</div>
+    <div class="font-medium">{{job.car.user.first_name}} {{job.car.user.last_name}}</div>
     <div class="select-none">Phone number:</div>
-    <div>{{job.car.user.phone}}</div>
-    <div class="select-none">Registration:</div>
-    <div>{{job.car.license_plate}}</div>
+    <div class="font-medium">{{job.car.user.phone}}</div>
+    <div id={{job.car.id}} class="select-none">Registration:</div>
+    <div class="font-medium">{{job.car.license_plate}}</div>
     <div class="select-none">Make:</div>
-    <div>{{job.car.make}}</div>
+    <div class="font-medium">{{job.car.make}}</div>
     <div class="select-none">Model:</div>
-    <div>{{job.car.model}}</div>
+    <div class="font-medium">{{job.car.model}}</div>
     <div class="select-none">Year:</div>
-    <div>{{job.car.year}}</div>
+    <div class="font-medium">{{job.car.year}}</div>
     <div class="select-none">Colour:</div>
-    <div>{{job.car.colour}}</div>
+    <div class="font-medium">{{job.car.colour}}</div>
     <div class="select-none">Job type:</div>
-    <div>{{job.type}}</div>
+    <div class="font-medium">{{pascalCase job.type}}</div>
     <div class="select-none">Drop-off time:</div>
-    <div>9.00am</div>
+    <div class="font-medium">{{job.drop_off}}</div>
     <div class="select-none">Job length:</div>
-    <div>{{jobLength job.type}}</div>
-    <div class="select-none">Assigned Technician:</div>
+    <div class="font-medium">{{jobLength job.type}}</div>
+    <div class="select-none py-2">Notes:</div>
+    <div class="py-2 font-medium">{{job.notes}}</div>
+    <div class="select-none py-2">Assigned Technician:</div>
     <div>
-      <select class="mechanic-list">
+      <select class="mechanic-list bg-m-silver py-2 font-medium">
+        <option class="font-medium" value="none">No technician assigned</option>
         {{#each ../technicians}}
-          <option
-            value={{first_name}}
-          >{{first_name}}</option>
+          <option  class="font-medium"
+            value={{id}}
+          >{{first_name}} {{last_name}}</option>
         {{/each}}
       </select>
-      <button class="assign-technician border">Assign Technician</button>
+      <button class="assign-technician bg-m-green text-m-silver hover:bg-green-800 font-bold py-2 px-3 rounded active:scale-[0.99] active:bg-m-green">Assign Technician</button>
     </div>
-    <div class="select-none col-start-1">Notes:</div>
-    <div class="col-start-2 col-end-5">{{job.notes}}</div>
   </div>
+  {{/unless}}
 {{/each}}

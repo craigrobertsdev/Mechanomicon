@@ -10,14 +10,17 @@ router.post("/signup", async (req, res) => {
       last_name: req.body.last_name,
       email: req.body.email,
       password: req.body.password,
-      role: req.body.role,
+      role: "user",
     });
+
+    const user = userData.get({ plain: true });
 
     req.session.save(() => {
       req.session.user_id = userData.id;
       req.session.logged_in = true;
+      req.session.role = user.role;
 
-      console.log("Session: ", req.session);
+
 
       res.status(200).json(userData);
     });
@@ -47,18 +50,18 @@ router.post("/login", async (req, res) => {
       return;
     }
 
-    req.session.save(() => {
-      req.session.user_id = userData.id;
-      req.session.logged_in = true;
+    const user = userData.get({ plain: true });
 
-      console.log("Session: ", req.session);
+    req.session.save(() => {
+      req.session.user_id = user.id;
+      req.session.logged_in = true;
+      req.session.role = user.role;
 
       res
         .status(200)
         .json({ user: userData, message: "You are now logged in!" });
     });
   } catch (err) {
-    console.error(err);
     res.status(500).json(err);
   }
 });

@@ -1,12 +1,10 @@
 const router = require("express").Router();
-const withAuth = require("../utils/auth");
+const { withAdminAuth } = require("../utils/auth");
 const { User, Car, Service, Job } = require("../models");
 
 // when logging in as a manager, gets all data required for the admin dashboard
-router.get("/", async (req, res) => {
-  // if (!req.session.role === "manager") {
-  //     res.status(401).json("You are not authorised to access this page.");
-  // }
+router.get("/", withAdminAuth, async (req, res) => {
+  console.log(req.session);
 
   // gets all customers and their vehicle service history
   const customerData = User.findAll({
@@ -30,10 +28,10 @@ router.get("/", async (req, res) => {
         include: [
           {
             model: Service,
-            attributes: ["id", "price", "completed"],
+            attributes: ["id", "price"],
             include: {
               model: Job,
-              attributes: ["date", "type"],
+              attributes: ["date", "type", "completed"],
             },
           },
         ],
@@ -59,7 +57,7 @@ router.get("/", async (req, res) => {
     include: [
       {
         model: Service,
-        attributes: ["id", "completed"],
+        attributes: ["id"],
         include: [
           {
             model: Car,
@@ -67,7 +65,7 @@ router.get("/", async (req, res) => {
           },
           {
             model: Job,
-            attributes: ["type", "date"],
+            attributes: ["type", "date", "completed"],
           },
         ],
       },
@@ -77,7 +75,7 @@ router.get("/", async (req, res) => {
   // id (for loading the job page later on), service_type, drop_off, length, notes, price, technician (id),
   // car_id (rego, make, model, user_id (name, phone number))
   const jobData = Job.findAll({
-    attributes: ["id", "type", "date", "notes", "drop_off"],
+    attributes: ["id", "type", "date", "notes", "drop_off", "completed"],
     include: [
       {
         model: Car,
@@ -87,10 +85,7 @@ router.get("/", async (req, res) => {
           attributes: ["id", "first_name", "last_name", "phone"],
         },
       },
-      {
-        model: Service,
-        attributes: ["completed"],
-      },
+
     ],
   });
 
@@ -99,16 +94,13 @@ router.get("/", async (req, res) => {
     include: [
       {
         model: Job,
-        attributes: ["date", "type"],
+        attributes: ["date", "type", "completed"],
         include: [
           {
             model: Car,
             attributes: ["license_plate"],
           },
-          {
-            model: Service,
-            attributes: ["completed"],
-          },
+
         ],
       },
     ],
@@ -128,8 +120,6 @@ router.get("/", async (req, res) => {
   const serialisedTechnicianData = technicians.map((technician) =>
     technician.get({ plain: true })
   );
-  console.log("🚀 ~ file: workshopRoutes.js:131 ~ router.get ~ serialisedTechnicianData:", serialisedTechnicianData)
-
   const serialisedJobData = jobs.map((job) => job.get({ plain: true }));
   const serialisedServiceData = services.map((service) =>
     service.get({ plain: true })
@@ -144,6 +134,7 @@ router.get("/", async (req, res) => {
     techniciansJSON: JSON.stringify(technicians),
     jobsJSON: JSON.stringify(jobs),
     servicesJSON: JSON.stringify(services),
+    logged_in: req.session.logged_in
   });
 });
 

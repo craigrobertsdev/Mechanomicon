@@ -11,6 +11,27 @@ const withAuth = (req, res, next) => {
   }
 };
 
+
+const withTechnicianAuth = (req, res, next) => {
+  if (req.session.role !== "technician" || req.session.role !== "manager") {
+    res.redirect("/");
+  } else {
+    next();
+  }
+};
+
+const withAdminAuth = (req, res, next) => {
+  if (req.session.role !== "manager") {
+    res.redirect("/");
+  } else {
+    // Set req.session.logged_in to true if the user is authenticated via Google login
+    if (req.isAuthenticated()) {
+      req.session.logged_in = true;
+    }
+    next();
+  }
+};
+
 const attachAuthInfo = (req, res, next) => {
   console.log("AttachAuthInfo called");
   if (req.isAuthenticated()) {
@@ -26,6 +47,5 @@ const attachAuthInfo = (req, res, next) => {
 };
 
 module.exports = {
-  withAuth,
-  attachAuthInfo,
+withAuth, withTechnicianAuth, withAdminAuth,  attachAuthInfo,
 };
