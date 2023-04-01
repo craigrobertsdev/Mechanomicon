@@ -6,7 +6,7 @@
     <div class="h-full md:overflow-y-auto md:px-3 md:py-4 bg-gray-50 dark:bg-gray-500">
       <ul class="flex md:flex-col md:space-y-8 md:font-medium sm:pt-3">
         <li>
-          <a href="/job"
+          <a href="#" onclick="showSection('car-info')"
             class="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700">
             <svg aria-hidden="true"
               class="w-6 h-6 text-gray-500 transition duration-75 dark:text-gray-400 group-hover:text-gray-900 dark:group-hover:text-white"
@@ -18,7 +18,7 @@
           </a>
         </li>
         <li>
-          <a href="#"
+          <a href="#" onclick="showSection('service')"
             class="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700">
             <svg aria-hidden="true"
               class="flex-shrink-0 w-6 h-6 text-gray-500 transition duration-75 dark:text-gray-400 group-hover:text-gray-900 dark:group-hover:text-white"
@@ -33,7 +33,7 @@
           </a>
         </li>
         <li>
-          <a href="#"
+          <a href="#" onclick="showSection('book-service')"
             class="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700">
             <svg aria-hidden="true"
               class="flex-shrink-0 w-6 h-6 text-gray-500 transition duration-75 dark:text-gray-400 group-hover:text-gray-900 dark:group-hover:text-white"
@@ -49,7 +49,7 @@
           </a>
         </li>
         <li>
-          <a href="/workshop"
+          <a href="#" onclick="showSection('profile-page')"
             class="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700">
             <svg aria-hidden="true"
               class="flex-shrink-0 w-6 h-6 text-gray-500 transition duration-75 dark:text-gray-400 group-hover:text-gray-900 dark:group-hover:text-white"
@@ -80,6 +80,43 @@
           onclick="window.location.href='/add-car'">Add New Car</button>
       </div>
     </div>
+
+
+    <div class="container mx-auto px-4 py-6 " id="service">
+      <!-- Current services section -->
+      <div class="mt-6">
+        <h2 class="text-xl font-bold mb-4">Current Services</h2>
+        <ul>
+          {{#each currentServices}}
+          <li class="mb-2">{{service_name}} - {{date}}</li>
+          {{else}}
+          <p>No current services.</p>
+          {{/each}}
+        </ul>
+      </div>
+      <!-- Past services section -->
+      <div class="mt-6">
+        <h2 class="text-xl font-bold mb-4">Past Services</h2>
+        <ul>
+          {{#each pastServices}}
+          <li class="mb-2">{{service_name}} - {{date}}</li>
+          {{else}}
+          <p>No past services.</p>
+          {{/each}}
+        </ul>
+      </div>
+
+    </div>
+
+    <div class="container mx-auto px-4 py-6 " id="book-service">
+      <h1></h1>
+
+    </div>
+
+    <div class="container mx-auto px-4 py-6" id="profile-page">
+      {{> profiles}}
+    </div>
+
   </div>
 </div>
 
@@ -87,8 +124,35 @@
   function openModal() {
     document.getElementById("editModal").classList.remove("hidden");
   }
-
   function closeModal() {
     document.getElementById("editModal").classList.add("hidden");
   }
+
+  function showSection(id) {
+    const sections = ["car-info", "service", "book-service", "profile-page"];
+
+    // Hide all sections
+    sections.forEach((sectionId) => {
+      const section = document.getElementById(sectionId);
+      if (section) {
+        section.style.display = "none";
+      }
+    });
+
+    // Show the selected section
+    const selectedSection = document.getElementById(id);
+    if (selectedSection) {
+      selectedSection.style.display = "block";
+    }
+  }
+
+  document.addEventListener("DOMContentLoaded", function () {
+    // Show the default section when the page loads
+    showSection("car-info");
+  });
 </script>
+
+<script>
+  const userId = '{{user_id}}';
+</script>
+<script src="/js/profile.js"></script>
