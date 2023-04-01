@@ -1,7 +1,9 @@
 const userTableBody = document.getElementById("user-table");
 const technicianTableBody = document.getElementById("technician-table");
+const jobHistoryTableBody = document.getElementById("job-history-table");
 const userRows = userTableBody.getElementsByTagName("tr");
 const technicianRows = technicianTableBody.getElementsByTagName("tr");
+const jobHistoryRows = jobHistoryTableBody.getElementsByTagName("tr");
 const userModal = document.getElementById("user-modal");
 const technicianModal = document.getElementById("technician-modal");
 const addTechnicianForm = document.getElementById("add-technician-form");
@@ -24,12 +26,14 @@ const links = {
   customerLink: document.getElementById("customer-link"),
   technicianLink: document.getElementById("technician-link"),
   addTechnicianLink: document.getElementById("add-technician-link"),
+  jobHistoryLink: document.getElementById("job-history-link"),
 };
 const sections = {
   jobSection: document.getElementById("jobs-section"),
   customerSection: document.getElementById("customer-section"),
   technicianSection: document.getElementById("technician-section"),
   addTechnicianSection: document.getElementById("add-technician-section"),
+  jobHistorySection: document.getElementById("job-history-section"),
 };
 const buttons = document.getElementsByClassName("assign-technician");
 
@@ -38,6 +42,7 @@ links.jobsLink.addEventListener("click", openJobList);
 links.customerLink.addEventListener("click", openCustomerList);
 links.technicianLink.addEventListener("click", openTechnicianList);
 links.addTechnicianLink.addEventListener("click", openAddTechnician);
+links.jobHistoryLink.addEventListener("click", openJobHistory);
 
 for (const button of buttons) {
   button.addEventListener("click", assignTechnician);
@@ -57,6 +62,14 @@ for (let i = 0; i < technicianRows.length; i++) {
   const row = technicianRows[i];
   row.addEventListener("click", selectTechnicianRow);
   row.addEventListener("dblclick", openTechnicianModal);
+}
+
+for (let i = 0; i < jobHistoryRows.length; i++) {
+  const row = jobHistoryRows[i];
+  const id = row.id.split("-")[1];
+  const link = row.children[0].children[0];
+  link.href = `/invoice/${id}`;
+  link.style.textDecoration = "underline";
 }
 
 // functions to swap between tabs
@@ -81,6 +94,12 @@ function openAddTechnician(event) {
   showSection(sections.addTechnicianSection);
 }
 
+function openJobHistory(event) {
+  setListStyle(event.currentTarget);
+  hideSections();
+  showSection(sections.jobHistorySection);
+}
+
 // add background color to the currently selected list item
 function setListStyle(element) {
   for (const [key, value] of Object.entries(links)) {
@@ -103,24 +122,22 @@ function showSection(section) {
   section.classList.add("block");
 }
 
+// TODO
 function setSelectedTechnicians() {
-  const jobCards = document.getElementsByClassName("job-card")
+  const jobCards = document.getElementsByClassName("job-card");
   for (const job of jobCards) {
-    const selectElement = job.getElementsByClassName('mechanic-list')[0];
-    // const 
+    const selectElement = job.getElementsByClassName("mechanic-list")[0];
+    // const
   }
 }
 
 // called when technician is assigned to a job. will create a blank service object in the database and link it to the job
 async function assignTechnician(event) {
   const job = event.target.parentNode.parentNode.id;
-  console.log("🚀 ~ file: workshop.js:116 ~ assignTechnician ~ job:", job)
   const technician = event.target.previousElementSibling.value;
-  console.log("🚀 ~ file: workshop.js:117 ~ assignTechnician ~ technician:", technician)
-  const car = event.target.parentNode.parentNode.children[4].id;
-  console.log("🚀 ~ file: workshop.js:119 ~ assignTechnician ~ car:", car)
 
-  
+  const car = event.target.parentNode.parentNode.children[4].id;
+
   const response = await fetch("/api/workshop/technician", {
     method: "POST",
     headers: {
@@ -152,7 +169,7 @@ async function addTechnician(event) {
   }
 }
 
-// filter runinng on search bar
+// filter on search bar
 function filterCustomers() {
   const input = document.getElementById("customer-search-bar");
   let filterText = input.value.toUpperCase();
@@ -198,6 +215,31 @@ function filterTechnicians() {
         break;
       } else {
         technicianRows[i].style.display = "none";
+      }
+    }
+  }
+}
+
+function filterjobHistory() {
+  const input = document.getElementById("job-history-search-bar");
+  let filterText = input.value.toUpperCase();
+  // Loop through all list items, and hide those who don't match the search query
+  for (let i = 0; i < jobHistoryRows.length; i++) {
+    let row = jobHistoryRows[i].getElementsByTagName("td");
+
+    // get the text values from each cell and set to uppercase
+    let textValues = [];
+    for (const cell of row) {
+      textValues.push(cell.innerText.toUpperCase());
+    }
+
+    // iterate over each value and check whether the current text value is in the list
+    for (const value of textValues) {
+      if (value.toUpperCase().indexOf(filterText) > -1) {
+        jobHistoryRows[i].style.display = "";
+        break;
+      } else {
+        jobHistoryRows[i].style.display = "none";
       }
     }
   }
@@ -305,7 +347,7 @@ async function openTechnicianModal(event) {
     const registrationCell = document.createElement("td");
     registrationCell.classList.add("mb-2");
     registrationCell.classList.add("p-2");
-    invoiceCell.innerText = service.id;
+    invoiceCell.innerText = service.job.id;
     dateCell.innerText = service.job.date;
     serviceCell.innerText = toPascalCase(service.job.type);
     registrationCell.innerText = service.car.license_plate;

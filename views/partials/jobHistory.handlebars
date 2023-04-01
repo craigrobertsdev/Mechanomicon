@@ -1,2 +1,39 @@
-<h3>Job History</h3>
-{{#each }}
+<h2 class="text-2xl mb-2">Job History</h2>
+<div id="search">
+  <input
+    type="text"
+    id="job-history-search-bar"
+    class="border border-black mb-2 p-1 w-full"
+    placeholder="Search for names..."
+  />
+</div>
+
+{{! Job history table }}
+<table
+  class="table-fixed border border-m-brown border-collapse w-full text-center select-none"
+>
+  <thead>
+    <tr class="border">
+      <th class="border border-m-brown p-1">Invoice Number</th>
+      <th class="border border-m-brown p-1">Date</th>
+      <th class="border border-m-brown p-1">Customer Name</th>
+      <th class="border border-m-brown p-1">Registration</th>
+    </tr>
+    <tbody id="job-history-table">
+      {{#each services as |service|}}
+        {{#if service.job.completed}}
+          <tr id="job-{{service.job.id}}">
+            <td class="border border-m-brown p-1"><a>{{service.job.id}}</a></td>
+            <td class="border border-m-brown p-1">{{service.job.date}}</td>
+            <td class="border border-m-brown p-1">{{service.user.first_name}}
+              {{service.user.last_name}}</td>
+            <td
+              class="border border-m-brown p-1"
+            >{{service.job.car.license_plate}}</td>
+          </tr>
+        {{/if}}
+      {{/each}}
+
+    </tbody>
+  </thead>
+</table>
