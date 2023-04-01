@@ -88,7 +88,6 @@
   </nav>
 
 
-
   <!-- Main content -->
   <main class="w-full flex flex-grow">
     {{{body}}}
@@ -138,6 +137,18 @@
   {{#if logged_in}}
   <script src="/js/logout.js"></script>
   {{/if}}
+
+  <script>
+    document.addEventListener('DOMContentLoaded', function () {
+      const navbarToggle = document.querySelector('[data-collapse-toggle="navbar-default"]');
+      const navbarContent = document.getElementById('navbar-default');
+
+      navbarToggle.addEventListener('click', function () {
+        navbarContent.classList.toggle('hidden');
+        navbarContent.classList.toggle('md:block');
+      });
+    });
+  </script>
 
 </body>
 
