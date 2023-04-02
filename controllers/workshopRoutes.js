@@ -89,7 +89,7 @@ router.get("/", withAdminAuth, async (req, res) => {
   });
 
   const serviceData = await Service.findAll({
-    attributes: ["id"],
+    attributes: ["id", "technician_id"],
     include: [
       {
         model: Job,

@@ -23,17 +23,17 @@ document
 
 const links = {
   jobsLink: document.getElementById("job-link"),
+  jobHistoryLink: document.getElementById("job-history-link"),
   customerLink: document.getElementById("customer-link"),
   technicianLink: document.getElementById("technician-link"),
   addTechnicianLink: document.getElementById("add-technician-link"),
-  jobHistoryLink: document.getElementById("job-history-link"),
 };
 const sections = {
   jobSection: document.getElementById("jobs-section"),
+  jobHistorySection: document.getElementById("job-history-section"),
   customerSection: document.getElementById("customer-section"),
   technicianSection: document.getElementById("technician-section"),
   addTechnicianSection: document.getElementById("add-technician-section"),
-  jobHistorySection: document.getElementById("job-history-section"),
 };
 const buttons = document.getElementsByClassName("assign-technician");
 
@@ -78,26 +78,29 @@ function openJobList(event) {
   hideSections();
   showSection(sections.jobSection);
 }
-function openCustomerList(event) {
-  setListStyle(event.currentTarget);
-  hideSections();
-  showSection(sections.customerSection);
-}
-function openTechnicianList(event) {
-  setListStyle(event.currentTarget);
-  hideSections();
-  showSection(sections.technicianSection);
-}
-function openAddTechnician(event) {
-  setListStyle(event.currentTarget);
-  hideSections();
-  showSection(sections.addTechnicianSection);
-}
 
 function openJobHistory(event) {
   setListStyle(event.currentTarget);
   hideSections();
   showSection(sections.jobHistorySection);
+}
+
+function openCustomerList(event) {
+  setListStyle(event.currentTarget);
+  hideSections();
+  showSection(sections.customerSection);
+}
+
+function openTechnicianList(event) {
+  setListStyle(event.currentTarget);
+  hideSections();
+  showSection(sections.technicianSection);
+}
+
+function openAddTechnician(event) {
+  setListStyle(event.currentTarget);
+  hideSections();
+  showSection(sections.addTechnicianSection);
 }
 
 // add background color to the currently selected list item
@@ -123,11 +126,29 @@ function showSection(section) {
 }
 
 // TODO
+// on page load will change the selected option for each select element on the job cards if it set in the database
 function setSelectedTechnicians() {
   const jobCards = document.getElementsByClassName("job-card");
   for (const job of jobCards) {
+    // get the select element from each job card
     const selectElement = job.getElementsByClassName("mechanic-list")[0];
-    // const
+    const id = parseInt(job.id);
+
+    // get the service that matches the job
+    const service = servicesJSON.find((service) => {
+      return service.job.id === id;
+    });
+
+    // the technician associated with the service
+    const assignedTechnician = service.technician_id;
+
+    // iterate over the list of options and if their value matches the technician's value, select it
+    for (const option of selectElement.children) {
+      if (option.value == assignedTechnician) {
+        option.selected = true;
+        break;
+      }
+    }
   }
 }
 
@@ -135,7 +156,6 @@ function setSelectedTechnicians() {
 async function assignTechnician(event) {
   const job = event.target.parentNode.parentNode.id;
   const technician = event.target.previousElementSibling.value;
-
   const car = event.target.parentNode.parentNode.children[4].id;
 
   const response = await fetch("/api/workshop/technician", {
