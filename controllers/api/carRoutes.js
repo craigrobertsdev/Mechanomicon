@@ -1,29 +1,74 @@
-const router = require('express').Router();
-const { Car } = require('../../models');
+const router = require("express").Router();
+const { Car } = require("../../models");
+const { withAuth } = require("../../utils/auth");
 
+// Add car
+router.post("/", withAuth, async (req, res) => {
+  try {
+    console.log("Received add car request:", req.body);
 
-router.post('/', async (req, res) => {
-    try {
-      const carData = await Car.create(req.body);
-      res.status(200).json(carData);
-    } catch (err) {
-      res.status(400).json(err);
-    }
-  });
+    const userId = req.session.user_id;
 
-router.get('/', async (req, res) => {
-    try {
+    const newCar = await Car.create({
+      ...req.body,
+      user_id: userId,
+    });
 
-        //REMOVE LATER !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-        req.session.user_id = 1
-        //REMOVE LATER !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-
-        const carData = await Car.findAll({ where: { user_id: req.session.user_id } });
-      
-        res.status(200).json(carData);
-    } catch (err) {
-        res.status(400).json(err);
-    }
+    res.status(201).json(newCar);
+  } catch (error) {
+    res.status(500).json({ message: "Error adding car", error });
+  }
 });
 
-  module.exports = router;
+// Edit car
+router.put("/:id", withAuth, async (req, res) => {
+  try {
+    console.log("Received update car request:", req.params.id, req.body);
+    const carId = req.params.id;
+    const userId = req.session.user_id;
+
+    const car = await Car.findOne({ where: { id: carId, user_id: userId } });
+
+    if (!car) {
+      return res.status(404).json({ message: "Car not found" });
+    }
+
+    const { make, model, licensePlate, year, colour } = req.body;
+    car.make = make;
+    car.model = model;
+    car.licensePlate = licensePlate;
+    car.year = year;
+    car.colour = colour;
+
+    const updatedCar = await car.save();
+
+    res.json(updatedCar);
+  } catch (error) {
+    console.log("Error details:", error);
+    res.status(500).json({ message: "Error updating car", error });
+  }
+});
+
+// Delete car
+router.delete("/:id", withAuth, async (req, res) => {
+  try {
+    console.log("Received delete car request:", req.params.id);
+    const carId = req.params.id;
+    const userId = req.session.user_id;
+
+    const car = await Car.findOne({ where: { id: carId, user_id: userId } });
+
+    if (!car) {
+      return res.status(404).json({ message: "Car not found" });
+    }
+
+    await Car.destroy({ where: { id: carId } });
+
+    res.status(204).json({ message: "Car deleted" });
+  } catch (error) {
+    console.log("Error details:", error);
+    res.status(500).json({ message: "Error deleting car", error });
+  }
+});
+
+module.exports = router;

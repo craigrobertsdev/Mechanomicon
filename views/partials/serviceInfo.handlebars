@@ -1,0 +1,22 @@
+<!-- Current services section -->
+<div class="mt-6">
+    <h2 class="text-xl font-bold mb-4">Current Services</h2>
+    <ul>
+        {{#each currentServices}}
+        <li class="mb-2">{{service_name}} - {{date}}</li>
+        {{else}}
+        <p>No current services.</p>
+        {{/each}}
+    </ul>
+</div>
+<!-- Past services section -->
+<div class="mt-6">
+    <h2 class="text-xl font-bold mb-4">Past Services</h2>
+    <ul>
+        {{#each pastServices}}
+        <li class="mb-2">{{service_name}} - {{date}}</li>
+        {{else}}
+        <p>No past services.</p>
+        {{/each}}
+    </ul>
+</div>
