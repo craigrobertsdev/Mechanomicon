@@ -4,19 +4,15 @@ const { User, Car, Service, Job } = require("../../models");
 
 router.post("/", withAdminAuth, async (req, res) => {
   try {
-    const newTechnician = await User.update(
-      { role: "technician" },
-      {
-        where: {
-          id: req.body.newTechnician,
-        },
-      }
-    );
+    const newTechnician = await User.create({
+      ...req.body,
+      role: "technician",
+    });
 
     if (!newTechnician) {
       res
         .status(400)
-        .json({ message: "There was an error updating the user role" });
+        .json({ message: "There was an error creating the new technician" });
       return;
     }
 

@@ -125,7 +125,6 @@ function showSection(section) {
   section.classList.add("block");
 }
 
-// TODO
 // on page load will change the selected option for each select element on the job cards if it set in the database
 function setSelectedTechnicians() {
   const jobCards = document.getElementsByClassName("job-card");
@@ -174,13 +173,42 @@ async function assignTechnician(event) {
 async function addTechnician(event) {
   event.preventDefault();
 
-  const newTechnician = +document.getElementById("customer-list").value;
+  const first_name = document
+    .getElementById("add-technician-first-name")
+    .value.trim();
+  const last_name = document
+    .getElementById("add-technician-last-name")
+    .value.trim();
+  const email = document.getElementById("add-technician-email").value.trim();
+  const password = document
+    .getElementById("add-technician-password")
+    .value.trim();
+  const phone = document.getElementById("add-technician-phone").value.trim();
+  const address = document
+    .getElementById("add-technician-address")
+    .value.trim();
+  const postcode = document
+    .getElementById("add-technician-postcode")
+    .value.trim();
+  const city = document.getElementById("add-technician-city").value.trim();
+  const state = document.getElementById("add-technician-state").value.trim();
+
   const response = await fetch("/api/workshop", {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
     },
-    body: JSON.stringify({ newTechnician: newTechnician }),
+    body: JSON.stringify({
+      first_name,
+      last_name,
+      email,
+      password,
+      phone,
+      address,
+      postcode,
+      city,
+      state,
+    }),
   });
 
   console.log(response);
