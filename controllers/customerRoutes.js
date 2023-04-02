@@ -23,11 +23,14 @@ router.get("/", withAuth, async (req, res) => {
     const currentServicesData = await Job.findAll({
       where: {
         car_id: userCarsIds,
-        completed: true,
+        completed: false,
       },
       include: [
         {
           model: Car,
+        },
+        {
+          model: Service,
         },
       ],
     });

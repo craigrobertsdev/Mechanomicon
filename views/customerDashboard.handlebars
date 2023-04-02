@@ -65,12 +65,8 @@
   </aside>
 
   <!-- right side section Show data from model -->
-<<<<<<< HEAD
   <div
     class="relative w-full h-full md:mt-0 md:h-full overflow-auto bg-gradient-to-r from-gray-400 via-gray-600 to-blue-800 ">
-=======
-  <div class="relative w-full md:mt-0 md:h-full overflow-auto bg-gradient-to-r from-gray-400 via-gray-600 to-blue-800 ">
->>>>>>> 592fbbf0cf8da9ac60b0056ff962a0cefe9f61c9
     <h1 class="text-4xl font-bold mt-5 text-center ">Welcome, {{user.first_name}} {{user.last_name}}</h1>
     <!-- car info -->
     <div class="container mx-auto px-4 py-6" id="car-info">
@@ -100,7 +96,7 @@
           <tr>
             <th class="border border-gray-300 p-2 bg-gray-200 font-bold">Rego</th>
             <th class="border border-gray-300 p-2 bg-gray-200 font-bold">Make/Model</th>
-            <th class="border border-gray-300 p-2 bg-gray-200 font-bold">Additional Notes</th>
+            <th class="border border-gray-300 p-2 bg-gray-200 font-bold">Notes</th>
             <th class="border border-gray-300 p-2 bg-gray-200 font-bold">Price</th>
             <th class="border border-gray-300 p-2 bg-gray-200 font-bold">Total Time(hours)</th>
             <th class="border border-gray-300 p-2 bg-gray-200 font-bold">Service Date</th>
@@ -111,14 +107,10 @@
           <tr class="even:bg-gray-100">
             <td class="border border-gray-300 p-2">{{this.car.licensePlate}}</td>
             <td class="border border-gray-300 p-2">{{this.car.make}} {{this.car.model}}</td>
-<<<<<<< HEAD
             <td class="border border-gray-300 p-2">{{this.notes}}</td>
-=======
-            <td class="border border-gray-300 p-2">{{this.job.notes}}</td>
->>>>>>> 592fbbf0cf8da9ac60b0056ff962a0cefe9f61c9
-            <td class="border border-gray-300 p-2">{{this.price}}</td>
-            <td class="border border-gray-300 p-2">{{this.total_time}}</td>
-            <td class="border border-gray-300 p-2">{{this.job.date}}</td>
+            <td class="border border-gray-300 p-2">{{this.service.price}}</td>
+            <td class="border border-gray-300 p-2">{{this.service.total_time}}</td>
+            <td class="border border-gray-300 p-2">{{this.date}}</td>
           </tr>
           {{/each}}
         </tbody>
@@ -134,7 +126,7 @@
           <tr>
             <th class="border border-gray-300 p-2 bg-gray-200 font-bold">Rego</th>
             <th class="border border-gray-300 p-2 bg-gray-200 font-bold">Make/Model</th>
-            <th class="border border-gray-300 p-2 bg-gray-200 font-bold">Additional Notes</th>
+            <th class="border border-gray-300 p-2 bg-gray-200 font-bold">Notes</th>
             <th class="border border-gray-300 p-2 bg-gray-200 font-bold">Price</th>
             <th class="border border-gray-300 p-2 bg-gray-200 font-bold">Total Time</th>
             <th class="border border-gray-300 p-2 bg-gray-200 font-bold">Service Date</th>
@@ -145,10 +137,10 @@
           <tr class="even:bg-gray-100">
             <td class="border border-gray-300 p-2">{{this.car.licensePlate}}</td>
             <td class="border border-gray-300 p-2">{{this.car.make}} {{this.car.model}}</td>
-            <td class="border border-gray-300 p-2">{{this.job.notes}}</td>
-            <td class="border border-gray-300 p-2">{{this.price}}</td>
-            <td class="border border-gray-300 p-2">{{this.total_time}}</td>
-            <td class="border border-gray-300 p-2">{{this.job.date}}</td>
+            <td class="border border-gray-300 p-2">{{this.notes}}</td>
+            <td class="border border-gray-300 p-2">{{this.service.price}}</td>
+            <td class="border border-gray-300 p-2">{{this.service.total_time}}</td>
+            <td class="border border-gray-300 p-2">{{this.date}}</td>
           </tr>
           {{/each}}
         </tbody>
@@ -160,7 +152,6 @@
 
     <!-- book service -->
     <div class="container mx-auto px-4 py-6 " id="book-service">
-<<<<<<< HEAD
       <h2 class="text-xl font-bold mb-4">Add Service</h2>
       <form action="/api/job" method="POST" id="add-service-form">
 
@@ -213,28 +204,11 @@
     </div>
 
 
-
-
-
-
-
-  </div>
-
-  <!-- profile -->
-  <div class="container mx-auto px-4 py-6" id="profile-page">
-    {{> profiles}}
-  </div>
-</div>
-=======
-      <h1>book service</h1>
-    </div>
-
     <!-- profile -->
     <div class="container mx-auto px-4 py-6" id="profile-page">
       {{> profiles}}
     </div>
   </div>
->>>>>>> 592fbbf0cf8da9ac60b0056ff962a0cefe9f61c9
 </div>
 
 <!-- Add Car Modal -->
