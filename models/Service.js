@@ -15,42 +15,42 @@ Service.init(
     oilChanged: {
       type: DataTypes.BOOLEAN,
       allowNull: false,
-      defaultValue: false
+      defaultValue: false,
     },
     filterChanged: {
       type: DataTypes.BOOLEAN,
       allowNull: false,
-      defaultValue: false
+      defaultValue: false,
     },
     brakesChecked: {
       type: DataTypes.BOOLEAN,
       allowNull: false,
-      defaultValue: false
+      defaultValue: false,
     },
     coolantChecked: {
       type: DataTypes.BOOLEAN,
       allowNull: false,
-      defaultValue: false
+      defaultValue: false,
     },
     batteryChecked: {
       type: DataTypes.BOOLEAN,
       allowNull: false,
-      defaultValue: false
+      defaultValue: false,
     },
     suspensionChecked: {
       type: DataTypes.BOOLEAN,
       allowNull: false,
-      defaultValue: false
+      defaultValue: false,
     },
     filtersChecked: {
       type: DataTypes.BOOLEAN,
       allowNull: false,
-      defaultValue: false
+      defaultValue: false,
     },
     tyresRotated: {
       type: DataTypes.BOOLEAN,
       allowNull: false,
-      defaultValue: false
+      defaultValue: false,
     },
     additionalNotes: {
       type: DataTypes.STRING,
@@ -58,12 +58,12 @@ Service.init(
     price: {
       type: DataTypes.DECIMAL,
       allowNull: false,
-      defaultValue: 0
+      defaultValue: 0,
     },
     total_time: {
       type: DataTypes.STRING,
       allowNull: false,
-      defaultValue: "0"
+      defaultValue: "0",
     },
     car_id: {
       type: DataTypes.INTEGER,
@@ -74,6 +74,7 @@ Service.init(
     },
     technician_id: {
       type: DataTypes.INTEGER,
+      allowNull: true,
       references: {
         model: "user",
         key: "id",
@@ -81,7 +82,7 @@ Service.init(
     },
     job_id: {
       type: DataTypes.INTEGER,
-      allowNull: false,
+      allowNull: true,
       references: {
         model: "service",
         key: "id",

@@ -11,7 +11,8 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css"
     integrity="sha512-SzlrxWUlpfuzQ+pcUCosxcglQRNAq/DZjVsC0lE40xsADsfeQoEypE+enwcOiGjk/bSuGGKHEyjSoQ1zVisanQ=="
     crossorigin="anonymous" referrerpolicy="no-referrer" />
-      <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;500;600;700;800&display=swap"
+    rel="stylesheet">
 
   <link rel="stylesheet" href="/css/output.css" />
 </head>
@@ -21,7 +22,7 @@
   <nav class="bg-m-silver border-gray-200">
     <div class="max-w-screen-full flex flex-wrap items-center justify-between ml-10 p-6">
       <a href="https://mechanomicon.herokuapp.com/" class="flex items-center">
-        <img src="https://flowbite.com/docs/images/logo.svg" class="h-16 mr-3" alt="Logo" />
+        <img src="images/logo-1.png" class="h-16 mr-3" alt="Logo" />
         <span class="self-center text-3xl font-semibold whitespace-nowrap text-m-green font-heading">Mechanomicon</span>
       </a>
       <button data-collapse-toggle="navbar-default" type="button"
@@ -87,14 +88,13 @@
   </nav>
 
 
-
   <!-- Main content -->
   <main class="w-full flex flex-grow">
     {{{body}}}
   </main>
 
   <!-- Footer -->
-  <footer class="bg-m-silver ">
+  <footer class="bg-m-silver" id="site-footer">
     <div class="container mx-auto px-4 pt-3 pb-2">
       <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
         <div class="text-center md:text-left">
@@ -137,6 +137,18 @@
   {{#if logged_in}}
   <script src="/js/logout.js"></script>
   {{/if}}
+
+  <script>
+    document.addEventListener('DOMContentLoaded', function () {
+      const navbarToggle = document.querySelector('[data-collapse-toggle="navbar-default"]');
+      const navbarContent = document.getElementById('navbar-default');
+
+      navbarToggle.addEventListener('click', function () {
+        navbarContent.classList.toggle('hidden');
+        navbarContent.classList.toggle('md:block');
+      });
+    });
+  </script>
 
 </body>
 

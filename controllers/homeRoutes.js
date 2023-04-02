@@ -15,7 +15,7 @@ router.get("/", async (req, res) => {
 router.get("/dashboard", withAuth, async (req, res) => {
   try {
     if (req.session.role === "user") {
-      res.render("customerDashboard"); // this one needs to be changed when Pipat's code is merged
+      res.render("customerDashboard", { logged_in: true });
     } else if (req.session.role === "technician") {
       res.render("mechanicDashboard"); // this one needs to be changed when Shae's code is merged
     } else if (req.session.role === "manager") {
