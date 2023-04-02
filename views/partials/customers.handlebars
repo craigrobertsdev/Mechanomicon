@@ -48,6 +48,7 @@
     <div
       class="grid auto-rows-auto grid-cols-[auto_1fr_auto_1fr] gap-10 row-start-1 row-end-2 col-span-full mb-3 p-6 gap-y-2"
     >
+      {{! Each of these sections will be dynamically populated when clicked based on the customer selected }}
       <div class="select-none">First Name:</div>
       <div id="first-name-div" class="font-medium"></div>
       <div class="select-none">Last Name:</div>
@@ -71,6 +72,7 @@
             <th>Vehicle Registration</th>
           </tr>
         </thead>
+        {{! This is populated based on the customer selected }}
         <tbody id="service-list">
         </tbody>
       </table>

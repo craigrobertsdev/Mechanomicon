@@ -1,7 +1,8 @@
 <div class="flex flex-col w-full md:flex-row  grow">
+  {{!-- Side bar --}}
   <aside id="default-sidebar" class="h-full left-0 text-brown z-40 md:w-64 transition-transform " aria-label="Sidebar">
     <div class="h-full px-3 py-4 overflow-y-auto bg-m-darkCream">
-      <ul class="flex md:flex-col md:flex-wrap md:space-y-8 md:font-medium sm:pt-3 text-m-green">
+      <ul class="flex md:flex-col md:flex-wrap md:space-y-2 md:font-medium sm:pt-3 text-m-green">
         <li id="job-link"
           class="flex items-center p-2 rounded-lg cursor-pointer select-none hover:bg-m-cream text-m-green">
           <svg aria-hidden="true"
@@ -13,8 +14,8 @@
           <span class="ml-3 text-m-light-green">Job List</span>
         </li>
           <li id="job-history-link" class="flex items-center p-2 rounded-lg cursor-pointer select-none hover:bg-m-cream text-m-green">
-                <svg aria-hidden="true" class="flex-shrink-0 w-6 h-6 transition duration-75 dark:text-gray-400 group-hover:dark:group-hover:text-white" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M10 9a3 3 0 100-6 3 3 0 000 6zm-7 9a7 7 0 1114 0H3z" clip-rule="evenodd"></path></svg>
-                <span class="flex-1 ml-3 whitespace-nowrap text-m-green">Job History</span>
+          <svg aria-hidden="true" class="flex-shrink-0 w-6 h-6 transition duration-75 dark:text-gray-400 group-hover:dark:group-hover:text-white" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M10 9a3 3 0 100-6 3 3 0 000 6zm-7 9a7 7 0 1114 0H3z" clip-rule="evenodd"></path></svg>
+          <span class="flex-1 ml-3 whitespace-nowrap text-m-green">Job History</span>
           </li>
         <li id="customer-link"
           class="flex items-center p-2 rounded-lg cursor-pointer select-none hover:bg-m-cream text-m-green hover:text-black">
@@ -53,10 +54,11 @@
           </svg>
           <span class="flex-1 ml-3 whitespace-nowrap text-m-green">Add Technician</span>
         </li>
-
       </ul>
     </div>
   </aside>
+
+  {{!-- Body of the dashboard. only one of these will display at any one time --}}
   <section class="p-3 w-full bg-m-cream">
     <div id="jobs-section" class="block overflow-hidden overflow-y-auto h-full">
       {{> jobs }}
@@ -78,13 +80,9 @@
   {{!-- Capture data passed from API for manipulation by workshop.js --}}
   <script>
     const customersJSON = {{{ customersJSON }}};
-    console.log("🚀 ~ file: workshopDashboard.handlebars:28 ~ customers:", customersJSON)
     const techniciansJSON = {{{ techniciansJSON }}};
-    console.log("🚀 ~ file: workshopDashboard.handlebars:29 ~ technicians:", techniciansJSON)
     const jobsJSON = {{{ jobsJSON }}};
-    console.log("🚀 ~ file: workshopDashboard.handlebars:31 ~ jobs:", jobsJSON)
     const servicesJSON = {{{ servicesJSON }}};
-    console.log("🚀 ~ file: workshopDashboard.handlebars:33 ~ services:", servicesJSON)
   </script>
   <script src="/js/workshop.js"></script>
 </div>

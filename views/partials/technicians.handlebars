@@ -4,25 +4,27 @@
   <input
     type="text"
     id="technician-search-bar"
-    class="border border-black mb-2 p-1 w-full"
+    class="border border-m-darkCream bg-m-silver mb-2 p-1 w-full"
     placeholder="Search for names..."
   />
 </div>
 
 {{! Technicians table }}
-<table class="table-auto border border-collapse w-full text-center select-none">
+<table
+  class="table-auto border border-m-brown border-collapse w-full text-center select-none"
+>
   <thead>
     <tr class="border">
-      <th class="border p-1">First Name</th>
-      <th class="border p-1">Last Name</th>
-      <th class="border p-1">Address</th>
+      <th class="border border-m-brown p-1">First Name</th>
+      <th class="border border-m-brown p-1">Last Name</th>
+      <th class="border border-m-brown p-1">Address</th>
     </tr>
     <tbody id="technician-table">
       {{#each technicians as |technician|}}
         <tr id="user-{{technician.id}}">
-          <td class="border p-1">{{technician.first_name}}</td>
-          <td class="border p-1">{{technician.last_name}}</td>
-          <td class="border p-1">{{technician.address}}</td>
+          <td class="border border-m-brown p-1">{{technician.first_name}}</td>
+          <td class="border border-m-brown p-1">{{technician.last_name}}</td>
+          <td class="border border-m-brown p-1">{{technician.address}}</td>
         </tr>
       {{/each}}
     </tbody>
@@ -46,14 +48,15 @@
     <div
       class="grid auto-rows-auto grid-cols-2 row-start-1 row-end-2 col-span-full mb-3 p-3 gap-y-2"
     >
+      {{! Each of these sections will be dynamically populated when clicked based on the technician selected }}
       <div class="select-none">First Name:</div>
-      <div id="first-name-div"></div>
+      <div id="technician-first-name-div"></div>
       <div class="select-none">Last Name:</div>
-      <div id="last-name-div"></div>
+      <div id="technician-last-name-div"></div>
       <div class="select-none">Address:</div>
-      <div id="address-div"></div>
+      <div id="technician-address-div"></div>
       <div class="select-none">Phone number:</div>
-      <div id="phone-div"></div>
+      <div id="technician-phone-div"></div>
     </div>
     <div
       id="job-history"
@@ -69,6 +72,7 @@
             <th>Vehicle Registration</th>
           </tr>
         </thead>
+        {{! This will be populated based on the technician selected }}
         <tbody id="job-list">
         </tbody>
 

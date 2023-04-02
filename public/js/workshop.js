@@ -8,6 +8,7 @@ const userModal = document.getElementById("user-modal");
 const technicianModal = document.getElementById("technician-modal");
 const addTechnicianForm = document.getElementById("add-technician-form");
 
+// add event handlers
 document
   .getElementById("customer-search-bar")
   .addEventListener("keyup", filterCustomers);
@@ -35,7 +36,8 @@ const sections = {
   technicianSection: document.getElementById("technician-section"),
   addTechnicianSection: document.getElementById("add-technician-section"),
 };
-const buttons = document.getElementsByClassName("assign-technician");
+const assignTechnicianButtons =
+  document.getElementsByClassName("assign-technician");
 
 // add event listeners
 links.jobsLink.addEventListener("click", openJobList);
@@ -44,7 +46,7 @@ links.technicianLink.addEventListener("click", openTechnicianList);
 links.addTechnicianLink.addEventListener("click", openAddTechnician);
 links.jobHistoryLink.addEventListener("click", openJobHistory);
 
-for (const button of buttons) {
+for (const button of assignTechnicianButtons) {
   button.addEventListener("click", assignTechnician);
 }
 
@@ -64,6 +66,7 @@ for (let i = 0; i < technicianRows.length; i++) {
   row.addEventListener("dblclick", openTechnicianModal);
 }
 
+// add href to each link in the jobHistory view
 for (let i = 0; i < jobHistoryRows.length; i++) {
   const row = jobHistoryRows[i];
   const id = row.id.split("-")[1];
@@ -113,6 +116,7 @@ function setListStyle(element) {
   element.style.textColor = "#000";
 }
 
+// called everytime a new tab is opened
 function hideSections() {
   for (const [key, value] of Object.entries(sections)) {
     value.classList.remove("block");
@@ -120,6 +124,7 @@ function hideSections() {
   }
 }
 
+// called everytime a new tab is opened
 function showSection(section) {
   section.classList.remove("hidden");
   section.classList.add("block");
@@ -138,15 +143,13 @@ function setSelectedTechnicians() {
       return service.job.id === id;
     });
 
-    console.log(service);
-    // the technician associated with the service
     if (!service.technician_id) {
       break;
     }
 
     const assignedTechnician = service.technician_id;
 
-    // iterate over the list of options and if their value matches the technician's value, select it
+    // iterate over the list of options and if their value matches the technician's value, select it then exit loop
     for (const option of selectElement.children) {
       if (option.value == assignedTechnician) {
         option.selected = true;
@@ -175,9 +178,11 @@ async function assignTechnician(event) {
   }
 }
 
+// creates a new techician
 async function addTechnician(event) {
   event.preventDefault();
 
+  // capture form data
   const first_name = document
     .getElementById("add-technician-first-name")
     .value.trim();
@@ -216,13 +221,12 @@ async function addTechnician(event) {
     }),
   });
 
-  console.log(response);
   if (response.ok) {
     location.reload();
   }
 }
 
-// filter on search bar
+// filter on customer search bar
 function filterCustomers() {
   const input = document.getElementById("customer-search-bar");
   let filterText = input.value.toUpperCase();
@@ -248,6 +252,7 @@ function filterCustomers() {
   }
 }
 
+// filter on technician search bar
 function filterTechnicians() {
   const input = document.getElementById("technician-search-bar");
   let filterText = input.value.toUpperCase();
@@ -273,6 +278,7 @@ function filterTechnicians() {
   }
 }
 
+// filter on job history search bar
 function filterjobHistory() {
   const input = document.getElementById("job-history-search-bar");
   let filterText = input.value.toUpperCase();
@@ -298,7 +304,7 @@ function filterjobHistory() {
   }
 }
 
-// this will dynamically render the content of the modal based on the user selected.
+// dynamically render the content of the modal based on the user selected.
 function openUserModal(event) {
   userModal.style.display = "flex";
   document.body.style.overflow = "hidden";
@@ -319,7 +325,7 @@ function openUserModal(event) {
     for (const service of car.services) {
       const row = document.createElement("tr");
       row.classList.add("border-b");
-      row.classList.add("border-black");
+      row.classList.add("border-m-brown");
       const invoiceLink = document.createElement("a");
       invoiceLink.href = `/invoice/${service.id}`;
       invoiceLink.classList.add("underline");
@@ -364,27 +370,35 @@ function selectUserRow(event) {
 
 // technician view
 
-// calls API to get data about the individual technician's details and job history
+// dynamically render the content of the modal based on the user selected.
 async function openTechnicianModal(event) {
+  // open modal and "disable" background elements
   technicianModal.style.display = "flex";
   document.body.style.overflow = "hidden";
   document.body.style.paddingRight = "15px";
   const id = +event.currentTarget.id.split("-")[1];
+  // find the technician that has been double clicked on
   const technician = techniciansJSON.find((technician) => technician.id === id);
 
-  document.getElementById("first-name-div").innerText = technician.first_name;
-  document.getElementById("last-name-div").innerText = technician.last_name;
+  // populate header content
+  document.getElementById("technician-first-name-div").innerText =
+    technician.first_name;
+  document.getElementById("technician-last-name-div").innerText =
+    technician.last_name;
   document.getElementById(
-    "address-div"
+    "technician-address-div"
   ).innerText = `${technician.address} ${technician.postcode} ${technician.state}`;
-  document.getElementById("phone-div").innerText = technician.phone;
+  document.getElementById("technician-phone-div").innerText = technician.phone;
 
   const jobList = document.getElementById("job-list");
   jobList.innerHTML = "";
+
+  // for every service linked to the technician, create a row with a link to the invoice, the date of the job,
+  // the service type and the vehicle registration
   for (const service of technician.services) {
     const row = document.createElement("tr");
     row.classList.add("border-b");
-    row.classList.add("border-black");
+    row.classList.add("border-m-brown");
     const invoiceLink = document.createElement("a");
     invoiceLink.href = `/invoice/${service.id}`;
     invoiceLink.classList.add("underline");
@@ -426,6 +440,7 @@ function selectTechnicianRow(event) {
   event.currentTarget.style.backgroundColor = "grey";
 }
 
+// replaces first letter of every word in the sentence with a capital letter
 function toPascalCase(phrase) {
   const words = phrase.split(" ");
   // make the first letter of each word a capital
@@ -436,11 +451,10 @@ function toPascalCase(phrase) {
   return capitalisedWords.join(" ");
 }
 
+// on page load, display the job list set selected option for each technician drop-down
 function init() {
   setListStyle(links.jobsLink);
   setSelectedTechnicians();
 }
 
 init();
-
-// console.log(mechanics);

@@ -4,8 +4,6 @@ const { User, Car, Service, Job } = require("../models");
 
 // when logging in as a manager, gets all data required for the admin dashboard
 router.get("/", withAdminAuth, async (req, res) => {
-  console.log(req.session);
-
   // gets all customers and their vehicle service history
   const customerData = User.findAll({
     attributes: [
@@ -65,7 +63,7 @@ router.get("/", withAdminAuth, async (req, res) => {
           },
           {
             model: Job,
-            attributes: ["type", "date", "completed"],
+            attributes: ["id", "type", "date", "completed"],
           },
         ],
       },
@@ -132,6 +130,7 @@ router.get("/", withAdminAuth, async (req, res) => {
     technicians: serialisedTechnicianData,
     jobs: serialisedJobData,
     services: serialisedServiceData,
+    // passed to the view in this format for capturing in a script tag allowing linked javascript files to access the data
     customersJSON: JSON.stringify(customers),
     techniciansJSON: JSON.stringify(technicians),
     jobsJSON: JSON.stringify(jobs),

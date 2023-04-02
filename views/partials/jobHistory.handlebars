@@ -19,6 +19,7 @@
       <th class="border border-m-brown p-1">Customer Name</th>
       <th class="border border-m-brown p-1">Registration</th>
     </tr>
+    {{! this only displays completed jobs }}
     <tbody id="job-history-table">
       {{#each services as |service|}}
         {{#if service.job.completed}}

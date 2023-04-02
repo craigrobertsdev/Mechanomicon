@@ -2,6 +2,7 @@ const router = require("express").Router();
 const { withAdminAuth } = require("../../utils/auth");
 const { User, Car, Service, Job } = require("../../models");
 
+// called when creating a new technician from the workshop dashboard
 router.post("/", withAdminAuth, async (req, res) => {
   try {
     const newTechnician = await User.create({
@@ -18,7 +19,6 @@ router.post("/", withAdminAuth, async (req, res) => {
 
     res.status(200).json(newTechnician);
   } catch (err) {
-    console.log(err);
     res.status(500).json(err);
   }
 });
@@ -40,8 +40,8 @@ router.post("/technician", withAdminAuth, async (req, res) => {
       ],
     });
 
+    // serialise the jobData object
     const job = jobData.get({ plain: true });
-    console.log(job);
 
     let service;
 
