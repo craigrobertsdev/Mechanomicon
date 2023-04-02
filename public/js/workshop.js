@@ -138,7 +138,12 @@ function setSelectedTechnicians() {
       return service.job.id === id;
     });
 
+    console.log(service);
     // the technician associated with the service
+    if (!service.technician_id) {
+      break;
+    }
+
     const assignedTechnician = service.technician_id;
 
     // iterate over the list of options and if their value matches the technician's value, select it
