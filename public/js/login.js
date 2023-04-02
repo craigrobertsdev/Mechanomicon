@@ -27,7 +27,7 @@ async function loginFormHandler(event) {
           document.location.replace("/mechanicDashboard");
           break;
         case "user":
-          document.location.replace("/dashboard");
+          document.location.replace("/customer");
           break;
       }
     } else {

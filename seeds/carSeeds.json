@@ -6,8 +6,7 @@
     "model": "Quattro",
     "year": 1985,
     "colour": "Red",
-    "user_id": 1,
-    "workshop_id": 1
+    "user_id": 1
   },
   {
     "id": 2,
@@ -16,8 +15,7 @@
     "model": "944",
     "year": 1984,
     "colour": "Blue",
-    "user_id": 2,
-    "workshop_id": 1
+    "user_id": 2
   },
   {
     "id": 3,
@@ -26,8 +24,7 @@
     "model": "S6",
     "year": 1994,
     "colour": "Green",
-    "user_id": 3,
-    "workshop_id": 1
+    "user_id": 3
   },
   {
     "id": 4,
@@ -36,7 +33,15 @@
     "model": "Elise",
     "year": 2005,
     "colour": "Black",
-    "user_id": 4,
-    "workshop_id": 1
+    "user_id": 4
+  },
+  {
+    "id": 5,
+    "licensePlate": "CCC223",
+    "make": "Audi",
+    "model": "S6",
+    "year": 2022,
+    "colour": "Black",
+    "user_id": 3
   }
 ]

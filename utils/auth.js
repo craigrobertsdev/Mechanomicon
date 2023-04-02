@@ -11,7 +11,6 @@ const withAuth = (req, res, next) => {
   }
 };
 
-
 const withTechnicianAuth = (req, res, next) => {
   if (req.session.role !== "technician" || req.session.role !== "manager") {
     res.redirect("/");
@@ -32,6 +31,7 @@ const withAdminAuth = (req, res, next) => {
   }
 };
 
+//google auth
 const attachAuthInfo = (req, res, next) => {
   console.log("AttachAuthInfo called");
   if (req.isAuthenticated()) {
@@ -47,5 +47,8 @@ const attachAuthInfo = (req, res, next) => {
 };
 
 module.exports = {
-withAuth, withTechnicianAuth, withAdminAuth,  attachAuthInfo,
+  withAuth,
+  withTechnicianAuth,
+  withAdminAuth,
+  attachAuthInfo,
 };
