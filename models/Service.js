@@ -74,7 +74,7 @@ Service.init(
     },
     technician_id: {
       type: DataTypes.INTEGER,
-      allowNull: true,
+      allowNull: false,
       references: {
         model: "user",
         key: "id",
@@ -82,7 +82,7 @@ Service.init(
     },
     job_id: {
       type: DataTypes.INTEGER,
-      allowNull: true,
+      allowNull: false,
       references: {
         model: "service",
         key: "id",
