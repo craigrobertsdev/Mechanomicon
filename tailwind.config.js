@@ -11,13 +11,14 @@ module.exports = {
     },
   extend: {
     colors: {
-      'white': '#FFFFFF',
-      'm-green': '#004225',
+      'white': '#ffffff',
+      'm-light-green': '#004225',
+      'm-green': '#082616',
       'm-darkCream': '#C7BDAA',
       'm-cream': '#E0DCD1',
       'm-brown': '#645046',
       'm-silver': '#e5e5e5ff',
-      'm-gold': '#CCB309'
+      'm-gold': '#ccb309'
     },
     spacing: {
       px: '1px',
@@ -58,8 +59,10 @@ module.exports = {
     },
     fontFamily: {
       heading: ['Mechanomicon', 'cursive'],
-      body: ['Helvetica', 'sans-serif']
+      body: ['Open Sans', 'sans-serif']
+
     },
+
       spacing: {
         '128': '32rem',
         '144': '36rem',
@@ -71,11 +74,6 @@ module.exports = {
       '4': '4px',
       '6': '6px'
     },
-    // fontSize: {
-    //   sm: '0.8rem',
-    //   base: '1rem',
-    //   xl: '1.25rem',
-    // }
   },
   plugins: [],
 };

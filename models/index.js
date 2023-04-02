@@ -5,31 +5,34 @@ const Workshop = require("./Workshop");
 const Job = require("./Job");
 
 User.hasMany(Car, {
-    foreignKey: 'user_id',
-    onDelete: 'CASCADE',
+  foreignKey: "user_id",
+  onDelete: "CASCADE",
 });
+
 Car.belongsTo(User, {
-    foreignKey: 'user_id',
+  foreignKey: "user_id",
 });
 
 Car.hasMany(Service, {
-    foreignKey: 'car_id',
-    onDelete: 'CASCADE',
+  foreignKey: "car_id",
+  onDelete: "CASCADE",
 });
+
 Service.belongsTo(Car, {
-    foreignKey: 'car_id',
+  foreignKey: "car_id",
 });
 
 Workshop.hasMany(User, {
-    foreignKey: 'workshop_id',
+  foreignKey: "workshop_id",
 });
+
 User.belongsTo(Workshop, {
-    foreignKey: 'workshop_id',
+  foreignKey: "workshop_id",
 });
 
 Car.hasMany(Job, {
-    foreignKey: 'car_id',
-    onDelete: 'CASCADE',
+  foreignKey: "car_id",
+  onDelete: "CASCADE",
 });
 
 Job.belongsTo(Car, {
@@ -37,7 +40,7 @@ Job.belongsTo(Car, {
 });
 
 Job.hasOne(Service, {
-  foreignKey: "service_id",
+  foreignKey: "job_id",
 });
 
 Service.belongsTo(Job, {
@@ -45,19 +48,20 @@ Service.belongsTo(Job, {
 });
 
 User.hasMany(Job, {
-    foreignKey: 'user_id',
-    onDelete: 'CASCADE',
+  foreignKey: "user_id",
+  onDelete: "CASCADE",
 });
 
 Job.belongsTo(User, {
-    foreignKey: 'user_id',
+  foreignKey: "user_id",
 });
 
 User.hasMany(Service, {
   foreignKey: "technician_id",
 });
+
 Service.belongsTo(User, {
   foreignKey: "technician_id",
 });
-module.exports = { User, Car, Job, Service, Workshop };
 
+module.exports = { User, Car, Job, Service, Workshop };

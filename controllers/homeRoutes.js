@@ -12,9 +12,19 @@ router.get("/", async (req, res) => {
 });
 
 //testing dashboard route
-router.get("/dashboard", async (req, res) => {
+router.get("/dashboard", withAuth, async (req, res) => {
   try {
-    res.render("customerDashboard");
+    if (req.session.role === "user") {
+      res.render("customerDashboard"); // this one needs to be changed when Pipat's code is merged
+    } else if (req.session.role === "technician") {
+      res.render("mechanicDashboard"); // this one needs to be changed when Shae's code is merged
+    } else if (req.session.role === "manager") {
+      res.redirect("/workshop");
+    } else {
+      res
+        .status(400)
+        .json({ message: "Incorrect permissions to access dashboard" });
+    }
   } catch (error) {
     res.status(500).json(error);
   }
@@ -24,7 +34,7 @@ router.get("/dashboard", async (req, res) => {
 router.get("/login", async (req, res) => {
   try {
     if (req.session.logged_in) {
-      res.redirect("home");
+      res.redirect("/");
       return;
     }
     res.render("login");

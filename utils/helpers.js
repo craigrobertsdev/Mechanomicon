@@ -12,4 +12,18 @@ module.exports = {
   jobLength: (jobType) => {
     return jobType === "service & inspection" ? "1 hour" : "3 hours";
   },
+
+  jobCount: (jobs) => {
+    return jobs.length;
+  },
+
+  pascalCase: (phrase) => {
+  const words = phrase.split(" ");
+  // make the first letter of each word a capital
+  const capitalisedWords = words.map((word) =>
+    word.replace(word[0], word[0].toUpperCase())
+  );
+
+  return capitalisedWords.join(" ");
+  }
 };
