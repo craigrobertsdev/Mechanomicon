@@ -2,27 +2,23 @@ const router = require("express").Router();
 const { withAdminAuth } = require("../../utils/auth");
 const { User, Car, Service, Job } = require("../../models");
 
+// called when creating a new technician from the workshop dashboard
 router.post("/", withAdminAuth, async (req, res) => {
   try {
-    const newTechnician = await User.update(
-      { role: "technician" },
-      {
-        where: {
-          id: req.body.newTechnician,
-        },
-      }
-    );
+    const newTechnician = await User.create({
+      ...req.body,
+      role: "technician",
+    });
 
     if (!newTechnician) {
       res
         .status(400)
-        .json({ message: "There was an error updating the user role" });
+        .json({ message: "There was an error creating the new technician" });
       return;
     }
 
     res.status(200).json(newTechnician);
   } catch (err) {
-    console.log(err);
     res.status(500).json(err);
   }
 });
@@ -36,16 +32,18 @@ router.post("/technician", withAdminAuth, async (req, res) => {
       where: {
         id: req.body.job,
       },
-      include: [{
-        model: Service,
-        attributes: ["job_id"]
-      }]
+      include: [
+        {
+          model: Service,
+          attributes: ["job_id"],
+        },
+      ],
     });
 
-    const job = jobData.get({plain: true})
-    console.log(job);
+    // serialise the jobData object
+    const job = jobData.get({ plain: true });
 
-    let service, serviceToUpdate;
+    let service;
 
     // if there isn't already a service created for the job, create one
     if (!job.service.job_id) {
@@ -55,7 +53,7 @@ router.post("/technician", withAdminAuth, async (req, res) => {
       });
     } else {
       // if the service already exists, as just need to assign a new technician to it
-      serviceToUpdate = await Service.findOne({
+      const serviceToUpdate = await Service.findOne({
         where: {
           job_id: req.body.job,
         },
@@ -64,11 +62,11 @@ router.post("/technician", withAdminAuth, async (req, res) => {
       // add new technician to the service
       service = await Service.update(
         {
-          technician_id: req.body.technician,
+          technician_id: parseInt(req.body.technician),
         },
         {
           where: {
-            id: serviceToUpdate.id,
+            id: serviceToUpdate.dataValues.id,
           },
         }
       );
