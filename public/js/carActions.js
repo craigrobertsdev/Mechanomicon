@@ -171,3 +171,22 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   });
 });
+
+//add event listener to the buttons in carInfo handlebars
+document
+  .getElementById("view-service-history-btn")
+  .addEventListener("click", function () {
+    document.getElementById("service").style.display = "block";
+    document.getElementById("car-info").style.display = "none";
+    document.getElementById("book-service").style.display = "none";
+    document.getElementById("profile").style.display = "none";
+  });
+
+document
+  .getElementById("book-service-btn")
+  .addEventListener("click", function () {
+    document.getElementById("service").style.display = "none";
+    document.getElementById("car-info").style.display = "none";
+    document.getElementById("profile").style.display = "none";
+    document.getElementById("book-service").style.display = "block";
+  });
