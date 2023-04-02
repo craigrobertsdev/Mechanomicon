@@ -22,13 +22,24 @@ function closeAddCarModal() {
   }
 }
 
+// function to capitalize first letter of a string
+function capitalizeFirstLetter(string) {
+  return string.charAt(0).toUpperCase() + string.slice(1);
+}
+
 // add a car
 async function addCar() {
-  const make = document.getElementById("addMake").value;
-  const model = document.getElementById("addModel").value;
-  const licensePlate = document.getElementById("addLicensePlate").value;
+  const make = capitalizeFirstLetter(document.getElementById("addMake").value);
+  const model = capitalizeFirstLetter(
+    document.getElementById("addModel").value
+  );
+  const licensePlate = document
+    .getElementById("addLicensePlate")
+    .value.toUpperCase();
   const year = document.getElementById("addYear").value;
-  const colour = document.getElementById("addColour").value;
+  const colour = capitalizeFirstLetter(
+    document.getElementById("addColour").value
+  );
 
   console.log("Adding car:", { make, model, licensePlate, year, colour });
 
@@ -51,11 +62,19 @@ async function addCar() {
 
 //edit car
 async function updateCar(carId) {
-  const make = document.getElementById(`${carId}-make`).value;
-  const model = document.getElementById(`${carId}-model`).value;
-  const licensePlate = document.getElementById(`${carId}-licensePlate`).value;
+  const make = capitalizeFirstLetter(
+    document.getElementById(`${carId}-make`).value
+  );
+  const model = capitalizeFirstLetter(
+    document.getElementById(`${carId}-model`).value
+  );
+  const licensePlate = document
+    .getElementById(`${carId}-licensePlate`)
+    .value.toUpperCase();
   const year = document.getElementById(`${carId}-year`).value;
-  const colour = document.getElementById(`${carId}-colour`).value;
+  const colour = capitalizeFirstLetter(
+    document.getElementById(`${carId}-colour`).value
+  );
 
   console.log("Updating car:", carId, {
     make,

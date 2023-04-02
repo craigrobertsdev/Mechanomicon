@@ -66,7 +66,7 @@
 
   <!-- right side section Show data from model -->
   <div
-    class="relative w-full h-full md:mt-0 md:h-full overflow-auto bg-gradient-to-r from-gray-400 via-gray-600 to-blue-800 ">
+    class="relative w-full h-full md:mt-0 md:h-full overflow-auto bg-gradient-to-r from-gray-400 via-gray-600 to-blue-800">
     <h1 class="text-4xl font-bold mt-5 text-center ">Welcome, {{user.first_name}} {{user.last_name}}</h1>
     <!-- car info -->
     <div class="container mx-auto px-4 py-6" id="car-info">
@@ -91,26 +91,26 @@
       <h2 class="text-center text-2xl mb-4">Service History</h2>
       {{#if currentServices}}
       <h3 class="text-center text-xl mb-2">Current Services</h3>
-      <table class="w-full border-collapse mb-8">
+      <table class="w-full border-collapse mb-8 text-center">
         <thead>
           <tr>
-            <th class="border border-gray-300 p-2 bg-gray-200 font-bold">Rego</th>
-            <th class="border border-gray-300 p-2 bg-gray-200 font-bold">Make/Model</th>
-            <th class="border border-gray-300 p-2 bg-gray-200 font-bold">Notes</th>
-            <th class="border border-gray-300 p-2 bg-gray-200 font-bold">Price</th>
-            <th class="border border-gray-300 p-2 bg-gray-200 font-bold">Total Time(hours)</th>
-            <th class="border border-gray-300 p-2 bg-gray-200 font-bold">Service Date</th>
+            <th class="border border-gray-100 p-2 bg-gray-200 font-bold">Rego</th>
+            <th class="border border-gray-100 p-2 bg-gray-200 font-bold">Make/Model</th>
+            <th class="border border-gray-100 p-2 bg-gray-200 font-bold">Notes</th>
+            <th class="border border-gray-100 p-2 bg-gray-200 font-bold">Price</th>
+            <th class="border border-gray-100 p-2 bg-gray-200 font-bold">Total Time(hours)</th>
+            <th class="border border-gray-100 p-2 bg-gray-200 font-bold">Service Date</th>
           </tr>
         </thead>
         <tbody>
           {{#each currentServices}}
-          <tr class="even:bg-gray-100">
-            <td class="border border-gray-300 p-2">{{this.car.licensePlate}}</td>
-            <td class="border border-gray-300 p-2">{{this.car.make}} {{this.car.model}}</td>
-            <td class="border border-gray-300 p-2">{{this.notes}}</td>
-            <td class="border border-gray-300 p-2">{{this.service.price}}</td>
-            <td class="border border-gray-300 p-2">{{this.service.total_time}}</td>
-            <td class="border border-gray-300 p-2">{{this.date}}</td>
+          <tr class="even:bg-gray-300">
+            <td class="border border-gray-100 p-2">{{this.car.licensePlate}}</td>
+            <td class="border border-gray-100 p-2">{{this.car.make}} {{this.car.model}}</td>
+            <td class="border border-gray-100 p-2">{{this.notes}}</td>
+            <td class="border border-gray-100 p-2">{{this.ser1ice.price}}</td>
+            <td class="border border-gray-100 p-2">{{this.service.total_time}}</td>
+            <td class="border border-gray-100 p-2">{{this.date}}</td>
           </tr>
           {{/each}}
         </tbody>
@@ -124,23 +124,23 @@
       <table class="w-full border-collapse mb-8">
         <thead>
           <tr>
-            <th class="border border-gray-300 p-2 bg-gray-200 font-bold">Rego</th>
-            <th class="border border-gray-300 p-2 bg-gray-200 font-bold">Make/Model</th>
-            <th class="border border-gray-300 p-2 bg-gray-200 font-bold">Notes</th>
-            <th class="border border-gray-300 p-2 bg-gray-200 font-bold">Price</th>
-            <th class="border border-gray-300 p-2 bg-gray-200 font-bold">Total Time</th>
-            <th class="border border-gray-300 p-2 bg-gray-200 font-bold">Service Date</th>
+            <th class="border border-gray-100 p-2 bg-gray-200 font-bold">Rego</th>
+            <th class="border border-gray-100 p-2 bg-gray-200 font-bold">Make/Model</th>
+            <th class="border border-gray-100 p-2 bg-gray-200 font-bold">Notes</th>
+            <th class="border border-gray-100 p-2 bg-gray-200 font-bold">Price</th>
+            <th class="border border-gray-100 p-2 bg-gray-200 font-bold">Total Time</th>
+            <th class="border border-gray-100 p-2 bg-gray-200 font-bold">Service Date</th>
           </tr>
         </thead>
         <tbody>
           {{#each pastServices}}
           <tr class="even:bg-gray-100">
-            <td class="border border-gray-300 p-2">{{this.car.licensePlate}}</td>
-            <td class="border border-gray-300 p-2">{{this.car.make}} {{this.car.model}}</td>
-            <td class="border border-gray-300 p-2">{{this.notes}}</td>
-            <td class="border border-gray-300 p-2">{{this.service.price}}</td>
-            <td class="border border-gray-300 p-2">{{this.service.total_time}}</td>
-            <td class="border border-gray-300 p-2">{{this.date}}</td>
+            <td class="border border-gray-100 p-2">{{this.car.licensePlate}}</td>
+            <td class="border border-gray-100 p-2">{{this.car.make}} {{this.car.model}}</td>
+            <td class="border border-gray-100 p-2">{{this.notes}}</td>
+            <td class="border border-gray-100 p-2">{{this.service.price}}</td>
+            <td class="border border-gray-100 p-2">{{this.service.total_time}}</td>
+            <td class="border border-gray-100 p-2">{{this.date}}</td>
           </tr>
           {{/each}}
         </tbody>
@@ -148,6 +148,12 @@
       {{else}}
       <p class="text-center">No past services found.</p>
       {{/if}}
+
+      <h1 class="text-xl mt-30">
+        If you want to cancel your current service, Please
+        <a href="#site-footer" class="text-indigo-500 hover:text-indigo-700">Contact us!</a>
+      </h1>
+
     </div>
 
     <!-- book service -->
@@ -244,14 +250,6 @@
 </div>
 
 
-
-
-
-
-
-<script>
-
-</script>
 
 <script>
   const userId = '{{user_id}}';
