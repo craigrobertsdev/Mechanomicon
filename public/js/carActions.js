@@ -118,6 +118,7 @@ document.addEventListener("DOMContentLoaded", function () {
   // Show the default section when the page loads
   showSection("car-info");
 });
+<<<<<<< HEAD
 
 // book service
 document.addEventListener("DOMContentLoaded", () => {
@@ -152,3 +153,5 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   });
 });
+=======
+>>>>>>> 592fbbf0cf8da9ac60b0056ff962a0cefe9f61c9
