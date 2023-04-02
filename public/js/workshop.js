@@ -16,13 +16,13 @@ const links = {
   jobsLink: document.getElementById("job-link"),
   customerLink: document.getElementById("customer-link"),
   technicianLink: document.getElementById("technician-link"),
-  inventoryLink: document.getElementById("inventory-link"),
+  // inventoryLink: document.getElementById("inventory-link"),
 };
 const sections = {
   jobSection: document.getElementById("jobs-section"),
   customerSection: document.getElementById("customer-section"),
   technicianSection: document.getElementById("technician-section"),
-  inventorySection: document.getElementById("inventory-section"),
+  // inventorySection: document.getElementById("inventory-section"),
 };
 const buttons = document.getElementsByClassName("assign-technician");
 
@@ -30,7 +30,7 @@ const buttons = document.getElementsByClassName("assign-technician");
 links.jobsLink.addEventListener("click", openJobList);
 links.customerLink.addEventListener("click", openCustomerList);
 links.technicianLink.addEventListener("click", openTechnicianList);
-links.inventoryLink.addEventListener("click", openInventory);
+// links.inventoryLink.addEventListener("click", openInventory);
 
 for (const button of buttons) {
   button.addEventListener("click", assignTechnician);
@@ -139,6 +139,32 @@ function openUserModal(event) {
   userModal.style.display = "flex";
   document.body.style.overflow = "hidden";
   document.body.style.paddingRight = "15px";
+  const id = +event.currentTarget.id.split("-")[1];
+  console.log("🚀 ~ file: workshop.js:143 ~ openUserModal ~ id:", id);
+  const user = customersJSON.find((customer) => customer.id === id);
+  console.log("🚀 ~ file: workshop.js:144 ~ openUserModal ~ user:", user);
+
+  document.getElementById("first-name-div").innerText = user.first_name;
+  document.getElementById("last-name-div").innerText = user.last_name;
+  document.getElementById(
+    "address-div"
+  ).innerText = `${user.address} ${user.postcode} ${user.state}`;
+  document.getElementById("phone-div").innerText = user.phone;
+
+  const serviceList = document.getElementById("service-list");
+
+  for (const car of customerJSON.cars) {
+    const row = document.createElement("tr");
+    for (const service of car.services) {
+      const dateRow = document.createElement("td");
+      const serviceRow = document.createElement("td");
+      const registrationRow = document.createElement("td");
+      const costRow = document.createElement("td");
+      dateRow.innerText = service.date;
+      serviceRow.innerText = toPascalCase(service.type);
+      registrationRow.innerText = service.car.license_plate
+    }
+  }
 }
 
 function closeUserModal() {
@@ -176,8 +202,15 @@ function selectTechnicianRow(event) {
   }
   event.currentTarget.style.backgroundColor = "grey";
 }
-// inventory view
 
+function toPascalCase(phrase) {
+  const words = phrase.split(" ");
+  const capitalisedWords = words.map((word) =>
+    word.replace(word[0], word[0].toUpperCase())
+  );
+
+  return capitalisedWords;
+}
 //#endregion
 
 function init() {

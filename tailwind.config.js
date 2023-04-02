@@ -9,13 +9,15 @@ module.exports = {
       'xl': '1280px',
       '2xl': '1536px',
     },
+  extend: {
     colors: {
-      'white': '#ffffff',
-      'green': '#004225',
-      'darkCream': '#C7BDAA',
-      'cream': '#E0DCD1',
-      'brown': '#645046',
-      'silver': '#ecebff',
+      'white': '#FFFFFF',
+      'm-green': '#004225',
+      'm-darkCream': '#C7BDAA',
+      'm-cream': '#E0DCD1',
+      'm-brown': '#645046',
+      'm-silver': '#e5e5e5ff',
+      'm-gold': '#CCB309'
     },
     spacing: {
       px: '1px',
@@ -57,14 +59,23 @@ module.exports = {
     fontFamily: {
       heading: ['Mechanomicon', 'cursive'],
       body: ['Helvetica', 'sans-serif']
-
     },
-    extend: {
       spacing: {
         '128': '32rem',
         '144': '36rem',
       },
+  },
+    borderWidth: {
+      DEFAULT: '3px',
+      '3': '3px',
+      '4': '4px',
+      '6': '6px'
     },
+    // fontSize: {
+    //   sm: '0.8rem',
+    //   base: '1rem',
+    //   xl: '1.25rem',
+    // }
   },
   plugins: [],
 };

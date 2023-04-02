@@ -1,6 +1,6 @@
 const router = require("express").Router();
 const { User, Car, Service } = require("../models");
-const withAuth = require("../utils/auth");
+const { withAuth } = require("../utils/auth");
 
 // Home page route
 router.get("/", async (req, res) => {
@@ -14,7 +14,7 @@ router.get("/", async (req, res) => {
 //testing dashboard route
 router.get("/dashboard", async (req, res) => {
   try {
-    res.render("dashboard");
+    res.render("customerDashboard");
   } catch (error) {
     res.status(500).json(error);
   }
@@ -51,25 +51,9 @@ router.get("/profile", withAuth, async (req, res) => {
 });
 
 //reset password
-router.get("/resetPassword", async (req, res) => {
+router.get("/resetPassword", (req, res) => {
   try {
     res.render("resetPassword");
-  } catch (error) {
-    res.status(500).json(error);
-  }
-});
-
-router.get("/mechanic", async (req, res) => {
-  try {
-    res.render("mechanic");
-  } catch (error) {
-    res.status(500).json(error);
-  }
-});
-
-router.get("/service", async (req, res) => {
-  try {
-    res.render("service");
   } catch (error) {
     res.status(500).json(error);
   }
