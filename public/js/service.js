@@ -8,7 +8,7 @@ function closeModal(serviceId) {
 }
   
 //edit car
-async function updateService(serviceId) {
+async function updateServiceHistory(serviceId) {
     const oilChanged = document.getElementById(`${serviceId}-oilChanged`).value;
     const filterChanged = document.getElementById(`${serviceId}-filterChanged`).value;
     const brakesChecked = document.getElementById(`${serviceId}-brakesChecked`).value;
@@ -32,14 +32,14 @@ async function updateService(serviceId) {
     });
   
     const response = await fetch(`/api/service/${serviceId}`, {
-        method: "PUT",
+        method: "POST",
         headers: {
             "Content-Type": "application/json",
         },
         body: JSON.stringify({ oilChanged, filterChanged, brakesChecked, coolantChecked, batteryChecked, suspensionChecked, filtersChecked, tyresRotated, additionalNotes }),
     });
         if (response.ok) {
-            location.reload();
+            document.location.replace('/service');
         } else {
             alert("Error updating service");
         }
@@ -47,7 +47,7 @@ async function updateService(serviceId) {
   
 // show the selected section
 function showSection(id) {
-    const sections = ["car-info", "service", "book-service", "profile-page"];
+    const sections = ["service-jobs", "service-modal"];
   
     // Hide all sections
     sections.forEach((sectionId) => {
