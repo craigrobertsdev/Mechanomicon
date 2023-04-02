@@ -65,7 +65,8 @@
   </aside>
 
   <!-- right side section Show data from model -->
-  <div class="relative w-full md:mt-0 md:h-full overflow-auto bg-gradient-to-r from-gray-400 via-gray-600 to-blue-800 ">
+  <div
+    class="relative w-full h-full md:mt-0 md:h-full overflow-auto bg-gradient-to-r from-gray-400 via-gray-600 to-blue-800 ">
     <h1 class="text-4xl font-bold mt-5 text-center ">Welcome, {{user.first_name}} {{user.last_name}}</h1>
     <!-- car info -->
     <div class="container mx-auto px-4 py-6" id="car-info">
@@ -106,7 +107,7 @@
           <tr class="even:bg-gray-100">
             <td class="border border-gray-300 p-2">{{this.car.licensePlate}}</td>
             <td class="border border-gray-300 p-2">{{this.car.make}} {{this.car.model}}</td>
-            <td class="border border-gray-300 p-2">{{this.job.notes}}</td>
+            <td class="border border-gray-300 p-2">{{this.notes}}</td>
             <td class="border border-gray-300 p-2">{{this.price}}</td>
             <td class="border border-gray-300 p-2">{{this.total_time}}</td>
             <td class="border border-gray-300 p-2">{{this.job.date}}</td>
@@ -151,14 +152,70 @@
 
     <!-- book service -->
     <div class="container mx-auto px-4 py-6 " id="book-service">
-      <h1>book service</h1>
+      <h2 class="text-xl font-bold mb-4">Add Service</h2>
+      <form action="/api/job" method="POST" id="add-service-form">
+
+        <!-- Select Car -->
+        <div class="mb-4">
+          <label for="car_id" class="block text-sm font-medium text-gray-700">Select Car</label>
+          <select id="car_id" name="car_id"
+            class="mt-1 block w-full py-2 px-3 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm">
+            {{#each cars}}
+            <option value="{{this.id}}">{{this.make}} {{this.model}} ({{this.licensePlate}})</option>
+            {{/each}}
+          </select>
+        </div>
+
+        <!-- Service Type -->
+        <div class="mb-4">
+          <label for="type" class="block text-sm font-medium text-gray-700">Service Type</label>
+          <select id="type" name="type"
+            class="mt-1 block w-full py-2 px-3 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm">
+            <option value="service & inspection">Service & Inspection</option>
+            <option value="repairs">Repairs</option>
+          </select>
+        </div>
+
+        <!-- Date -->
+        <div class="mb-4">
+          <label for="date" class="block text-sm font-medium text-gray-700">Date</label>
+          <input type="date" id="date" name="date"
+            class="mt-1 block w-full py-2 px-3 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm">
+        </div>
+
+        <!-- Drop-off Time -->
+        <div class="mb-4">
+          <label for="drop_off" class="block text-sm font-medium text-gray-700">Drop-off Time</label>
+          <input type="time" id="drop_off" name="drop_off"
+            class="mt-1 block w-full py-2 px-3 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm">
+        </div>
+
+        <!-- Notes -->
+        <div class="mb-4">
+          <label for="notes" class="block text-sm font-medium text-gray-700">Notes</label>
+          <textarea id="notes" name="notes" rows="3"
+            class="mt-1 block w-full py-2 px-3 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"></textarea>
+        </div>
+
+        <!-- Submit Button -->
+        <button type="submit"
+          class="w-full py-2 px-4 bg-indigo-600 hover:bg-indigo-700 text-white font-medium rounded-md shadow-sm">Submit</button>
+      </form>
     </div>
 
-    <!-- profile -->
-    <div class="container mx-auto px-4 py-6" id="profile-page">
-      {{> profiles}}
-    </div>
+
+
+
+
+
+
   </div>
+
+  <!-- profile -->
+  <div class="container mx-auto px-4 py-6" id="profile-page">
+    {{> profiles}}
+  </div>
+</div>
 </div>
 
 <!-- Add Car Modal -->

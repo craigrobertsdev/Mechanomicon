@@ -88,6 +88,7 @@ async function deleteCar(carId) {
   });
 
   if (response.ok) {
+    alert("Successfully deleted");
     location.reload();
   } else {
     alert("Error deleting car");
@@ -116,4 +117,38 @@ function showSection(id) {
 document.addEventListener("DOMContentLoaded", function () {
   // Show the default section when the page loads
   showSection("car-info");
+});
+
+// book service
+document.addEventListener("DOMContentLoaded", () => {
+  const addServiceForm = document.getElementById("add-service-form");
+
+  addServiceForm.addEventListener("submit", async (event) => {
+    event.preventDefault();
+
+    const formData = new FormData(addServiceForm);
+    const data = Object.fromEntries(formData);
+
+    console.log(data);
+
+    try {
+      const response = await fetch("/api/job", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(data),
+      });
+
+      if (response.ok) {
+        alert("Service added successfully!");
+        location.reload();
+      } else {
+        alert("Failed to add service.");
+      }
+    } catch (error) {
+      console.error("Error:", error);
+      alert("Failed to add service.");
+    }
+  });
 });
