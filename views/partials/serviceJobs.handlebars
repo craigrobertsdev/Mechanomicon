@@ -1,41 +1,91 @@
-{{!-- Add in #each jobs as |job| --}}
-<div class="bg-indigo-100 shadow-md rounded-lg p-6 relative">
-    <i class="fas fa-car mb-2 text-4xl"></i>
-    <h2 class="text-xl font-bold mb-2">{{make}}Audi {{model}}Q5</h2>
-    
-    <div class="mb-3">
-        <strong class="inline-block w-40">License Plate:</strong>
-        <span>{{licensePlate}}SEC99S</span>
-    </div>
-    
-    <div class="mb-3">
-        <strong class="inline-block w-40">Year:</strong>
-        <span>{{year}}2018</span>
-    </div>
-    
-    <div class="mb-4">
-        <strong class="inline-block w-40">Colour:</strong>
-        <span>{{colour}}BLACK</span>
-    </div>
+{{! Service jobs table }}
+<table class="table-fixed border border-collapse w-full text-center select-none">
+  <thead>
+    <tr class="border">
+      <th class="border p-1">License Plate</th>
+      <th class="border p-1">Make</th>
+      <th class="border p-1">Model</th>
+      <th class="border p-1">Colour</th>
+      <th class="border p-1">Job Type</th>
+      <th class="border p-1">Drop-off Time</th>
+    </tr>
+  </thead>
+  <tbody id="service-table">
+      {{#each services as |service|}}
+        <tr id="service-{{service.id}}"><a href="">
+          <td class="border p-1">{{job.car.licensePlate}}</td>
+          <td class="border p-1">{{job.car.make}}</td>
+          <td class="border p-1">{{job.car.model}}</td>
+          <td class="border p-1">{{job.car.colour}}</td>
+          <td class="border p-1">{{job.type}}</td>
+          <td class="border p-1">{{job.drop_off}}</td>
+        </a></tr>
+      {{/each}}
+  </tbody>
+</table>
 
-    <div class="mb-4">
-      <strong class="inline-block w-40">Job Type:</strong>
-      <span>{{service}}INSPECTION</span>
-    </div>
-          
-    <div class="mb-4">
-      <strong class="inline-block w-40">Drop-off Time:</strong>
-      <span>{{time}}9:30am</span>
-    </div>
-          
-    <div class="mb-4">
-      <strong class="inline-block w-40">Job Length:</strong>
-      <span>{{length}}1 Hour</span>
-    </div>
+{{! Service modal }}
+<div class="fixed inset-0 w-full h-full z-20 bg-opacity-50 bg-black flex items-center justify-center hidden" id="serviceModal-{{id}}">
+  <div class="bg-white w-11/12 md:max-w-md mx-auto rounded-lg shadow-lg z-30 overflow-y-auto">
+    <div class="py-4 px-6">
+      <div class="text-center">
+        <h3 class="text-2xl mb-4">Add Service Details</h3>
+      </div>
+      <form>
+        <div class="mb-3">
+          <input class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="{{id}}-oilChanged" type="checkbox" value="{{oilChanged}} accent-[#004225]">
+          <label class="block w-60 pl-1">Oil Changed</label>
+        </div>
+            
+        <div class="mb-3">
+          <input class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="{{id}}-filterChanged" type="checkbox" value="{{filterChanged}} accent-[#004225]">
+          <label class="block w-60 pl-1">Filter Changed</label>
+        </div>
+            
+        <div class="mb-4">
+          <input class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="{{id}}-brakesChecked" type="checkbox" value="{{brakesChecked}} accent-[#004225]">
+          <label class="block w-60 pl-1">Brakes Checked</label>
+        </div>
+            
+        <div class="mb-4">
+          <input class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="{{id}}-coolantChecked" type="checkbox" value="{{coolantChecked}} accent-[#004225]">
+          <label class="block w-60 pl-1">Coolant Checked</label>
+        </div>
+            
+        <div class="mb-4">
+          <input class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="{{id}}-batteryChecked" type="checkbox" value="{{batteryChecked}} accent-[#004225]">
+          <label class="block w-60 pl-1">Battery Checked</label>
+        </div>
+            
+        <div class="mb-4">
+          <input class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="{{id}}-suspensionChecked" type="checkbox" value="{{suspensionChecked}} accent-[#004225]">
+          <label class="block w-60 pl-1">Suspension Checked</label>
+        </div>
 
-    <div class="flex items-center justify-between">
-        <button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">View Service History</button>
-        <button class="bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded">Add Comments</button>
+        <div class="mb-4">
+          <input class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="{{id}}-filtersChecked" type="checkbox" value="{{filtersChecked}} accent-[#004225]">
+          <label class="block w-60 pl-1">All Filters Checked</label>
+        </div>
+
+        <div class="mb-4">
+          <input class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="{{id}}-tyresRotated" type="checkbox" value="{{tyresRotated}} accent-[#004225]">
+          <label class="block w-60 pl-1">Tyres Rotated</label>
+        </div>
+
+        <div class="mb-4">
+          <label class="block text-gray-700 text-sm font-bold mb-2" for="additionalNotes">Comments & Future Reccomendations:</label>
+          <textarea class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="{{id}}-additionalNotes" type="text" value="{{additionalNotes}}"></textarea>
+        </div>
+
+        <div class="flex flex-col items-center justify-center">
+          <button id="submitComment"class="justify-center rounded-full border border-[#004225] p-2">Submit</button>
+        </div>
+
+        <div class="flex items-center justify-between">
+          <button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded" onclick="updateServiceHistory('{{id}}')" type="button">Save Changes</button>
+          <button class="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded" onclick="closeModal()">Close</button>
+        </div>
+      </form>
     </div>
+  </div>
 </div>
-{{!-- add in /each --}}
