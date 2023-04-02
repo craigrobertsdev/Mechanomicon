@@ -34,5 +34,14 @@
     "year": 2005,
     "colour": "Black",
     "user_id": 4
+  },
+  {
+    "id": 5,
+    "licensePlate": "CCC223",
+    "make": "Audi",
+    "model": "S6",
+    "year": 2022,
+    "colour": "Black",
+    "user_id": 3
   }
 ]
