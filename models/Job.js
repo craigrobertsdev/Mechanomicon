@@ -25,7 +25,7 @@ Job.init(
     },
     notes: {
       type: DataTypes.STRING,
-      allowNull: false,
+      allowNull: true,
     },
     completed: {
       type: DataTypes.BOOLEAN,

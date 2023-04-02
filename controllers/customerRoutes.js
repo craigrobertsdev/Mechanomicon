@@ -20,30 +20,27 @@ router.get("/", withAuth, async (req, res) => {
     const userCarsIds = cars.map((car) => car.id);
 
     // Fetch the user's services with associated job data
-    const currentServicesData = await Service.findAll({
+    const currentServicesData = await Job.findAll({
       where: {
         car_id: userCarsIds,
+        completed: false,
       },
       include: [
         {
-          model: Job,
-          where: { completed: false },
+          model: Car,
         },
         {
-          model: Car,
+          model: Service,
         },
       ],
     });
 
-    const pastServicesData = await Service.findAll({
+    const pastServicesData = await Job.findAll({
       where: {
         car_id: userCarsIds,
+        completed: true,
       },
       include: [
-        {
-          model: Job,
-          where: { completed: true },
-        },
         {
           model: Car,
         },

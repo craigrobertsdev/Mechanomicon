@@ -22,13 +22,24 @@ function closeAddCarModal() {
   }
 }
 
+// function to capitalize first letter of a string
+function capitalizeFirstLetter(string) {
+  return string.charAt(0).toUpperCase() + string.slice(1);
+}
+
 // add a car
 async function addCar() {
-  const make = document.getElementById("addMake").value;
-  const model = document.getElementById("addModel").value;
-  const licensePlate = document.getElementById("addLicensePlate").value;
+  const make = capitalizeFirstLetter(document.getElementById("addMake").value);
+  const model = capitalizeFirstLetter(
+    document.getElementById("addModel").value
+  );
+  const licensePlate = document
+    .getElementById("addLicensePlate")
+    .value.toUpperCase();
   const year = document.getElementById("addYear").value;
-  const colour = document.getElementById("addColour").value;
+  const colour = capitalizeFirstLetter(
+    document.getElementById("addColour").value
+  );
 
   console.log("Adding car:", { make, model, licensePlate, year, colour });
 
@@ -51,11 +62,19 @@ async function addCar() {
 
 //edit car
 async function updateCar(carId) {
-  const make = document.getElementById(`${carId}-make`).value;
-  const model = document.getElementById(`${carId}-model`).value;
-  const licensePlate = document.getElementById(`${carId}-licensePlate`).value;
+  const make = capitalizeFirstLetter(
+    document.getElementById(`${carId}-make`).value
+  );
+  const model = capitalizeFirstLetter(
+    document.getElementById(`${carId}-model`).value
+  );
+  const licensePlate = document
+    .getElementById(`${carId}-licensePlate`)
+    .value.toUpperCase();
   const year = document.getElementById(`${carId}-year`).value;
-  const colour = document.getElementById(`${carId}-colour`).value;
+  const colour = capitalizeFirstLetter(
+    document.getElementById(`${carId}-colour`).value
+  );
 
   console.log("Updating car:", carId, {
     make,
@@ -88,6 +107,7 @@ async function deleteCar(carId) {
   });
 
   if (response.ok) {
+    alert("Successfully deleted");
     location.reload();
   } else {
     alert("Error deleting car");
@@ -116,4 +136,38 @@ function showSection(id) {
 document.addEventListener("DOMContentLoaded", function () {
   // Show the default section when the page loads
   showSection("car-info");
+});
+
+// book service
+document.addEventListener("DOMContentLoaded", () => {
+  const addServiceForm = document.getElementById("add-service-form");
+
+  addServiceForm.addEventListener("submit", async (event) => {
+    event.preventDefault();
+
+    const formData = new FormData(addServiceForm);
+    const data = Object.fromEntries(formData);
+
+    console.log(data);
+
+    try {
+      const response = await fetch("/api/job", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(data),
+      });
+
+      if (response.ok) {
+        alert("Service added successfully!");
+        location.reload();
+      } else {
+        alert("Failed to add service.");
+      }
+    } catch (error) {
+      console.error("Error:", error);
+      alert("Failed to add service.");
+    }
+  });
 });
