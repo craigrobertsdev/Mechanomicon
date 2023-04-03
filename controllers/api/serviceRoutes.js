@@ -1,6 +1,55 @@
 const router = require("express").Router();
-const { Car, Service, job } = require("../../models");
-const { withAuth } = require("../../utils/auth");
+const { withTechnicianAuth } = require("../../utils/auth");
+const { User, Car, Service, Job } = require("../../models");
+
+router.get("/", async (req, res) => {
+  try {
+  const jobs = await Job.findAll({
+    attributes: ["id", "type", "date", "notes", "drop_off", "completed"],
+    include: [
+      {
+        model: Car,
+        attributes: ["id", "license_plate", "make", "model", "colour", "year"],
+      },
+    ],
+  });
+
+  const serialisedJobData = jobs.map((job) => job.get({ plain: true }));
+console.log(serialisedJobData);
+console.log(jobs);
+
+  res.render("mechanicDashboard", {
+    jobs: serialisedJobData,
+    
+    jobsJSON: JSON.stringify(jobs),
+    logged_in: req.session.logged_in,
+  });
+  } catch (err) {
+    res.status(500).json(err);
+  }
+});
+
+router.get('/job/:id', async (req, res) => {
+  const jobData = Job.findAll({
+    attributes: ["id", "type", "date", "notes", "drop_off", "completed"],
+    include: [
+      {
+        model: Car,
+        attributes: ["id", "license_plate", "make", "model", "colour", "year"],
+      },
+    ],
+  });
+
+
+const jobs = await Promise.all(jobData);
+
+const serialisedJobData = jobs.map((job) => job.get({ plain: true }));
+
+res.render("workshopDashboard", {
+  jobs: serialisedJobData,
+  jobsJSON: JSON.stringify(jobs),
+});
+});
 
 router.post("/", async (req, res) => {
   try {

@@ -1,0 +1,85 @@
+{{! Service jobs table }}
+{{#each jobs as |job|}}
+
+<div class="bg-m-DarkCream shadow-md rounded-lg p-6 relative">
+    {{!-- Pass car id to openModal --}}
+    <i class="fas fa-car mb-2 text-4xl"></i>
+    <h2 class="text-xl font-bold mb-2">{{job.car.make}} {{job.car.model}}</h2>
+
+    <div id={{job.car.id}} class="select-none font-bold">Registration:</div>
+    <div class="font-medium">{{job.car.license_plate}}</div>
+    <div class="select-none font-bold">Make:</div>
+    <div class="font-medium">{{job.car.make}}</div>
+    <div class="select-none font-bold">Model:</div>
+    <div class="font-medium">{{job.car.model}}</div>
+    <div class="select-none font-bold">Year:</div>
+    <div class="font-medium">{{job.car.year}}</div>
+    <div class="select-none font-bold">Colour:</div>
+    <div class="font-medium">{{job.car.colour}}</div>
+    <div class="select-none font-bold">Job type:</div>
+    <div class="font-medium">{{pascalCase job.type}}</div>
+    <div class="select-none font-bold">Drop-off time:</div>
+    <div class="font-medium">{{job.drop_off}}</div>
+    <div class="select-none font-bold">Notes:</div>
+    <div class="font-medium pb-2">{{job.notes}}</div>
+
+    <div class="flex items-center justify-between">
+        <button class="bg-m-cream hover:bg-m-light-green text-white font-bold py-1 px-2 rounded text-m" 
+          onclick="completeServiceModal('{{id}}')">Complete Service</button>
+    </div>
+</div>
+{{/each}}
+<!-- Complete Service modal -->
+<div class="fixed inset-0 w-full h-full z-20 bg-opacity-50 bg-black flex items-center justify-center hidden" id="completeServiceModal-{{id}}">
+  <div class="bg-white w-11/12 md:max-w-md mx-auto rounded-lg shadow-lg z-30 overflow-y-auto">
+    <div class="py-4 px-6">
+      <div class="text-center">
+        <h3 class="text-2xl mb-4">Service Details</h3>
+      </div>
+      <form action="/api/service" method="POST" id="complete-service-modal-{{id}}">
+        <div class="w-full">
+          <div>
+            <input id="{{id}}-addOilChanged" type="checkbox" class="border rounded w-full py-2 px-3 text-grey-darker">
+            <label class="block font-extrabold">Oil Changed</label>
+          </div>
+          <div>
+            <input id="{{id}}-addFilterChanged" type="checkbox" class="border rounded w-full py-2 px-3 text-grey-darker">
+            <label class="block mt-3 font-extrabold">Oil Filter Changed</label>
+          </div>
+          <div>
+            <input id="{{id}}-addBrakesChecked" type="checkbox" class="border rounded w-full py-2 px-3 text-grey-darker">
+            <label class="block mt-3 font-extrabold">Breaks Checked</label>
+          </div>
+          <div>
+            <input id="{{id}}-addCoolantChecked" type="checkbox" class="border rounded w-full py-2 px-3 text-grey-darker">
+            <label class="block mt-3 font-extrabold">Coolant Checked</label>
+          </div>
+          <div>
+            <input id="{{id}}-addBatteryChecked" type="checkbox" class="border rounded w-full py-2 px-3 text-grey-darker">
+            <label class="block mt-3 font-extrabold">Battery Checked</label>
+          </div>
+          <div>
+            <input id="{{id}}-addSuspensionChecked" type="checkbox" class="border rounded w-full py-2 px-3 text-grey-darker">
+            <label class="block mt-3 font-extrabold">Suspension Checked</label>
+          </div>
+          <div>
+            <input id="{{id}}-addFiltersChecked" type="checkbox" class="border rounded w-full py-2 px-3 text-grey-darker">
+            <label class="block mt-3 font-extrabold">All Filters Checked</label>
+          </div>
+          <div>
+            <input id="{{id}}-addTyresRotated" type="checkbox" class="border rounded w-full py-2 px-3 text-grey-darker">
+            <label class="block mt-3 font-extrabold">Tyres Rotated</label>
+          </div>
+          <div>
+            <input id="{{id}}-addComment" type="text" class="border rounded w-full py-2 px-3 text-grey-darker">
+            <label class="block mt-3 font-extrabold">Additional Comments and Future Reccomendations</label>
+          </div>
+          <div class="w-full mt-6">
+            <button onclick="serviceComplete('{{id}}')" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">Complete</button>
+            </div>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
