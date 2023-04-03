@@ -27,12 +27,12 @@ function showSection(id) {
 
 // Complete Service
 document.addEventListener("DOMContentLoaded", () => {
-  const addServiceForm = document.getElementById("add-service-form");
+  const completeServiceForm = document.getElementById("complete-service-form");
 
-  addServiceForm.addEventListener("submit", async (event) => {
+  completeServiceForm.addEventListener("submit", async (event) => {
     event.preventDefault();
 
-    const formData = new FormData(addServiceForm);
+    const formData = new FormData(completeServiceForm);
     const data = Object.fromEntries(formData);
 
     console.log(data);
@@ -47,14 +47,14 @@ document.addEventListener("DOMContentLoaded", () => {
       });
 
       if (response.ok) {
-        alert("Service added successfully!");
+        alert("Service completed!");
         location.reload();
       } else {
-        alert("Failed to add service.");
+        alert("Failed to complete service.");
       }
     } catch (error) {
       console.error("Error:", error);
-      alert("Failed to add service.");
+      alert("Failed to complete service.");
     }
   });
 });

@@ -34,6 +34,27 @@ const serialisedJobData = jobs.map((job) => job.get({ plain: true }));
     servicesJSON: JSON.stringify(services),
     logged_in: req.session.logged_in,
   });
+} );
+
+router.get('/job/:id', async (req, res) => {
+  const jobData = Job.findAll({
+    attributes: ["id", "type", "date", "notes", "drop_off", "completed"],
+    include: [
+      {
+        model: Car,
+        attributes: ["id", "license_plate", "make", "model", "colour", "year"],
+      },
+    ],
+  });
+});
+
+const jobs = await Promise.all(jobData);
+
+const serialisedJobData = jobs.map((job) => job.get({ plain: true }));
+
+res.render("workshopDashboard", {
+  jobs: serialisedJobData,
+  jobsJSON: JSON.stringify(jobs),
 });
 
 router.post("/", async (req, res) => {
