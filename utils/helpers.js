@@ -18,12 +18,16 @@ module.exports = {
   },
 
   pascalCase: (phrase) => {
-  const words = phrase.split(" ");
-  // make the first letter of each word a capital
-  const capitalisedWords = words.map((word) =>
-    word.replace(word[0], word[0].toUpperCase())
-  );
+    const words = phrase.split(" ");
+    // make the first letter of each word a capital
+    const capitalisedWords = words.map((word) =>
+      word.replace(word[0], word[0].toUpperCase())
+    );
 
-  return capitalisedWords.join(" ");
-  }
+    return capitalisedWords.join(" ");
+  },
+
+  boolConverter: (bool) => {
+    return bool ? "Yes" : "No";
+  },
 };

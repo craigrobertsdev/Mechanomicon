@@ -1,0 +1,78 @@
+<div class="w-full">
+  <h3 class="text-2xl text-center bg-m-darkCream w-full">Service Details</h3>
+  <div class="m-auto bg-m-darkCream grid grid-cols-2 w-full h-full">
+    <div class="mb-4">
+      <h3 class="text-center">Date</h3>
+      <div class="text-center">
+        {{job.date}}
+      </div>
+    </div>
+    <div class="mb-4">
+      <h3 class="text-center">Registration</h3>
+      <div class="text-center">
+        {{job.service.car.licensePlate}}
+      </div>
+    </div>
+    <div class="mb-4">
+      <h3 class="text-center">Oil Changed</h3>
+      <div class="text-center">
+        {{boolConverter job.service.oilChecked}}
+      </div>
+    </div>
+    <div class="mb-4">
+      <h3 class="text-center">Filter Changed</h3>
+      <div class="text-center">
+        {{boolConverter job.service.brakesChecked}}
+      </div>
+    </div>
+    <div class="mb-4">
+      <h3 class="text-center">Brakes Checked</h3>
+      <div class="text-center">
+        {{boolConverter job.service.brakesChecked}}
+      </div>
+    </div>
+    <div class="mb-4">
+      <h3 class="text-center">Coolant Checked</h3>
+      <div class="text-center">
+        {{boolConverter job.service.coolantChecked}}
+      </div>
+    </div>
+    <div class="mb-4">
+      <h3 class="text-center">Battery Checked</h3>
+      <div class="text-center">
+        {{boolConverter job.service.batteryChecked}}
+      </div>
+    </div>
+    <div class="mb-4">
+      <h3 class="text-center">Suspension Checked</h3>
+      <div class="text-center">
+        {{boolConverter job.service.suspensionChecked}}
+      </div>
+    </div>
+    <div class="mb-4">
+      <h3 class="text-center">All filters Checked</h3>
+      <div class="text-center">
+        {{boolConverter job.service.filtersChecked}}
+      </div>
+    </div>
+    <div class="mb-4">
+      <h3 class="text-center">Tyres Rotated</h3>
+      <div class="text-center">
+        {{boolConverter job.service.tyresRotated}}
+      </div>
+    </div>
+    <div class="mb-4">
+      <h3 class="text-center">Comments and Future Recommendations</h3>
+      <div class="text-center">
+        {{job.notes}}
+      </div>
+    </div>
+    <div class="mb-4">
+      <h3 class="text-center">Price</h3>
+      <div class="text-center">
+        ${{job.service.price}}
+      </div>
+    </div>
+
+  </div>
+</div>
