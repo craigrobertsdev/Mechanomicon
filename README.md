@@ -79,6 +79,8 @@ This project is deployed using Heroku [here](https://mechanomicon.herokuapp.com/
 
 You can create an account and add personal vehicles to your account and then request service jobs and later view all previous work performed on the selected car.
 
+If you want to test out the admin features of the page, log in as admin@mechanomicon.com with password admin123.
+
 ## License
 
 The license used for this project is \
