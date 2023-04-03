@@ -102,7 +102,7 @@ Each member brought their unique skills and expertise to the table, and together
 
 If you have any questions or feedback, please feel free to open an issue or reach out to us directly. We're always here to help!
 
-[![Gmail](https://img.shields.io/badge/Gmail-D14836?style=for-the-badge&logo=gmail&logoColor=white)](mailto:craig.roberts11@outlook.com)
+[![Outlook](https://img.shields.io/badge/Microsoft_Outlook-0078D4?style=for-the-badge&logo=microsoft-outlook&logoColor=white)](mailto:craig.roberts11@outlook.com)
 [![Github](https://img.shields.io/badge/GitHub-100000?style=for-the-badge&logo=github&logoColor=white)](https://github.com/craigrobertsdev/)
 
 &copy; 2023 Mechanomicon. All rights reserved.
