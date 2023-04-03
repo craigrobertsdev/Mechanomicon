@@ -27,18 +27,18 @@ function showSection(id) {
 
 // Complete Service
 document.addEventListener("DOMContentLoaded", () => {
-  const completeServiceForm = document.getElementById("complete-service-form");
+  const completeServiceModal = document.getElementById(`complete-service-modal-${jobId}`);
 
-  completeServiceForm.addEventListener("submit", async (event) => {
+  completeServiceModal.addEventListener("submit", async (event) => {
     event.preventDefault();
 
-    const formData = new FormData(completeServiceForm);
+    const formData = new FormData(completeServiceModal);
     const data = Object.fromEntries(formData);
 
     console.log(data);
 
     try {
-      const response = await fetch("/api/job", {
+      const response = await fetch("/api/service", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",

@@ -22,20 +22,20 @@
   </aside>
   
   <!-- right side section Show data from model -->
-  <div
-    class="p-3 w-full bg-m-cream">
+  <section
+    class="p-3 w-full h-fit bg-m-cream">
     <!-- Job info -->
     <div class="container mx-auto px-4 py-6" id="job-info">
       <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-        {{#each jobs as |job|}}
         {{> mechJobs}}
-
-        {{!-- {{else}} --}}
-        {{!-- <p>No jobs for today</p> --}}
-        {{/each}}
       </div>
     </div>
   </div> 
-</div>
+</section>
+
+<script>
+  const jobsJSON = {{{ jobsJSON }}};
+  console.log(jobsJSON)
+</script>
 
 <script src="/js/service.js"></script>   

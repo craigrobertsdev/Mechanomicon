@@ -24,7 +24,7 @@ async function loginFormHandler(event) {
           document.location.replace("/workshop");
           break;
         case "technician":
-          document.location.replace("/mechanicDashboard");
+          document.location.replace("/api/service");
           break;
         case "user":
           document.location.replace("/customer");
