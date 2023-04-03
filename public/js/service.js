@@ -1,9 +1,13 @@
 function openModal(jobId) {
-  document.getElementById(`completeServiceModal-${jobId}`).classList.remove("hidden");
+  document
+    .getElementById(`completeServiceModal-${jobId}`)
+    .classList.remove("hidden");
 }
 
 function closeModal(jobId) {
-  document.getElementById(`completeServiceModal-${jobId}`).classList.add("hidden");
+  document
+    .getElementById(`completeServiceModal-${jobId}`)
+    .classList.add("hidden");
 }
 
 // show the selected section
@@ -26,8 +30,10 @@ function showSection(id) {
 }
 
 // Complete Service
-document.addEventListener("DOMContentLoaded", () => {
-  const completeServiceModal = document.getElementById(`complete-service-modal-${jobId}`);
+document.addEventListener("DOMContentLoaded", (jobId) => {
+  const completeServiceModal = document.getElementById(
+    `complete-service-modal-${jobId}`
+  );
 
   completeServiceModal.addEventListener("submit", async (event) => {
     event.preventDefault();

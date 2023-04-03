@@ -25,7 +25,7 @@
 
     <div class="flex items-center justify-between">
         <button class="bg-m-cream hover:bg-m-light-green text-white font-bold py-1 px-2 rounded text-m" 
-          onclick="completeServiceModal('{{id}}')">Complete Service</button>
+          onclick="completeServiceModal('{{job.id}}')">Complete Service</button>
     </div>
 </div>
 {{/each}}
@@ -75,7 +75,7 @@
             <label class="block mt-3 font-extrabold">Additional Comments and Future Reccomendations</label>
           </div>
           <div class="w-full mt-6">
-            <button onclick="serviceComplete('{{id}}')" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">Complete</button>
+            <button onsubmit="serviceComplete('{{id}}')" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">Complete</button>
             </div>
           </div>
         </div>

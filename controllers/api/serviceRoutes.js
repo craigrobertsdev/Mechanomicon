@@ -4,32 +4,39 @@ const { User, Car, Service, Job } = require("../../models");
 
 router.get("/", async (req, res) => {
   try {
-  const jobs = await Job.findAll({
-    attributes: ["id", "type", "date", "notes", "drop_off", "completed"],
-    include: [
-      {
-        model: Car,
-        attributes: ["id", "license_plate", "make", "model", "colour", "year"],
-      },
-    ],
-  });
+    const jobs = await Job.findAll({
+      attributes: ["id", "type", "date", "notes", "drop_off", "completed"],
+      include: [
+        {
+          model: Car,
+          attributes: [
+            "id",
+            "license_plate",
+            "make",
+            "model",
+            "colour",
+            "year",
+          ],
+        },
+      ],
+    });
 
-  const serialisedJobData = jobs.map((job) => job.get({ plain: true }));
-console.log(serialisedJobData);
-console.log(jobs);
+    const serialisedJobData = jobs.map((job) => job.get({ plain: true }));
+    console.log(serialisedJobData);
+    console.log(jobs);
 
-  res.render("mechanicDashboard", {
-    jobs: serialisedJobData,
-    
-    jobsJSON: JSON.stringify(jobs),
-    logged_in: req.session.logged_in,
-  });
+    res.render("mechanicDashboard", {
+      jobs: serialisedJobData,
+
+      jobsJSON: JSON.stringify(jobs),
+      logged_in: req.session.logged_in,
+    });
   } catch (err) {
     res.status(500).json(err);
   }
 });
 
-router.get('/job/:id', async (req, res) => {
+router.get("/job/:id", async (req, res) => {
   const jobData = Job.findAll({
     attributes: ["id", "type", "date", "notes", "drop_off", "completed"],
     include: [
@@ -40,15 +47,14 @@ router.get('/job/:id', async (req, res) => {
     ],
   });
 
+  const jobs = await Promise.all(jobData);
 
-const jobs = await Promise.all(jobData);
+  const serialisedJobData = jobs.map((job) => job.get({ plain: true }));
 
-const serialisedJobData = jobs.map((job) => job.get({ plain: true }));
-
-res.render("workshopDashboard", {
-  jobs: serialisedJobData,
-  jobsJSON: JSON.stringify(jobs),
-});
+  res.render("workshopDashboard", {
+    jobs: serialisedJobData,
+    jobsJSON: JSON.stringify(jobs),
+  });
 });
 
 router.post("/", async (req, res) => {
@@ -62,10 +68,6 @@ router.post("/", async (req, res) => {
 
 router.get("/", async (req, res) => {
   try {
-    //REMOVE LATER !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-    req.session.user_id = 1;
-    //REMOVE LATER !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-
     var serviceData = [];
     const carData = await Car.findAll({
       where: { user_id: req.session.user_id },

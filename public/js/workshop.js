@@ -143,9 +143,9 @@ function setSelectedTechnicians() {
       return service.job.id === id;
     });
 
-    if (!service.technician_id) {
-      break;
-    }
+    // if (!service.technician_id) {
+    //   break;
+    // }
 
     const assignedTechnician = service.technician_id;
 
@@ -358,6 +358,7 @@ function openUserModal(event) {
 
 function closeUserModal() {
   userModal.style.display = "none";
+  document.body.style.overflow = "auto";
 }
 
 function selectUserRow(event) {
@@ -430,14 +431,15 @@ async function openTechnicianModal(event) {
 
 function closeTechnicianModal() {
   technicianModal.style.display = "none";
+  document.body.style.overflow = "auto";
 }
 
 function selectTechnicianRow(event) {
   event.preventDefault();
   for (const row of technicianRows) {
-    row.style.backgroundColor = "white";
+    row.style.backgroundColor = "#E0DCD1";
   }
-  event.currentTarget.style.backgroundColor = "grey";
+  event.currentTarget.style.backgroundColor = "#e5e5e5ff";
 }
 
 // replaces first letter of every word in the sentence with a capital letter

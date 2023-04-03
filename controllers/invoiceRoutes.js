@@ -1,5 +1,5 @@
 const router = require("express").Router();
-const { Car, Service, Job } = require("../models");
+const { User, Car, Service, Job } = require("../models");
 
 router.get("/:id", async (req, res) => {
   try {
@@ -10,6 +10,11 @@ router.get("/:id", async (req, res) => {
           include: [
             {
               model: Car,
+              include: [
+                {
+                  model: User,
+                },
+              ],
             },
           ],
         },
@@ -18,9 +23,18 @@ router.get("/:id", async (req, res) => {
 
     const job = jobData.get({ plain: true });
 
-    res.render("invoice", {
-      job,
-    });
+    if (
+      req.session.user_id === job.service.car.user.id ||
+      req.session.role === "manager" ||
+      req.session.user_id === job.service.technician_id
+    ) {
+      res.render("invoice", {
+        job,
+        logged_in: true,
+      });
+    } else {
+      res.status(404).send("You are not authorised to view this invoice");
+    }
   } catch (err) {
     res.status(500).json(err);
   }

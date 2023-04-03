@@ -1,4 +1,4 @@
-<div class="flex flex-col h-screen w-full md:flex-row">
+<div class="flex flex-col w-full md:flex-row  grow">
   <!--Sidebar --->
   <aside id="default-sidebar"
     class="h-full left-0 text-brown z-40 md:w-64 transition-transform"
@@ -23,9 +23,9 @@
   
   <!-- right side section Show data from model -->
   <section
-    class="p-3 w-full h-fit bg-m-cream">
+    class="p-3 w-full bg-m-cream">
     <!-- Job info -->
-    <div class="container mx-auto px-4 py-6" id="job-info">
+    <div class="block overflow-hidden overflow-y-auto h-full" id="job-info">
       <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
         {{> mechJobs}}
       </div>

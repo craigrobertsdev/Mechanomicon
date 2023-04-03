@@ -15,9 +15,9 @@ router.get("/", async (req, res) => {
 router.get("/dashboard", withAuth, async (req, res) => {
   try {
     if (req.session.role === "user") {
-      res.render("customerDashboard", { logged_in: true });
+      res.redirect("/customer");
     } else if (req.session.role === "technician") {
-      res.render("mechanicDashboard"); // this one needs to be changed when Shae's code is merged
+      res.redirect("/api/service");
     } else if (req.session.role === "manager") {
       res.redirect("/workshop");
     } else {
