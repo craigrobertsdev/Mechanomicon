@@ -1,26 +1,41 @@
-<div class="flex flex-row grow">
-
-  <button data-drawer-target="default-sidebar" data-drawer-toggle="default-sidebar" aria-controls="default-sidebar" type="button" class="inline-flex items-center p-2 mt-2 ml-3 text-sm rounded-lg md:hidden hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200 dark:text-gray-400 dark:hover:bg-gray-700 dark:focus:ring-gray-600">
-    <span class="sr-only">Open sidebar</span>
-    <svg class="w-6 h-6" aria-hidden="true" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
-      <path clip-rule="evenodd" fill-rule="evenodd" d="M2 4.75A.75.75 0 012.75 4h14.5a.75.75 0 010 1.5H2.75A.75.75 0 012 4.75zm0 10.5a.75.75 0 01.75-.75h7.5a.75.75 0 010 1.5h-7.5a.75.75 0 01-.75-.75zM2 10a.75.75 0 01.75-.75h14.5a.75.75 0 010 1.5H2.75A.75.75 0 012 10z"></path>
-    </svg>
-  </button>
-
-  <aside id="default-sidebar" class="h-full left-0 text-brown z-40 w-64 transition-transform -translate-x-full sm:translate-x-0" aria-label="Sidebar">
-    <div class="h-full px-3 py-4 overflow-y-auto bg-m-darkCream">
-      <ul class="space-y-2 font-medium text-m-green">
-          <li id="job-link" class="flex items-center p-2 rounded-lg cursor-pointer select-none hover:bg-m-cream text-m-green">
-                <svg aria-hidden="true" class="w-6 h-6 transition duration-75 dark:text-gray-400 group-hover:dark:group-hover:text-white" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path d="M2 10a8 8 0 018-8v8h8a8 8 0 11-16 0z"></path><path d="M12 2.252A8.014 8.014 0 0117.748 8H12V2.252z"></path></svg>
-                <span class="ml-3 text-m-light-green">Job List</span>
-          </li>
+<div class="flex flex-col h-screen w-full md:flex-row">
+  <!--Sidebar --->
+  <aside id="default-sidebar"
+    class="h-full left-0 text-brown z-40 md:w-64 transition-transform"
+    aria-label="Sidebar">
+    <div class="h-full md:overflow-y-auto md:px-3 md:py-4 bg-m-darkCream">
+      <ul class="flex md:flex-col md:flex-wrap md:space-y-2 md:font-medium sm:pt-3 text-m-green">
+        <li class="flex items-center p-2 rounded-lg cursor-pointer select-none hover:bg-m-cream text-m-green">
+          <a href="#" onclick="showSection('job-info')"
+            class="flex items-center p-2 text-m-green rounded-lg dark:text-white hover:bg-m-cream text-m-green">
+            <svg aria-hidden="true"
+              class="w-6 h-6 text-m-green-500 transition duration-75 dark:text-m-green-400 group-hover:text-m-green-900 dark:group-hover:text-white"
+              fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+              <path d="M2 10a8 8 0 018-8v8h8a8 8 0 11-16 0z"></path>
+              <path d="M12 2.252A8.014 8.014 0 0117.748 8H12V2.252z"></path>
+            </svg>
+            <span class="ml-3">Job List</span>
+          </a>
+        </li>
       </ul>
     </div>
   </aside>
-  <section class="p-3 w-full bg-m-cream">
-  <div id="service-jobs" class="block overflow-hidden overflow-y-auto h-full">
-    {{> serviceJobs }}
-    </div>
-  </section>
+  
+  <!-- right side section Show data from model -->
+  <div
+    class="p-3 w-full bg-m-cream">
+    <!-- Job info -->
+    <div class="container mx-auto px-4 py-6" id="job-info">
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+        {{#each jobs as |job|}}
+        {{> mechJobs}}
 
-<script src="/js/service.js"></script>
+        {{else}}
+        <p>No jobs for today</p>
+        {{/each}}
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>console.log({{job.id}})</script>

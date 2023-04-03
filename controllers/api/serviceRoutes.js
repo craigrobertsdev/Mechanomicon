@@ -1,6 +1,40 @@
 const router = require("express").Router();
-const { Car, Service, job } = require("../../models");
-const { withAuth } = require("../../utils/auth");
+const { withMechanicAuth } = require("../utils/auth");
+const { User, Car, Service, Job } = require("../models");
+
+// when logging in as a manager, gets all data required for the admin dashboard
+router.get("/", withMechanicAuth, async (req, res) => {
+  // id (for loading the job page later on), service_type, drop_off, length, notes, price, technician (id),
+  // car_id (rego, make, model, user_id (name, phone number))
+  const jobData = Job.findAll({
+    attributes: ["id", "type", "date", "notes", "drop_off", "completed"],
+    include: [
+      {
+        model: Car,
+        attributes: ["id", "license_plate", "make", "model", "colour", "year"],
+      },
+    ],
+  });
+
+const [ jobs, services] = await Promise.all([
+  jobData,
+  serviceData,
+]);
+
+const serialisedJobData = jobs.map((job) => job.get({ plain: true }));
+  const serialisedServiceData = services.map((service) =>
+    service.get({ plain: true })
+  );
+
+  res.render("workshopDashboard", {
+    jobs: serialisedJobData,
+    services: serialisedServiceData,
+    // passed to the view in this format for capturing in a script tag allowing linked javascript files to access the data
+    jobsJSON: JSON.stringify(jobs),
+    servicesJSON: JSON.stringify(services),
+    logged_in: req.session.logged_in,
+  });
+});
 
 router.post("/", async (req, res) => {
   try {
