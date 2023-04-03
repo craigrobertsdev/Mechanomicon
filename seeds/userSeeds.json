@@ -68,5 +68,19 @@
     "password": "Banana500",
     "role": "technician",
     "workshop_id": 1
+  },
+  {
+    "id": 6,
+    "first_name": "Test",
+    "last_name": "Admin",
+    "email": "admin@mechanomicon.com",
+    "phone": "0 400 100 200",
+    "address": "1 Quattro Avenue",
+    "postcode": "5000",
+    "city": "Adelaide",
+    "state": "SA",
+    "password": "admin123",
+    "role": "manager",
+    "workshop_id": 1
   }
 ]
