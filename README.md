@@ -63,11 +63,11 @@ Our major success with this project has been working as a team and all doing our
 ![Tailwind](https://img.shields.io/badge/Tailwind_CSS-38B2AC?style=for-the-badge&logo=tailwind-css&logoColor=white)
 ![Visual Studio Code](https://img.shields.io/badge/Visual%20Studio%20Code-0078d7.svg?style=for-the-badge&logo=visual-studio-code&logoColor=white)
 
-## Screenshot
+## Screenshots
 
-![Mechanomicon](./home)
-![Mechanomicon](./login)
-![Mechanomicon](./dashboard)
+![Mechanomicon](https://github.com/craigrobertsdev/Mechanomicon/blob/main/assets/images/home.jpg)
+![Mechanomicon](https://github.com/craigrobertsdev/Mechanomicon/blob/main/assets/images/login.jpg)
+![Mechanomicon](https://github.com/craigrobertsdev/Mechanomicon/blob/main/assets/images/dashboard.jpg)
 
 ## Installation
 
