@@ -89,4 +89,16 @@ router.get("/", async (req, res) => {
   }
 });
 
+router.put("/job/:id", withTechnicianAuth, async (req, res) => {
+  try {
+    // get form data from req.body
+    // call Job.update(req.params.id, {
+    // in here add the form data
+    //})
+    // return if successful
+  } catch (err) {
+    // error if not
+  }
+});
+
 module.exports = router;

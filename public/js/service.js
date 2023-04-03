@@ -1,13 +1,19 @@
-function openModal(jobId) {
-  document
-    .getElementById(`completeServiceModal-${jobId}`)
-    .classList.remove("hidden");
+const completeServiceButtons = document.getElementsByClassName(
+  "completeServiceButton"
+);
+
+document.getElementById("modal-close").addEventListener("click", closeModal);
+
+for (const button of completeServiceButtons) {
+  button.addEventListener("click", openModal);
 }
 
-function closeModal(jobId) {
-  document
-    .getElementById(`completeServiceModal-${jobId}`)
-    .classList.add("hidden");
+function openModal(event) {
+  document.getElementById(`complete-service-modal`).classList.remove("hidden");
+}
+
+function closeModal(event) {
+  document.getElementById(`complete-service-modal`).classList.add("hidden");
 }
 
 // show the selected section
@@ -30,15 +36,13 @@ function showSection(id) {
 }
 
 // Complete Service
-document.addEventListener("DOMContentLoaded", (jobId) => {
-  const completeServiceModal = document.getElementById(
-    `complete-service-modal-${jobId}`
-  );
+document.addEventListener("DOMContentLoaded", async (jobId) => {
+  const completeServiceForm = document.getElementById(`completeServiceForm`);
 
-  completeServiceModal.addEventListener("submit", async (event) => {
+  completeServiceForm.addEventListener("submit", async (event) => {
     event.preventDefault();
 
-    const formData = new FormData(completeServiceModal);
+    const formData = new FormData(completeServiceForm);
     const data = Object.fromEntries(formData);
 
     console.log(data);
@@ -64,8 +68,5 @@ document.addEventListener("DOMContentLoaded", (jobId) => {
     }
   });
 });
-
-document.addEventListener("DOMContentLoaded", function () {
-  // Show the default section when the page loads
-  showSection("job-info");
-});
+// Show the default section when the page loads
+showSection("job-info");
