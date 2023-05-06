@@ -75,7 +75,7 @@ No dependencies are required to use this page.
 
 ## Usage
 
-This project is deployed using Heroku [here](https://mechanomicon.herokuapp.com/).
+This project is deployed using Heroku [here](https://mechanomicon.herokuapp.com/). Please note the app has been deactivated to reduce hosting costs. It can be reactivated or demonstrated on request.
 
 You can create an account and add personal vehicles to your account and then request service jobs and later view all previous work performed on the selected car.
 
